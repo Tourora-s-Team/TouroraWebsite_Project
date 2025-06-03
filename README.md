@@ -36,13 +36,14 @@ Làm theo các bước sau để chạy dự án TouroraWebsite trên máy của
 git clone https://github.com/Tourora-s-Team/TouroraWebsite_Project
 cd TouroraWebsite
 
-# Cài đặt Frontend
+# Cài đặt và khởi chạy Frontend (localhost:3000)
 cd client
 npm install
-npm run dev
+npm start
 
-# Cài đặt Backend
+# Cài đặt và khởi chạy Backend (localhost:3001)
 cd ../server
+npm install
 node src/index.js
 ```
 ## 🔍 **Lưu ý:** Đảm bảo bạn đã cài đặt Node.js và npm trên máy trước khi chạy các lệnh trên. 
