@@ -40,3 +40,9 @@ cd TouroraWebsite
 cd client
 npm install
 npm run dev
+
+# Cài đặt Backend
+cd ../server
+node src/index.js
+```
+## 🔍 **Lưu ý:** Đảm bảo bạn đã cài đặt Node.js và npm trên máy trước khi chạy các lệnh trên. 
