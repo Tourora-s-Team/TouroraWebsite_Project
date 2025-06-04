@@ -22,7 +22,7 @@ const CarRentalForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3001/api/rentals", {
+    fetch("http://localhost:3001/api/car-rentals", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
