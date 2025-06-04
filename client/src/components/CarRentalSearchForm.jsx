@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from './CarRentalForm.module.css';
+import styles from './CarRentalSearchForm.module.css';
 
 const CarRentalForm = () => {
   const [form, setForm] = useState({
@@ -12,6 +12,7 @@ const CarRentalForm = () => {
   });
 
   const handleChange = (e) => {
+    
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
   };

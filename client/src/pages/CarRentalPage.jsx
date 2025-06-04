@@ -1,5 +1,5 @@
 import React from 'react';
-import CarRentalForm from '../components/CarRentalForm'; // Import component form của bạn
+import CarRentalForm from '../components/CarRentalSearchForm'; // Import component form của bạn
 
 const CarRentalPage = () => {
   return (
