@@ -1,7 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage  from './pages/HomePage';
+import HomePage from './pages/HomePage';
 import CarRentalPage from './pages/CarRentalPage';
+import HotelBookingPage from './pages/HotelBookingPage';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/car-rental-service" element={<CarRentalPage />} />
+          <Route path="/hotel-booking" element={<HotelBookingPage />} />
         </Routes>
       </Layout>
     </Router>
