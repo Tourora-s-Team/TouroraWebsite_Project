@@ -1,0 +1,116 @@
+.flightSection {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tripTypeSelector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tripTypeSelector button {
+  padding: 10px 20px;
+  border: 1px solid #e0e0e0;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tripTypeSelector button.active {
+  background: #ff5722;
+  color: white;
+  border-color: #ff5722;
+}
+
+.bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formRow {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.formGroup {
+  flex: 1;
+  min-width: 250px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #424242;
+}
+
+.inputBox {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.selectBox {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+  background: white;
+}
+
+.passengerSection {
+  flex: 1;
+  min-width: 250px;
+}
+
+.passengerControls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.passengerType {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.passengerType input {
+  width: 60px;
+  padding: 8px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.searchBtn {
+  padding: 12px 24px;
+  background: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  align-self: center;
+}
+
+.searchBtn:hover {
+  background: #f4511e;
+}
+
+.inputBox:focus,
+.selectBox:focus {
+  outline: none;
+  border-color: #ff5722;
+}
