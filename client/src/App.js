@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from './components/Layout';
-import HomePage  from './pages/HomePage';
-import CarRentalPage from './pages/CarRentalPage';
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import CarRentalPage from "./pages/CarRentalPage";
+import BookingTourPage from "./pages/BookingTourPage";
 function App() {
   return (
     <Router>
@@ -10,6 +10,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/car-rental-service" element={<CarRentalPage />} />
+          <Route path="/book-tour" element={<BookingTourPage />} />
         </Routes>
       </Layout>
     </Router>
