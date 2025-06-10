@@ -38,17 +38,17 @@ const Header = () => {
                     </div>
                     <div className={styles.topBarContent}>
                         <div className={styles.dropdownWrapper} ref={dropdownRef}>
-                            <a href="#" onClick={toggleDropdown}>Support <FontAwesomeIcon icon={faCaretDown} /></a>
+                            <a href="#" onClick={toggleDropdown}>Hỗ trợ <FontAwesomeIcon icon={faCaretDown} /></a>
                             {isDropdownOpen && (
                                 <ul className={styles.dropdownMenu}>
-                                    <li><a href="#">Help Center</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                    <li><a href="#">My Inbox</a></li>
+                                    <li><a href="#">Trợ giúp</a></li>
+                                    <li><a href="#">Liên hệ chúng tôi</a></li>
+                                    <li><a href="#">Hộp thư của tôi</a></li>
                                 </ul>
                             )}
                         </div>
-                        <a href="#">Partnership</a>
-                        <a href="#">Bookings</a>
+                        <a href="#">Hợp tác với chúng tôi</a>
+                        <a href="#">Đặt chỗ của tôi</a>
                         <div className={styles.authButtons}>
                             <button className={styles.login}>Đăng Nhập</button>
                             <button className={styles.register}>Đăng Ký</button>
