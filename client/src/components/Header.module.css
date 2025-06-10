@@ -1,11 +1,84 @@
 .headerContainer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
+    flex-direction: column;
+    padding: 10px 5%;
     background-color: #f8f8f8;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
+}
+
+.subHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.topBar {
+    justify-content: space-between;
+}
+
+.topBarContent {
+    display: flex;
+    flex-direction: row;
+    max-height: 36px;
+    font-size: 14px;
+}
+
+.topBarContent a {
+    padding: 10px 20px;
+    align-self: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #333333;
+}
+
+.dropdownWrapper {
+  position: relative;
+  margin: auto;
+}
+
+.dropdownTrigger {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dropdownTrigger:hover {
+  color: #2563eb;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-width: 160px;
+  z-index: 100;
+  padding: 0px;
+}
+
+.dropdownMenu li {
+  list-style: none;
+}
+
+.dropdownMenu li a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 14px;
+}
+
+.dropdownMenu li a:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
 }
 
 .logo img {
@@ -21,8 +94,9 @@
 
 .navLink {
     text-decoration: none;
-    color: #333;
+    color: #687176;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .authButtons {
