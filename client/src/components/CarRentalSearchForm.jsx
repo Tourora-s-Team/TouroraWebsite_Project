@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from './CarRentalSearchForm.module.css';
 
 const CarRentalForm = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     location: "",
     startDate: "2025-06-04",
@@ -33,7 +36,7 @@ const CarRentalForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          alert(data.message);
+          navigate("/car-rental-details", { state: { data: form } }); // Truyền state
         } else {
           alert("Có lỗi xảy ra: " + data.message);
         }
