@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import styles from "./PlaneTicketsForm.module.css";
 
 const PlaneTicketsForm = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     tripType: "oneWay", // oneWay, roundTrip, multiCity
     fromLocation: "",
@@ -16,7 +20,21 @@ const PlaneTicketsForm = () => {
     flightClass: "economy",
     directFlight: false,
   });
-
+  const handleSearch = () => {
+    navigate("/flight-results", {
+      state: {
+        search: {
+          from: form.fromLocation,
+          to: form.toLocation,
+          departDate: form.departDate,
+          returnDate: form.tripType === "roundTrip" ? form.returnDate : null,
+          passengers: form.passengers,
+          class: form.flightClass,
+          directFlight: form.directFlight,
+        },
+      },
+    });
+  };
   return (
     <div className={styles.container}>
       {/* Banner Section */}
@@ -142,7 +160,9 @@ const PlaneTicketsForm = () => {
             )}
           </div>
 
-          <button className={styles.searchBtn}>Tìm chuyến bay</button>
+          <button className={styles.searchBtn} onClick={handleSearch}>
+            Tìm chuyến bay
+          </button>
         </div>
       </div>
 
