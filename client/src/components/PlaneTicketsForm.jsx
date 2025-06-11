@@ -3,209 +3,182 @@ import styles from "./PlaneTicketsForm.module.css";
 
 const PlaneTicketsForm = () => {
   const [form, setForm] = useState({
-    tripType: "oneWay", // oneWay or roundTrip
+    tripType: "oneWay", // oneWay, roundTrip, multiCity
     fromLocation: "",
     toLocation: "",
-    departDate: "2025-06-06",
-    returnDate: "2025-06-13",
+    departDate: "",
+    returnDate: "",
     passengers: {
       adults: 1,
       children: 0,
       infants: 0,
     },
-    seatClass: "economy", // economy, business, firstClass
+    flightClass: "economy",
+    directFlight: false,
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handlePassengerChange = (type, value) => {
-    setForm((prev) => ({
-      ...prev,
-      passengers: {
-        ...prev.passengers,
-        [type]: value,
-      },
-    }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch("http://localhost:3001/api/flights", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          alert("Tìm kiếm chuyến bay thành công!");
-        } else {
-          alert("Có lỗi xảy ra: " + data.message);
-        }
-      })
-      .catch((err) => {
-        console.error("Error:", err);
-        alert("Lỗi kết nối đến server");
-      });
-  };
-
   return (
-    <div className={styles.flightSection}>
+    <div className={styles.container}>
+      {/* Banner Section */}
       <div className={styles.banner}>
-        <img
-          src="https://lh3.googleusercontent.com/proxy/Gfk1xIzC1Ncv6otgSo34EvutdhQq9AH_l74FXhkysTqvzyIsNrwNempUI9AoknE63GuMINS8eThvvRcCNSNtUxbsSjci4-2aYpRixqFX"
-          alt="Plane Ticket Banner"
-          loading="lazy"
-          className={styles.bannerImage}
-        />
+        <h1>
+          Tìm và đặt vé máy bay khuyến mãi & vé giá rẻ chỉ với 3 bước đơn giản!
+        </h1>
       </div>
-      <div className={styles.formContainer}>
+
+      {/* Search Form Section */}
+      <div className={styles.searchBox}>
+        {/* Trip Type Selector */}
         <div className={styles.tripTypeSelector}>
           <button
-            className={form.tripType === "oneWay" ? styles.active : ""}
+            className={`${styles.tripTypeBtn} ${
+              form.tripType === "oneWay" ? styles.active : ""
+            }`}
             onClick={() => setForm((prev) => ({ ...prev, tripType: "oneWay" }))}
           >
-            ✈️ Một chiều
+            Một chiều
           </button>
           <button
-            className={form.tripType === "roundTrip" ? styles.active : ""}
+            className={`${styles.tripTypeBtn} ${
+              form.tripType === "roundTrip" ? styles.active : ""
+            }`}
             onClick={() =>
               setForm((prev) => ({ ...prev, tripType: "roundTrip" }))
             }
           >
-            🔄 Khứ hồi
+            Khứ hồi
           </button>
           <button
-            className={form.tripType === "cities" ? styles.active : ""}
-            onClick={() => setForm((prev) => ({ ...prev, tripType: "cities" }))}
+            className={`${styles.tripTypeBtn} ${
+              form.tripType === "multiCity" ? styles.active : ""
+            }`}
+            onClick={() =>
+              setForm((prev) => ({ ...prev, tripType: "multiCity" }))
+            }
           >
-            ✈️ Nhiều thành phố
+            Nhiều thành phố
           </button>
         </div>
 
-        <form className={styles.bookingForm} onSubmit={handleSubmit}>
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Điểm đi</label>
+        {/* Flight Options */}
+        <div className={styles.flightOptions}>
+          <label className={styles.checkboxLabel}>
+            <input
+              type="checkbox"
+              checked={form.directFlight}
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, directFlight: e.target.checked }))
+              }
+            />
+            Bay thẳng
+          </label>
+
+          <div className={styles.passengerSelector}>
+            <span>
+              {form.passengers.adults +
+                form.passengers.children +
+                form.passengers.infants}{" "}
+              Người
+            </span>
+            <span>
+              {form.flightClass === "economy" ? "Phổ thông" : "Thương gia"}
+            </span>
+          </div>
+        </div>
+
+        {/* Main Search Form */}
+        <div className={styles.searchForm}>
+          <div className={styles.locationInputs}>
+            <div className={styles.inputGroup}>
+              <label>Từ</label>
               <input
-                className={styles.inputBox}
                 type="text"
-                name="fromLocation"
-                placeholder="Nhập thành phố hoặc sân bay"
                 value={form.fromLocation}
-                onChange={handleChange}
+                placeholder="Nhập thành phố hoặc sân bay"
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, fromLocation: e.target.value }))
+                }
               />
             </div>
 
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Điểm đến</label>
+            <button className={styles.swapBtn}>⇄</button>
+
+            <div className={styles.inputGroup}>
+              <label>Đến</label>
               <input
-                className={styles.inputBox}
                 type="text"
-                name="toLocation"
-                placeholder="Nhập thành phố hoặc sân bay"
                 value={form.toLocation}
-                onChange={handleChange}
+                placeholder="Nhập thành phố hoặc sân bay"
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, toLocation: e.target.value }))
+                }
               />
             </div>
           </div>
 
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Ngày đi</label>
+          <div className={styles.dateInputs}>
+            <div className={styles.inputGroup}>
+              <label>Ngày khởi hành</label>
               <input
-                className={styles.inputBox}
                 type="date"
-                name="departDate"
                 value={form.departDate}
-                onChange={handleChange}
+                onChange={(e) =>
+                  setForm((prev) => ({ ...prev, departDate: e.target.value }))
+                }
               />
             </div>
 
             {form.tripType === "roundTrip" && (
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Ngày về</label>
+              <div className={styles.inputGroup}>
+                <label>Ngày về</label>
                 <input
-                  className={styles.inputBox}
                   type="date"
-                  name="returnDate"
                   value={form.returnDate}
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    setForm((prev) => ({ ...prev, returnDate: e.target.value }))
+                  }
                 />
               </div>
             )}
           </div>
 
-          <div className={styles.formRow}>
-            <div className={styles.formGroup}>
-              <label className={styles.label}>Hạng ghế</label>
-              <select
-                className={styles.selectBox}
-                name="seatClass"
-                value={form.seatClass}
-                onChange={handleChange}
-              >
-                <option value="economy">Phổ thông</option>
-                <option value="business">Thương gia</option>
-                <option value="firstClass">Hạng nhất</option>
-              </select>
-            </div>
+          <button className={styles.searchBtn}>Tìm chuyến bay</button>
+        </div>
+      </div>
 
-            <div className={styles.passengerSection}>
-              <label className={styles.label}>Hành khách</label>
-              <div className={styles.passengerControls}>
-                <div className={styles.passengerType}>
-                  <span>Người lớn</span>
-                  <input
-                    type="number"
-                    min="1"
-                    max="9"
-                    value={form.passengers.adults}
-                    onChange={(e) =>
-                      handlePassengerChange("adults", parseInt(e.target.value))
-                    }
-                  />
-                </div>
-                <div className={styles.passengerType}>
-                  <span>Trẻ em</span>
-                  <input
-                    type="number"
-                    min="0"
-                    max="9"
-                    value={form.passengers.children}
-                    onChange={(e) =>
-                      handlePassengerChange(
-                        "children",
-                        parseInt(e.target.value)
-                      )
-                    }
-                  />
-                </div>
-                <div className={styles.passengerType}>
-                  <span>Em bé</span>
-                  <input
-                    type="number"
-                    min="0"
-                    max="9"
-                    value={form.passengers.infants}
-                    onChange={(e) =>
-                      handlePassengerChange("infants", parseInt(e.target.value))
-                    }
-                  />
-                </div>
-              </div>
+      {/* Features Section */}
+      <div className={styles.features}>
+        <div className={styles.ratingsSection}>
+          <h3>Hơn 50 triệu lượt tải, hơn 1 triệu lượt đánh giá</h3>
+          <div className={styles.ratings}>
+            <div className={styles.ratingItem}>
+              <img src="/images/app-store.png" alt="App Store" />
+              <span>4.9 ★</span>
+            </div>
+            <div className={styles.ratingItem}>
+              <img src="/images/google-play.png" alt="Google Play" />
+              <span>4.8 ★</span>
             </div>
           </div>
+        </div>
 
-          <button type="submit" className={styles.searchBtn}>
-            Tìm chuyến bay
-          </button>
-        </form>
+        <div className={styles.featuresList}>
+          <div className={styles.featureItem}>
+            <img src="/images/icons/change.png" alt="Đổi vé" />
+            <h4>Dễ dàng thay đổi chuyến bay</h4>
+            <p>Thoải mái hủy hoặc thay đổi đặt chỗ chuyến bay</p>
+          </div>
+          <div className={styles.featureItem}>
+            <img src="/images/icons/payment.png" alt="Thanh toán" />
+            <h4>Thanh toán tiện lợi</h4>
+            <p>Giao dịch dễ dàng với đa dạng hình thức thanh toán</p>
+          </div>
+          <div className={styles.featureItem}>
+            <img src="/images/icons/support.png" alt="Hỗ trợ" />
+            <h4>Hỗ trợ 24/7</h4>
+            <p>Hãy liên hệ Tourora bất cứ lúc nào, bất cứ ở đâu</p>
+          </div>
+        </div>
       </div>
     </div>
   );

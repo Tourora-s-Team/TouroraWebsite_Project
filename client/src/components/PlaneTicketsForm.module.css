@@ -1,141 +1,222 @@
-.flightSection {
-  background: rgb(255, 255, 255);
-  /* border-radius: 8px;
-  padding: 20px; */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 1500px;
-  margin: 20px auto;
-}
-.banner {
-  width: 90%;
-  height: 250px;
-  overflow: hidden;
-  border-radius: 20px;
-  background-color: blue;
-  padding: 20px;
-  margin: 20px auto;
+.container {
+  width: 100%;
+  background: #f7f9fa;
+  min-height: 100vh;
 }
 
-.bannerImage {
+.banner {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: 400px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("https://cdn.myportfolio.com/d65c4c748ea87d55d1b82c128fa077ae/155b8377-64fe-4f0d-a415-589f0a941259_rw_1920.jpg?h=6eda280a60d70891d711c34acb83e92d");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
 }
-.formContainer {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 24px 32px;
-  box-shadow: 0 2px 8px rgba(3, 18, 26, 0.15);
+
+.banner h1 {
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  max-width: 800px;
+  font-weight: 500;
+}
+
+.searchBox {
   max-width: 1140px;
-  margin: 0 auto;
-  position: relative;
-  top: -50px;
+  margin: -60px auto 0;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(3, 18, 26, 0.15);
 }
+
 .tripTypeSelector {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-bottom: 20px;
 }
 
-.tripTypeSelector button {
-  padding: 10px 20px;
-  border: 1px solid #e0e0e0;
-  background: white;
-  border-radius: 20px;
+.tripTypeBtn {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #687176;
   cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.tripTypeSelector button.active {
-  background: #ff5722;
-  color: white;
-  border-color: #ff5722;
-}
-
-.bookingForm {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.formRow {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.formGroup {
-  flex: 1;
-  min-width: 250px;
-}
-
-.label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: #424242;
-}
-
-.inputBox {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
   font-size: 14px;
+  border-radius: 8px;
 }
 
-.selectBox {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  font-size: 14px;
-  background: white;
+.tripTypeBtn.active {
+  background: #e6f4ff;
+  color: #0194f3;
 }
 
-.passengerSection {
-  flex: 1;
-  min-width: 250px;
-}
-
-.passengerControls {
+.flightOptions {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.passengerType {
+.checkboxLabel {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  color: #687176;
+  font-size: 14px;
 }
 
-.passengerType input {
-  width: 60px;
-  padding: 8px;
-  border: 1px solid #e0e0e0;
-  border-radius: 4px;
+.passengerSelector {
+  display: flex;
+  gap: 16px;
+  color: #687176;
+  font-size: 14px;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.locationInputs,
+.dateInputs {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.inputGroup {
+  flex: 1;
+}
+
+.inputGroup label {
+  display: block;
+  font-size: 12px;
+  color: #687176;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e7e9ec;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.swapBtn {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #e7e9ec;
+  border-radius: 50%;
+  background: white;
+  color: #0194f3;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
 }
 
 .searchBtn {
-  padding: 12px 24px;
-  background: #ff5722;
+  width: 100%;
+  padding: 14px;
+  background: #ff5e1f;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.3s ease;
-  align-self: center;
 }
 
-.searchBtn:hover {
-  background: #f4511e;
+.features {
+  max-width: 1140px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
-.inputBox:focus,
-.selectBox:focus {
-  outline: none;
-  border-color: #ff5722;
+.ratingsSection {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.ratingsSection h3 {
+  font-size: 24px;
+  color: #03121a;
+  margin-bottom: 16px;
+}
+
+.ratings {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+}
+
+.ratingItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #687176;
+}
+
+.ratingItem img {
+  width: 24px;
+  height: 24px;
+}
+
+.featuresList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+}
+
+.featureItem {
+  text-align: center;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+}
+
+.featureItem img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+}
+
+.featureItem h4 {
+  font-size: 16px;
+  color: #03121a;
+  margin-bottom: 8px;
+}
+
+.featureItem p {
+  color: #687176;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .locationInputs,
+  .dateInputs {
+    flex-direction: column;
+  }
+
+  .swapBtn {
+    margin: 12px auto;
+    transform: rotate(90deg);
+  }
+
+  .banner h1 {
+    font-size: 24px;
+  }
+
+  .searchBox {
+    margin: -40px 20px 0;
+  }
 }
