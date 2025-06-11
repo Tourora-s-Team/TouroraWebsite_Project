@@ -48,7 +48,7 @@ const CarRentalForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          navigate("/car-rental-details"); // Truyền state
+          navigate("/car-rental-details"); 
         } else {
           alert("Có lỗi xảy ra: " + data.message);
         }
