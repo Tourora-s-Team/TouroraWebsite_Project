@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setCarRentalData } from '../redux/CarRentalSlice';
+
 import styles from './CarRentalSearchForm.module.css';
 
 const CarRentalForm = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const today = new Date();
+
+  const formattedDate = [
+    String(today.getDate()).padStart(2, '0'),      // Ngày (thêm '0' nếu < 10)
+    String(today.getMonth() + 1).padStart(2, '0'), // Tháng (0-11 → +1)
+    today.getFullYear()                            // Năm
+  ].join('/');
 
   const [form, setForm] = useState({
     location: "",
-    startDate: "2025-06-04",
+    startDate: formattedDate,
     startTime: "09:00",
-    endDate: "2025-06-06",
+    endDate: formattedDate,
     endTime: "09:00",
-    mode: "tu-lai"
+    mode: "self-driving"
   });
 
   const handleChange = (e) => {
@@ -26,6 +37,7 @@ const CarRentalForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(setCarRentalData(form))
     fetch("http://localhost:3001/api/car-rentals", {
       method: "POST",
       headers: {
@@ -36,7 +48,7 @@ const CarRentalForm = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          navigate("/car-rental-details", { state: { data: form } }); // Truyền state
+          navigate("/car-rental-details"); // Truyền state
         } else {
           alert("Có lỗi xảy ra: " + data.message);
         }
@@ -51,14 +63,14 @@ const CarRentalForm = () => {
     <div className={styles.heroSection}>
       <div className={styles.modeSelector}>
         <button
-          className={form.mode === "tu-lai" ? styles.active : ""}
-          onClick={() => handleModeChange("tu-lai")}
+          className={form.mode === "self-driving " ? styles.active : ""}
+          onClick={() => handleModeChange("self-driving ")}
         >
           🚗 Tự lái
         </button>
         <button
-          className={form.mode === "co-tai-xe" ? styles.active : ""}
-          onClick={() => handleModeChange("co-tai-xe")}
+          className={form.mode === "driver" ? styles.active : ""}
+          onClick={() => handleModeChange("driver")}
         >
           👨‍✈️ Có tài xế
         </button>

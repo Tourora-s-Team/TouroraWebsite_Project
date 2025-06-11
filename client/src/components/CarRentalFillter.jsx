@@ -1,84 +1,47 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import CarRentalSearchForm from './CarRentalSearchForm';
 import styles from './CarRentalFillter.module.css';
 
 
 const CarRentalFillter = () => {
+  const carRental = useSelector((state) => state.carRental);
   const [showSearchForm, setShowSearchForm] = useState(false);
 
   const toggleSearchForm = () => {
     setShowSearchForm(!showSearchForm);
   };
 
-  return (
-    <div className={styles.searchForm}>
-      <h2 className={styles.formTitle}>Thuê xe tại Sân bay Quốc tế Tân Sơn Nhất (SGN)</h2>
-      
-      <div className={styles.formGrid}>
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Địa điểm nhận xe</label>
-          <input 
-            type="text" 
-            className={styles.formInput} 
-            value="Sân bay Quốc tế Tân Sơn Nhất (SGN)" 
-            readOnly 
-          />
-        </div>
-        
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Loại tài xế</label>
-           <input 
-            type="text" 
-            className={styles.formInput} 
-            value="Tự lái" 
-            readOnly 
-          />
-        </div>
-        
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Ngày nhận xe</label>
-          <input 
-            type="text" 
-            className={styles.formInput} 
-            value="Th 6, 6 thg 6, 2025" 
-          />
-        </div>
-        
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Giờ nhận xe</label>
-          <input 
-            type="text" 
-            className={styles.formInput} 
-            value="9:00" 
-            readOnly 
-          />
-        </div>
-        
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Ngày trả xe</label>
-          <input 
-            type="text" 
-            className={styles.formInput} 
-            value="CN, 8 thg 6, 2025" 
-          />
-        </div>
-        
-        <div className={styles.formGroup}>
-          <label className={styles.formLabel}>Giờ trả xe</label>
-           <input 
-            type="text" 
-            className={styles.formInput} 
-            value="11:00" 
-            readOnly 
-          />
-        </div>
-        
-        
-        <div className={styles.formGroup}>
-          <button className={styles.searchBtn} onClick={toggleSearchForm}>Thay đổi tìm kiếm</button>
+  function showMode(mode) {
+    if (mode.trim() === "self-driving") return "Tự lái"
+    if (mode.trim() === "driver") return "Có tài xế"
+  }
 
+  
+  function showModeHeading(mode) {
+    let modeHeading
+    if (mode.trim() === "self-driving") {
+      modeHeading = <h2>Car Rental Without Driver</h2>
+    }
+    if (mode.trim() === "driver") {
+      modeHeading = <h2>Car Rental With Driver</h2>
+    }
+    return modeHeading
+  }
+
+  return (
+    <div>
+      <div className={styles.filterForm}>
+        <div>
+          <h4 className={styles.pathTitle}>Thuê xe / {showMode(carRental.mode)}</h4>
+          {showModeHeading(carRental.mode)}
+          {/* Location */}
+          <label className={styles.label}>{carRental.location} | {carRental.startTime}, {carRental.startDate} - {carRental.endTime}, {carRental.endDate}</label>
         </div>
+        <button className={styles.searchBtn} onClick={toggleSearchForm}>Thay đổi tìm kiếm</button>
+
+
       </div>
       {showSearchForm && <CarRentalSearchForm />}
     </div>
