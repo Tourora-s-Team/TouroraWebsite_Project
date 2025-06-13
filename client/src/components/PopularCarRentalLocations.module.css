@@ -1,0 +1,48 @@
+.popularLocations {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.popularLocations h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.locationsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.locationCard {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.locationCard:hover {
+  transform: scale(1.02);
+}
+
+.locationCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%);
+}
+
+.locationLabel {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+}

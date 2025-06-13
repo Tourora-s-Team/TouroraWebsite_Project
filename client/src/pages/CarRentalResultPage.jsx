@@ -2,7 +2,7 @@ import React from "react";
 import CarRentalFillter from '../components/CarRentalFillter'
 import CarList from '../components/CarList'
 
-const CarRentalDetailsPage = () => {
+const CarRentalResultPage = () => {
     return (
         <div>
             <CarRentalFillter/>
@@ -11,4 +11,4 @@ const CarRentalDetailsPage = () => {
     );
 }
 
-export default CarRentalDetailsPage; 
+export default CarRentalResultPage; 

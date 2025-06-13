@@ -1,0 +1,86 @@
+.paragraph {
+    margin: 72px 10%;
+}
+
+.paragraphHeading {
+    text-align: center;
+}
+
+.line {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 20px 0;
+}
+
+
+
+/* Table */
+.tableContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333;
+    font-weight: 600;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.table th {
+    background-color: #f3f4f6;
+    padding: 16px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.table td {
+    padding: 16px;
+    vertical-align: top;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 15px;
+    color: #444;
+}
+
+.table h3,
+.table h2 {
+    margin: 8px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.table ul {
+    padding-left: 20px;
+    margin: 8px 0;
+}
+
+.table ul li {
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.table td:last-child {
+    white-space: pre-line;
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+    font-style: italic;
+    color: #666;
+}
