@@ -1,219 +1,9 @@
-.container {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 24px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 24px;
-  color: #1976d2;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.searchBox {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto 32px auto;
-}
-
-.searchInput {
-  width: 100%;
-  padding: 12px 16px;
-  font-size: 1.1rem;
-  border: 1.5px solid #90caf9;
-  border-radius: 6px;
-  outline: none;
-  transition: border 0.2s;
-}
-
-.searchInput:focus {
-  border: 2px solid #1976d2;
-}
-
-.suggestList {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border: 1.5px solid #90caf9;
-  border-top: none;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 0 2px 8px rgba(30, 136, 229, 0.07);
-  z-index: 10;
-  max-height: 220px;
-  overflow-y: auto;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.suggestItem {
-  padding: 12px 18px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.suggestItem:hover {
-  background: #e3f2fd;
-}
-
-.tourList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 24px;
-  justify-content: center;
-}
-
-.tourCard {
-  background: #f5faff;
-  border-radius: 8px;
-  box-shadow: 0 1px 6px rgba(30, 136, 229, 0.07);
-  width: 260px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: box-shadow 0.2s;
-}
-
-.tourCard:hover {
-  box-shadow: 0 4px 16px rgba(30, 136, 229, 0.15);
-}
-
-.tourImg {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-}
-
-.tourInfo {
-  padding: 16px;
-  text-align: center;
-}
-
-.tourName {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 8px;
-  color: #1976d2;
-}
-
-.tourPrice {
-  color: #388e3c;
-  margin-bottom: 6px;
-}
-
-.tourSchedule {
-  color: #555;
-  font-size: 0.97rem;
-}
-
-.notFound {
-  color: #d32f2f;
-  font-size: 1.1rem;
-  margin-top: 32px;
-}
-.bookBtn {
-  background-color: rgb(37 99 235);
-  color: rgb(255 255 255);
-  font-weight: 500;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  border-radius: 0.5rem;
-  border: none;
-  cursor: pointer;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-  margin-top: 8px;
-}
-
-.bookBtn:hover {
-  background-color: #125ea7;
-}
-.travelokaSearchBar {
-  position: relative;
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto 32px auto;
-  display: flex;
-  align-items: center;
-  background: #f3f7fa;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.06);
-  padding: 0 16px;
-  border: 1.5px solid #90caf9;
-}
-
-.searchIcon {
-  margin-right: 8px;
-  display: flex;
-  align-items: center;
-}
-
-.travelokaInput {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-size: 1.1rem;
-  padding: 14px 0;
-  outline: none;
-  color: #1976d2;
-}
-
-.suggestList {
-  position: absolute;
-  top: 110%;
-  left: 0;
-  right: 0;
-  background: #fff;
-  border: 1.5px solid #90caf9;
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  box-shadow: 0 2px 8px rgba(30, 136, 229, 0.07);
-  z-index: 10;
-  max-height: 220px;
-  overflow-y: auto;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.suggestItem {
-  padding: 12px 18px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.suggestItem:hover {
-  background: #e3f2fd;
-}
-/* Thêm vào BookingTour.module.css nếu muốn input sát nhau đẹp hơn */
-.travelokaInput {
-  flex: 1;
-  border: none;
-  background: transparent;
-  font-size: 1.1rem;
-  padding: 14px 0;
-  outline: none;
-  color: #1976d2;
-  margin-right: 8px;
-  min-width: 90px;
-}
+/* Hero section */
 .heroSection {
   position: relative;
   background: linear-gradient(to right, #2563eb, #1e40af);
   color: #fff;
+  height: 500px;
 }
 .heroBg {
   position: absolute;
@@ -230,14 +20,15 @@
 .heroContent {
   position: relative;
   z-index: 1;
-  padding: 80px 0 40px 0;
 }
 .heroCenter {
+  padding: 10px;
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
 .heroTitle {
+  top: 10px;
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 24px;
@@ -251,10 +42,12 @@
   margin-bottom: 32px;
   opacity: 0.9;
 }
-.searchBox {
+
+/* Search form */
+.searchFormWrap {
   background: #fff;
   border-radius: 20px;
-  padding: 32px;
+  padding: 33px;
   box-shadow: 0 8px 32px rgba(25, 118, 210, 0.1);
   max-width: 900px;
   margin: 0 auto;
@@ -263,16 +56,25 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 16px;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 .label {
   color: #334155;
   font-weight: 500;
+  display: flex;
+  align-items: center;
   margin-bottom: 4px;
-  display: block;
 }
-.input {
+.input,
+.select {
   width: 100%;
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #334155;
+}
+.inputDate {
+  width: 90%;
   padding: 10px;
   border: 1px solid #cbd5e1;
   border-radius: 8px;
@@ -282,7 +84,7 @@
   width: 100%;
   border: 1.5px solid #90caf9;
   border-radius: 8px;
-  padding: 14px 16px;
+  padding: 14px 0;
   font-size: 1.1rem;
   color: #1976d2;
   background: #f3f7fa;
@@ -305,42 +107,29 @@
   justify-content: center;
   gap: 8px;
 }
-.tourSection {
-  background: #f9fafb;
-  padding: 60px 0;
-}
-.tourContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
-}
-.tourHeader {
-  text-align: center;
-  margin-bottom: 64px;
-}
-.tourTitle {
+
+/* Section title */
+.sectionTitle {
   font-size: 36px;
   font-weight: 700;
   color: #1e293b;
   margin-bottom: 16px;
 }
-.tourDesc {
+.sectionDesc {
   font-size: 20px;
   color: #64748b;
   max-width: 600px;
   margin: 0 auto;
 }
+
+/* Tour grid */
 .tourGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 32px;
 }
-.notFound {
-  grid-column: 1/-1;
-  text-align: center;
-  color: #888;
-  font-size: 20px;
-}
+
+/* Tour card */
 .tourCard {
   background: #fff;
   border-radius: 20px;
@@ -348,17 +137,19 @@
   overflow: hidden;
   transition: all 0.3s;
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
-.tourImgWrap {
-  position: relative;
+.tourCard:hover {
+  box-shadow: 0 4px 24px rgba(30, 136, 229, 0.15);
+  transform: translateY(-8px);
 }
 .tourImg {
   width: 100%;
   height: 260px;
   object-fit: cover;
   transition: transform 0.3s;
+}
+.tourImgHover:hover {
+  transform: scale(1.05);
 }
 .tourTags {
   position: absolute;
@@ -375,38 +166,20 @@
   font-weight: 500;
   color: #fff;
 }
-.tagBán\ chạy {
+.tagBanChay {
   background: #ef4444;
 }
-.tagGiảm\ giá {
+.tagGiamGia {
   background: #22c55e;
 }
-.tagMới {
+.tagMoi {
   background: #3b82f6;
 }
-.tagCao\ cấp {
+.tagCaoCap {
   background: #a21caf;
 }
-.tagLuxury {
-  background: #a21caf;
-}
-.tagHoneymoon {
-  background: #f472b6;
-}
-.tagQuốc\ tế {
-  background: #0ea5e9;
-}
-.tagVăn\ hóa {
-  background: #f59e42;
-}
-.tagLịch\ sử {
+.tagDefault {
   background: #64748b;
-}
-.tagGần {
-  background: #22d3ee;
-}
-.tagGiá\ rẻ {
-  background: #16a34a;
 }
 .tourFavBtn {
   position: absolute;
@@ -417,40 +190,53 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
+  transition: background 0.2s;
 }
-.tourInfo {
+.tourFavBtn:hover {
+  background: #fff;
+}
+.tourContent {
   padding: 24px;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
 }
-.tourName {
+.tourTitle {
   font-size: 22px;
   font-weight: 700;
   color: #1e293b;
   margin-bottom: 8px;
   transition: color 0.2s;
 }
+.tourTitleHover:hover {
+  color: #2563eb;
+}
 .tourLocation {
   display: flex;
   align-items: center;
   color: #64748b;
   margin-bottom: 12px;
-  font-size: 14px;
 }
-.tourMeta {
+.tourDate {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
   color: #64748b;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
+}
+.tourGroupSize {
+  display: flex;
+  align-items: center;
+  color: #64748b;
+  font-size: 10px;
+}
+.tourRatingWrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 }
 .tourRating {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
-  gap: 8px;
+}
+.tourRatingText {
+  margin-left: 8px;
   font-size: 14px;
   color: #64748b;
 }
@@ -481,9 +267,8 @@
   cursor: pointer;
   transition: background 0.2s;
 }
-.tourFooter {
-  text-align: center;
-  margin-top: 48px;
+.bookBtn:hover {
+  background: #1e40af;
 }
 .tourAllBtn {
   background: #2563eb;
@@ -495,4 +280,7 @@
   border: none;
   cursor: pointer;
   transition: background 0.2s;
+}
+.tourAllBtn:hover {
+  background: #1e40af;
 }

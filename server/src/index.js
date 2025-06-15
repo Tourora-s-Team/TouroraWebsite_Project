@@ -15,7 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/create-tour", bookingTourRouter);
 // API Routes
 app.use("/api", apiRouter);
-
+app.use("/api/tours", bookingTourRouter);
+app.use("/api/tours/tour-images", tourImagesRouter);
 // Serve React (chỉ dùng khi deploy production)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../../client/build")));
@@ -23,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
   });
 }
-app.use("/api/tour-images", tourImagesRouter);
+
 // Route mặc định (dev)
 app.get("/", (req, res) => {
   res.send(

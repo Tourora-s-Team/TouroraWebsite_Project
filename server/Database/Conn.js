@@ -1,24 +1,16 @@
 const sql = require("mssql");
 
+// Chỉ export config, KHÔNG kết nối và query ở đây
+
 const config = {
   server: "LAPTOP-6S4RBQLB",
-  database: "QLuser",
-  user: "sa", // user SQL Server bạn vừa tạo
-  password: "123", // mật khẩu bạn đặt
+  database: "QLTour", // Đổi lại đúng tên database nếu cần
+  user: "sa",
+  password: "123",
   options: {
-    encrypt: false, // hoặc true nếu SQL Server bật TLS
-    trustServerCertificate: true, // chấp nhận self-signed certificate nếu có
+    encrypt: false,
+    trustServerCertificate: true,
   },
 };
 
-sql
-  .connect(config)
-  .then(() => {
-    return sql.query("SELECT * FROM Nguoidung");
-  })
-  .then((result) => {
-    console.log(result.recordset);
-  })
-  .catch((err) => {
-    console.error("Connection error:", err);
-  });
+module.exports = config;
