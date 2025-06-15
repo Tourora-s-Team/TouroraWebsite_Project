@@ -6,6 +6,7 @@ import CarRentalPage from './pages/CarRentalPage';
 import RegisterForm from './components/header/RegisterForm'
 import LoginForm from './components/header/LoginForm';
 
+import AccountPage from './pages/AccountInfoPage';
 function App() {
   return (
     <Router>
@@ -15,6 +16,7 @@ function App() {
           <Route path="/car-rental-service" element={<CarRentalPage />} />
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/account-info" element={<AccountPage/>}/>
         </Routes>
       </Layout>
     </Router>
