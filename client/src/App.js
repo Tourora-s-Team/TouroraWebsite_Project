@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import HomePage  from './pages/HomePage';
 import CarRentalPage from './pages/CarRentalPage';
 
+import AccountPage from './pages/AccountInfoPage';
 function App() {
   return (
     <Router>
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/car-rental-service" element={<CarRentalPage />} />
+          <Route path="/account-info" element={<AccountPage/>}/>
         </Routes>
       </Layout>
     </Router>
