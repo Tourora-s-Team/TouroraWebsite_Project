@@ -1,7 +1,10 @@
 const express = require("express");
+
+const path = require("path");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const session = require("express-session");
+const MongoStore = require("connect-mongo")
 const authRoutes = require("./routes/auth");
 
 const carRentalRoutes = require('./routes/carRentalService'); // Import router API
@@ -12,20 +15,25 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors());
 app.use(express.json());
 
-// Session
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { secure: false } // set secure: true if using https
-}));
+
 
 // Connect mongoDB
 const db = require('./config/db')
 db.connect()
+
+
+// CẤU HÌNH SESSION 
+app.use(session({
+  secret: process.env.SESSION_SECRET || "secret_key",
+  resave: false,
+  saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGODB_URI,
+  }),
+}));
 
 // API Routes
 app.use("/api/auth", authRoutes);
@@ -33,13 +41,20 @@ app.use('/api/car-rental-service', carRentalRoutes);
 app.use("/api/user", userRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
+const clientBuildPath = path.join(__dirname, '../../client/build');
+
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '../../client/build')));
+  console.log("🌐 Serving React from:", clientBuildPath);
+  app.use(express.static(clientBuildPath));
+
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../../client/build', 'index.html'));
+    res.sendFile(path.join(clientBuildPath, 'index.html'), (err) => {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
   });
 }
-
 // Route mặc định (dev)
 app.get('/', (req, res) => {
   res.send('Server Express đang chạy. Hãy truy cập React tại http://localhost:3000');
