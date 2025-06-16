@@ -39,8 +39,26 @@ const RegisterForm = () => {
     if (error) {
       alert(error);
     } else {
-      // Handle successful form submission here (e.g., fetch/axios POST)
-      console.log("Form Submitted:", formData);
+      e.preventDefault();
+    fetch("http://localhost:3001/api/regist", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(formData)
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          alert(data.message);
+        } else {
+          alert("Có lỗi xảy ra: " + data.message);
+        }
+      })
+      .catch((err) => {
+        console.error("Error:", err);
+        alert("Lỗi kết nối đến server");
+      });
     }
   };
 
