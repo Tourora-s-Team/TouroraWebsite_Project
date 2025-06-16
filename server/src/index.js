@@ -36,6 +36,7 @@ app.use(session({
   }),
 }));
 
+app.use("/create-tour", bookingTourRouter);
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use('/api/car-rental-service', carRentalRoutes);
@@ -53,8 +54,10 @@ if (process.env.NODE_ENV === 'production') {
   // });
 }
 // Route mặc định (dev)
-app.get('/', (req, res) => {
-  res.send('Server Express đang chạy. Hãy truy cập React tại http://localhost:3000');
+app.get("/", (req, res) => {
+  res.send(
+    "Server Express đang chạy. Hãy truy cập React tại http://localhost:3000"
+  );
 });
 
 // Khởi động server

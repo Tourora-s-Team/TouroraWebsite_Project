@@ -7,6 +7,7 @@ import RegisterForm from './components/header/RegisterForm'
 import LoginForm from './components/header/LoginForm';
 
 import AccountPage from './pages/AccountInfoPage';
+import BookingTourPage from "./pages/BookingTourPage";
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/account-info" element={<AccountPage/>}/>
+          <Route path="/book-tour" element={<BookingTourPage />} />
         </Routes>
       </Layout>
     </Router>
