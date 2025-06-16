@@ -1,10 +1,21 @@
-import React from "react";
-import styles from "./AccountInfoForm.module.css";
+import React, { useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
+import styles from "./UserProfile.module.css";
 
-const AccountPage = ({ user, bookings }) => {
-  const logout = () => {
-    window.location.href = "/logout";
+const UserProfile = ({ user, account, bookings }) => {
+  const navigate = useNavigate();
+  const { logout } = useContext(UserContext);
+  const logoutHandle = () => {
+    logout();                
+    navigate("/");
   };
+  
+  if (!user || !account) {
+  return <p>Đang tải thông tin người dùng...</p>; // hoặc navigate("/login");
+  }
+  const rawDate = user.dateOfBirth;
+  const formattedDate = new Date(rawDate).toLocaleDateString('vi-VN');
 
   return (
     <div className={styles.mainContainer}>
@@ -12,7 +23,7 @@ const AccountPage = ({ user, bookings }) => {
         <div className={styles.brand}>
           <h1>Tourora</h1>
         </div>
-        <button id="logout-in-account" onClick={logout} className={styles.logoutButton}>
+        <button id="logout-in-account" onClick={logoutHandle} className={styles.logoutButton}>
           Đăng xuất
         </button>
       </section>
@@ -47,10 +58,10 @@ const AccountPage = ({ user, bookings }) => {
             </p>
             <div className={styles.listItem}>
               <InfoItem title="Họ và tên" icon="fa-circle-user" content={user.fullname} />
-              <InfoItem title="Sinh nhật" icon="fa-cake-candles" content={user.dateOfBirth} />
-              <InfoItem title="Số điện thoại" icon="fa-phone" content={user.phone} />
+              <InfoItem title="Sinh nhật" icon="fa-cake-candles" content={formattedDate} />
+              <InfoItem title="Số điện thoại" icon="fa-phone" content={user.numberPhone} />
               <InfoItem title="Email" icon="fa-envelope" content={user.email} />
-              <InfoItem title="Username" icon="fa-circle-user" content={user.username} />
+              <InfoItem title="Username" icon="fa-circle-user" content={account.username} />
             </div>
           </div>
 
@@ -95,4 +106,4 @@ const InfoItem = ({ title, icon, content }) => (
   </div>
 );
 
-export default AccountPage;
+export default UserProfile;

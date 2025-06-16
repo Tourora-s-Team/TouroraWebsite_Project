@@ -1,15 +1,8 @@
-import React from 'react';
-import AccountInfoForm from '../components/user/AccountInfoForm'
+import React, { useContext } from 'react';
+import AccountInfoForm from '../components/user/UserProfile'
+import { UserContext } from '../contexts/UserContext'
 
-// test data
-const user = {
-  fullname: "Nguyen Van A",
-  email: "vana@example.com",
-  dateOfBirth: "1998-05-12",
-  phone: "0123456789",
-  username: "nguyenvana"
-};
-
+// Test data
 const bookings = [
   { country: "Vietnam", date: "2025-06-20", time: "10:00", guests: 2 },
   { country: "Japan", date: "2025-07-15", time: "14:00", guests: 3 }
@@ -17,11 +10,12 @@ const bookings = [
 
 
 const AccountInfoPage = () => {
-    return (
-        <div>
-            <AccountInfoForm user={user} bookings={bookings}/>
-        </div>
-    )
+  const { user, account } = useContext(UserContext);
+  return (
+    <div>
+      <AccountInfoForm user={user} account={account} bookings={bookings} />
+    </div>
+  )
 }
 
 export default AccountInfoPage

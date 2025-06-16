@@ -40,25 +40,25 @@ const RegisterForm = () => {
       alert(error);
     } else {
       e.preventDefault();
-    fetch("http://localhost:3001/api/regist", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(formData)
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.success) {
-          alert(data.message);
-        } else {
-          alert("Có lỗi xảy ra: " + data.message);
-        }
+      fetch("http://localhost:3001/api/auth/regist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
       })
-      .catch((err) => {
-        console.error("Error:", err);
-        alert("Lỗi kết nối đến server");
-      });
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            alert(data.message);
+          } else {
+            alert("Có lỗi xảy ra: " + data.message);
+          }
+        })
+        .catch((err) => {
+          console.error("Error:", err);
+          alert("Lỗi kết nối đến server");
+        });
     }
   };
 
@@ -103,7 +103,7 @@ const RegisterForm = () => {
         ))}
 
         <div className={styles.submitContainer}>
-          <input id="submit-button" className={styles.submitButton} type="submit" value="Sign Up" />
+          <input id="submit-button" className={styles.submitButton}  type="submit" value="Sign Up" />
         </div>
 
         <div className={styles.ortherSignUp}>

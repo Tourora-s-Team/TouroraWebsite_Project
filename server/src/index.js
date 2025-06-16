@@ -12,7 +12,7 @@ const app = express();
 const port = 3001;
 
 // Middleware
-app.use(cors({ origin: "http://localhost:3001", credentials: true }));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
 // Session
@@ -29,7 +29,7 @@ db.connect()
 
 // API Routes
 app.use("/api/auth", authRoutes);
-app.use('/api/car-rental-service  ', carRentalRoutes);
+app.use('/api/car-rental-service', carRentalRoutes);
 app.use("/api/user", userRoutes);
 
 // Serve React (chỉ dùng khi deploy production)

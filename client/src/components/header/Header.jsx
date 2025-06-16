@@ -1,4 +1,5 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
@@ -13,10 +14,7 @@ const Header = () => {
     const userDropdownRef = useRef(null);
 
     // Giả lập thông tin đăng nhập
-    const [user, setUser] = useState(() => {
-        const storedUser = localStorage.getItem('user');
-        return storedUser ? JSON.parse(storedUser) : null;
-    });
+    const { user, setUser, logout } = useContext(UserContext);
 
     const handleLoginClick = () => {
         navigate('/login');
@@ -32,13 +30,6 @@ const Header = () => {
 
     const toggleUserDropdown = () => {
         setIsUserDropdownOpen((prev) => !prev);
-    };
-
-    const handleLogout = () => {
-        localStorage.removeItem('user');
-        setUser(null);
-        setIsUserDropdownOpen(false);
-        navigate('/');
     };
 
     // Đóng dropdown khi click bên ngoài
@@ -91,12 +82,12 @@ const Header = () => {
                             // Hiển thị tên người dùng + dropdown nếu đã đăng nhập
                             <div className={styles.dropdownWrapper} ref={userDropdownRef}>
                                 <button className={styles.userButton} onClick={toggleUserDropdown}>
-                                    {user.name} <FontAwesomeIcon icon={faCaretDown} />
+                                    {user.fullname} <FontAwesomeIcon icon={faCaretDown} />
                                 </button>
                                 {isUserDropdownOpen && (
                                     <ul className={styles.dropdownMenu}>
                                         <li><a href="/account-info">Chỉnh sửa thông tin</a></li>
-                                        <li><a onClick={handleLogout}>Đăng xuất</a></li>
+                                        <li><a onClick={logout}>Đăng xuất</a></li>
                                     </ul>
                                 )}
                             </div>

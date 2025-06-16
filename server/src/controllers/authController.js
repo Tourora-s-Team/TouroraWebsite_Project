@@ -48,22 +48,35 @@ const loginUser = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    // Tìm account theo username
     const account = await Account.findOne({ username });
     if (!account)
       return res.json({ success: false, message: "Tài khoản không tồn tại" });
 
+    // So sánh mật khẩu
     const isMatch = await bcrypt.compare(password, account.password);
     if (!isMatch)
       return res.json({ success: false, message: "Sai mật khẩu" });
 
+    // Tạo token
     const token = jwt.sign(
-      { userId: account._id, username: account.username, role: account.role },
+      {
+        userId: account._id,
+        username: account.username,
+        role: account.role
+      },
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
     );
 
+    // Tìm user thông tin cá nhân
     const user = await User.findOne({ username });
 
+    if (!user) {
+      return res.json({ success: false, message: "Không tìm thấy thông tin người dùng" });
+    }
+
+    // Trả về dữ liệu đầy đủ
     return res.json({
       success: true,
       token,
@@ -72,14 +85,18 @@ const loginUser = async (req, res) => {
         role: account.role,
       },
       user: {
-        fullname: user?.fullname,
-        email: user?.email,
-      },
+        fullname: user.fullname,
+        email: user.email,
+        numberPhone: user.phoneNumber,
+        dateOfBirth: user.dateOfBirth,
+      }
     });
+
   } catch (err) {
-    console.error(err);
+    console.error("Lỗi login:", err);
     return res.status(500).json({ success: false, message: "Lỗi server" });
   }
 };
+
 
 module.exports = { registerUser, loginUser };
