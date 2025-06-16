@@ -1,0 +1,137 @@
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 5%;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.subHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.topBar {
+    justify-content: space-between;
+}
+
+.topBarContent {
+    display: flex;
+    flex-direction: row;
+    max-height: 36px;
+    font-size: 14px;
+}
+
+.topBarContent a {
+    padding: 10px 20px;
+    align-self: center;
+    text-decoration: none;
+    font-weight: 600;
+    color: #333333;
+}
+
+.dropdownWrapper {
+  position: relative;
+  margin: auto;
+}
+
+.dropdownTrigger {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #4b5563;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dropdownTrigger:hover {
+  color: #2563eb;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  min-width: 160px;
+  z-index: 100;
+  padding: 0px;
+}
+
+.dropdownMenu li {
+  list-style: none;
+}
+
+.dropdownMenu li a {
+  display: block;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #374151;
+  font-size: 14px;
+}
+
+.dropdownMenu li a:hover {
+  background-color: #f3f4f6;
+  color: #2563eb;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding-left: 0;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #687176;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.authButtons {
+    display: flex;
+    gap: 10px;
+}
+
+.login {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+.register {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+}
+
+
+.userButton {
+    background: none;
+    border: 2px solid #FFBFBF;
+    border-radius: 20px;
+    padding: 8px;
+    color: #0194F3;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

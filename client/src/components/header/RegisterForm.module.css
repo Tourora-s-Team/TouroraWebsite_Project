@@ -1,0 +1,105 @@
+.formContainer {
+  margin: 0;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  background-color: aliceblue;
+  padding: 24px 48px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  border-radius: 10px;
+}
+
+.form h1 {
+  text-align: center;
+}
+
+.inputLabel {
+  margin-top: 20px;
+}
+
+.inputLabel label {
+  font-size: 16px;
+}
+
+.inputField {
+  padding: 10px;
+  border: none;
+  border-bottom: 1px solid black;
+  border-radius: 5px;
+  margin-top: 4px;
+  min-width: 350px;
+}
+
+.submitContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(153, 204, 255, 0.7);
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+  background-color: rgb(153, 204, 255);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2),
+    0 6px 20px rgba(0, 0, 0, 0.19);
+  color: white;
+}
+
+.textDecor {
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.ortherSignUp {
+  margin-top: 40px;
+}
+
+.socialIcon {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.socialIcon a {
+  text-decoration: none;
+  width: 32px;
+  height: 32px;
+  font-size: 28px;
+  text-align: center;
+  padding: 8px;
+  color: white;
+  border-radius: 50%;
+}
+
+.webSignUp {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.webSignUp a {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.webSignUp a:hover {
+  color: red;
+}
