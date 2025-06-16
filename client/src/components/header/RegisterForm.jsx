@@ -40,7 +40,7 @@ const RegisterForm = () => {
       alert(error);
     } else {
       e.preventDefault();
-      fetch("http://localhost:3001/api/auth/regist", {
+      fetch(`${process.env.REACT_APP_API_URL}/api/auth/regist`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
