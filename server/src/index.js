@@ -1,7 +1,8 @@
 const express = require("express");
-
-const path = require("path");
 const dotenv = require("dotenv");
+dotenv.config();
+console.log("NODE_ENV:", process.env.NODE_ENV);
+const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")
@@ -10,7 +11,7 @@ const authRoutes = require("./routes/auth");
 const carRentalRoutes = require('./routes/carRentalService'); // Import router API
 const userRoutes = require("./routes/userRoutes");
 
-dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -47,13 +48,9 @@ if (process.env.NODE_ENV === 'production') {
   console.log("🌐 Serving React from:", clientBuildPath);
   app.use(express.static(clientBuildPath));
 
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'), (err) => {
-      if (err) {
-        res.status(500).send(err);
-      }
-    });
-  });
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.resolve(clientBuildPath, 'index.html'));
+  // });
 }
 // Route mặc định (dev)
 app.get('/', (req, res) => {
