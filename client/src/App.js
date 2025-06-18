@@ -3,6 +3,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import Layout from './components/Layout';
 import HomePage from './pages/HomePage';
 import CarRentalPage from './pages/CarRentalPage';
+import CarRentalDetailsPage from './pages/CarRentalDetailPage';
 import RegisterForm from './components/header/RegisterForm'
 import LoginForm from './components/header/LoginForm';
 
@@ -14,6 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/car-rental-service" element={<CarRentalPage />} />
+          <Route path="/car-rental-details" element={<CarRentalDetailsPage />} />
+          {/* Thêm các route khác nếu cần */}
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/account-info" element={<AccountPage />} />

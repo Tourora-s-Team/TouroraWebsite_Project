@@ -1,0 +1,45 @@
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filterSection {
+    margin-bottom: 24px;
+}
+
+.filterSection h3 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    color: #333;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.checkboxLabel input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.priceInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.priceInputs input[type="range"] {
+    width: 100%;
+}
+
+.priceInputs span {
+    font-size: 14px;
+    color: #666;
+}
