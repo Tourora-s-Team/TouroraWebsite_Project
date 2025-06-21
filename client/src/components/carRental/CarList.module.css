@@ -1,36 +1,7 @@
 .container {
-    max-width: 80%;
-    margin: auto;
+    width: 100%;
 }
 
-.resultsHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.resultsTitle {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.sortOptions {
-    display: flex;
-    align-items: center;
-}
-
-.sortLabel {
-    font-size: 14px;
-    margin-right: 10px;
-}
-
-.sortSelect {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
 
 .carList {
     display: flex;

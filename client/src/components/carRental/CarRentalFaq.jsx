@@ -4,7 +4,7 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './CarRentalFaq.module.css'; 
 
-const FAQSection = () => {
+const CarRentalFaq = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -13,17 +13,17 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: 'Tại sao tôi nên thuê xe ô tô trên Traveloka?',
+      question: 'Tại sao tôi nên thuê xe ô tô trên Tourora?',
       answer: (
         <p>
-          Thuê xe trên Traveloka sẽ giúp bạn tránh khỏi một số rắc rối cũng như tiết kiệm thời gian và tiền bạc.
+          Thuê xe trên Tourora sẽ giúp bạn tránh khỏi một số rắc rối cũng như tiết kiệm thời gian và tiền bạc.
           Bạn có thể chọn xe từ các đối tác tin cậy của chúng tôi để khám phá thành phố. Đặt xe phù hợp với nhu cầu trên
-          Traveloka, bạn sẽ nhận được xác nhận tức thì với mức giá tốt nhất.
+          Tourora, bạn sẽ nhận được xác nhận tức thì với mức giá tốt nhất.
         </p>
       )
     },
     {
-      question: 'Làm thế nào để đặt xe trên Traveloka?',
+      question: 'Làm thế nào để đặt xe trên Tourora?',
       answer: (
         <ol>
           <li>Chọn thành phố/khu vực bạn muốn thuê xe, ngày, khoảng thời gian thuê và thời gian đón.</li>
@@ -31,7 +31,7 @@ const FAQSection = () => {
           <li>Điền thông tin liên hệ hoặc thông tin khách du lịch nếu bạn đặt xe cho người khác.</li>
           <li>Điền thông tin thuê xe.</li>
           <li>Chọn phương thức thanh toán ưa dùng và xác thực thanh toán.</li>
-          <li>Bạn sẽ nhận được email có voucher điện tử từ Traveloka.</li>
+          <li>Bạn sẽ nhận được email có voucher điện tử từ Tourora.</li>
         </ol>
       )
     },
@@ -63,7 +63,7 @@ const FAQSection = () => {
       answer: (
         <p>
           Vui lòng truy cập <strong>Đặt chỗ của tôi</strong> và liên hệ trực tiếp với nhà cung cấp xe.
-          Nếu vẫn không thể liên lạc được, hãy liên hệ bộ phận Hỗ trợ khách hàng của Traveloka.
+          Nếu vẫn không thể liên lạc được, hãy liên hệ bộ phận Hỗ trợ khách hàng của Tourora.
         </p>
       )
     },
@@ -98,4 +98,4 @@ const FAQSection = () => {
   );
 };
 
-export default FAQSection;
+export default CarRentalFaq;

@@ -13,9 +13,10 @@ const MongoStore = require("connect-mongo")
 
 // Import routers
 const authRoutes = require("./routes/auth");
-const bookingTourRouter = require('./routes/tour-images')
-const carRentalRoutes = require('./routes/car-rental-service');
 const userRoutes = require("./routes/user-routes");
+const bookingTourRouter = require('./routes/tour-images')
+const locationsRouter = require('./routes/locations');
+const carRentalRoutes = require('./routes/car-rental-service');
 
 
 const app = express();
@@ -45,6 +46,7 @@ app.use(session({
 app.use("/create-tour", bookingTourRouter);
 app.use("/api/auth", authRoutes);
 app.use("/api/car-rental-service", carRentalRoutes);
+app.use("/api/locations", locationsRouter); // Thêm route locations
 app.use("/api/user", userRoutes);
 
 // Serve React (chỉ dùng khi deploy production)

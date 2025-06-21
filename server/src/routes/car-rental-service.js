@@ -5,7 +5,7 @@ const router = express.Router();
 let rentals = [];
 
 // API endpoint cho car rental
-router.post('/car-rentals', (req, res) => {
+router.post('/search', (req, res) => {
   try {
     const newRental = req.body;
     rentals.push(newRental); // Trong thực tế, bạn sẽ lưu vào database

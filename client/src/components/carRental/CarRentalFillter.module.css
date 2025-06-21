@@ -1,53 +1,120 @@
+.filterContainer {
+  background-color: #fff;
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: 24px auto;
+
+}
+
 .filterForm {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.pathTitle {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 20px;
+.searchSummary {
+  flex: 1;
 }
 
-.containerDetails {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 8px;
 }
 
-.label {
-    display: block;
-    font-size: 14px;
-    margin-bottom: 5px;
-    font-weight: 500;
-    color: #333;
+.breadcrumbSeparator {
+  margin: 0 8px;
+  color: #aaa;
 }
 
+.resultTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.searchDetails {
+  display: flex;
+  align-items: center;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.detailIcon {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.detailText {
+  font-size: 15px;
+  color: #555;
+}
+
+.detailSeparator {
+  height: 18px;
+  width: 1px;
+  background-color: #ddd;
+  margin: 0 15px;
+}
 
 .searchBtn {
-    background-color: #00aa6c;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    align-self: center;
-    font-weight: 600;
-    cursor: pointer;
-    font-size: 16px;
-    width: 100%;
-    max-width: 250px;
-    height: 40px;
-    margin-top: 20px;
+  background-color: #ff5b00;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 150px;
+  text-align: center;
 }
 
+.searchBtn:hover {
+  background-color: #e64a00;
+}
+
+.expandedSearchForm {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}
+
+/* Responsive styles */
 @media (max-width: 768px) {
-    .formGrid {
-        grid-template-columns: 1fr;
-    }
+  .filterForm {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .searchBtn {
+    width: 100%;
+  }
+
+  .resultTitle {
+    font-size: 20px;
+  }
+
+  .searchDetails {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .detailSeparator {
+    display: none;
+  }
 }

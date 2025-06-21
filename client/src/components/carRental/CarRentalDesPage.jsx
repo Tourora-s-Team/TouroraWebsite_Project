@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./CarRentalDetails.module.css"
+import styles from "./CarRentalDesPage.module.css"
 const CarRentalDetails = () => {
 
     return (
@@ -8,7 +8,7 @@ const CarRentalDetails = () => {
                 <hr className={styles.line} />
                 <h2 className={styles.paragraphHeading}>Thuê xe tự lái</h2>
                 <hr className={styles.line} />
-                <p>Thuê xe tự lái là lựa chọn tốt nhất để di chuyển linh hoạt khi du lịch cùng gia đình hoặc bạn bè. Với ứng dụng Traveloka, bạn có thể thỏa sức tìm kiếm xe với bảng giá chi tiết đi kèm và đặt xe chỉ trong tích tắc.
+                <p style={{textAlign: 'center'}}>Thuê xe tự lái là lựa chọn tốt nhất để di chuyển linh hoạt khi du lịch cùng gia đình hoặc bạn bè. Với ứng dụng Tourora, bạn có thể thỏa sức tìm kiếm xe với bảng giá chi tiết đi kèm và đặt xe chỉ trong tích tắc.
                     Đặc biệt, thời gian sử dụng xe lên tới 24 tiếng cho mỗi ngày thuê.</p>
             </div>
 
@@ -16,7 +16,7 @@ const CarRentalDetails = () => {
                 <hr className={styles.line} />
                 <h2 className={styles.paragraphHeading}>Thuê xe có tài xế</h2>
                 <hr className={styles.line} />
-                <p style={{ textAlign: 'center' }}>Di chuyển thuận tiện là một vấn đề rất quan trọng khi bạn đi du lịch. Đặc biệt khi bạn mong muốn có một chuyến đi dễ dàng, ít rắc rối khi khám phá nhiều địa điểm du lịch thì việc thuê một chiếc xe có tài xế là lựa chọn hợp lý. Cùng với sự phát triển của kĩ thuật số, bạn có thể dễ dàng tận hưởng dịch vụ cho thuê xe thông qua Ứng dụng Traveloka. Dễ dàng so sánh giá từ các đối tác tin cậy của chúng tôi và tìm dịch vụ phù hợp với nhu cầu của mình.</p>
+                <p style={{ textAlign: 'center' }}>Di chuyển thuận tiện là một vấn đề rất quan trọng khi bạn đi du lịch. Đặc biệt khi bạn mong muốn có một chuyến đi dễ dàng, ít rắc rối khi khám phá nhiều địa điểm du lịch thì việc thuê một chiếc xe có tài xế là lựa chọn hợp lý. Cùng với sự phát triển của kĩ thuật số, bạn có thể dễ dàng tận hưởng dịch vụ cho thuê xe thông qua Ứng dụng Tourora. Dễ dàng so sánh giá từ các đối tác tin cậy của chúng tôi và tìm dịch vụ phù hợp với nhu cầu của mình.</p>
             </div>
 
             <div className={styles.tableContainer}>

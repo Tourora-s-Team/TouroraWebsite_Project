@@ -13,37 +13,68 @@ const CarRentalFillter = () => {
     setShowSearchForm(!showSearchForm);
   };
 
-  function showMode(mode) {
-    if (mode.trim() === "self-driving") return "Tự lái"
-    if (mode.trim() === "driver") return "Có tài xế"
+  function formatDate(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('vi-VN', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
   }
 
-  
-  function showModeHeading(mode) {
-    let modeHeading
-    if (mode.trim() === "self-driving") {
-      modeHeading = <h2>Car Rental Without Driver</h2>
-    }
-    if (mode.trim() === "driver") {
-      modeHeading = <h2>Car Rental With Driver</h2>
-    }
-    return modeHeading
+  function showMode(mode) {
+    if (mode === "self") return "Tự lái";
+    if (mode === "driver") return "Có tài xế";
+    return mode;
   }
 
   return (
-    <div>
+    <div className={styles.filterContainer}>
       <div className={styles.filterForm}>
-        <div>
-          <h4 className={styles.pathTitle}>Thuê xe / {showMode(carRental.mode)}</h4>
-          {showModeHeading(carRental.mode)}
-          {/* Location */}
-          <label className={styles.label}>{carRental.location} | {carRental.startTime}, {carRental.startDate} - {carRental.endTime}, {carRental.endDate}</label>
+        <div className={styles.searchSummary}>
+          <div className={styles.breadcrumbs}>
+            <span>Thuê xe</span>
+            <span className={styles.breadcrumbSeparator}>›</span>
+            <span>{showMode(carRental.mode)}</span>
+            <span className={styles.breadcrumbSeparator}>›</span>
+            <span>{carRental.location || 'Tất cả địa điểm'}</span>
+          </div>
+          
+          <h2 className={styles.resultTitle}>
+            {carRental.mode === "self" ? 
+              "Thuê xe tự lái" : 
+              "Thuê xe có tài xế"} tại {carRental.location || 'các địa điểm phổ biến'}
+          </h2>
+          
+          <div className={styles.searchDetails}>
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>📍</span>
+              <span className={styles.detailText}>{carRental.location || 'Chưa chọn địa điểm'}</span>
+            </div>
+            
+            <div className={styles.detailSeparator}></div>
+            
+            <div className={styles.detailItem}>
+              <span className={styles.detailIcon}>🗓️</span>
+              <span className={styles.detailText}>
+                {formatDate(carRental.startDate)} {carRental.startTime || '00:00'} - 
+                {formatDate(carRental.endDate)} {carRental.endTime || '00:00'}
+              </span>
+            </div>
+          </div>
         </div>
-        <button className={styles.searchBtn} onClick={toggleSearchForm}>Thay đổi tìm kiếm</button>
-
-
+        
+        <button className={styles.searchBtn} onClick={toggleSearchForm}>
+          {showSearchForm ? 'Ẩn tìm kiếm' : 'Thay đổi tìm kiếm'}
+        </button>
       </div>
-      {showSearchForm && <CarRentalSearchForm />}
+      
+      {showSearchForm && (
+        <div className={styles.expandedSearchForm}>
+          <CarRentalSearchForm />
+        </div>
+      )}
     </div>
   );
 };

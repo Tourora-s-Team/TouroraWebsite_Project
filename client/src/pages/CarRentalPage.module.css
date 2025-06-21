@@ -1,0 +1,78 @@
+.carRentalPage {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroSection {
+  background-color: #1D86D6;
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.searchFormContainer {
+  max-width: 1000px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.pageTitle {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.pageSubtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #555;
+  text-align: center;
+}
+
+.contentContainer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .heroSection {
+    height: auto;
+    padding: 3rem 1rem;
+  }
+  
+  .searchFormContainer {
+    padding: 15px;
+  }
+  
+  .pageTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageTitle {
+    font-size: 1.8rem;
+  }
+  
+  .pageSubtitle {
+    font-size: 1rem;
+  }
+  
+  .contentContainer {
+    padding: 1rem;
+  }
+}

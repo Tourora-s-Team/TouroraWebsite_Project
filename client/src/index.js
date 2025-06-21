@@ -11,7 +11,6 @@ root.render(
   <React.StrictMode>
     <UserProvider>
       <App />
-
     </UserProvider>
   </React.StrictMode>
 );

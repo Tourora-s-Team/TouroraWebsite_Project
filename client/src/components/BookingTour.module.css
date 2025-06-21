@@ -141,7 +141,7 @@
 .bookBtn:hover {
   background-color: #125ea7;
 }
-.travelokaSearchBar {
+.touroraSearchBar {
   position: relative;
   width: 100%;
   max-width: 420px;
@@ -161,7 +161,7 @@
   align-items: center;
 }
 
-.travelokaInput {
+.touroraInput {
   flex: 1;
   border: none;
   background: transparent;
@@ -199,7 +199,7 @@
   background: #e3f2fd;
 }
 /* Thêm vào BookingTour.module.css nếu muốn input sát nhau đẹp hơn */
-.travelokaInput {
+.touroraInput {
   flex: 1;
   border: none;
   background: transparent;

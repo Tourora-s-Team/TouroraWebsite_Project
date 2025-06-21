@@ -21,6 +21,8 @@
     flex-direction: row;
     justify-content: center;
     padding: 12px;
+    margin: 12px 0;
+    min-width: 680px;
 }
 
 .carImage {

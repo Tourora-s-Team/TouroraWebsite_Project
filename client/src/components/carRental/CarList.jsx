@@ -33,18 +33,6 @@ const cars = [
 const CarList = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.resultsHeader}>
-        <h3 className={styles.resultsTitle}>Kết quả tìm kiếm</h3>
-        <div className={styles.sortOptions}>
-          <span className={styles.sortLabel}>Sắp xếp:</span>
-          <select className={styles.sortSelect}>
-            <option>Giá thấp nhất</option>
-            <option>Giá cao nhất</option>
-            <option>Phổ biến</option>
-          </select>
-        </div>
-      </div>
-      
       <div className={styles.carList}>
         {cars.map(car => (
           <CarCard key={car.id} car={car} />

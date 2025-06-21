@@ -1,159 +1,17 @@
-// import React, { useState } from "react";
-// import Select from 'react-select';
-// import { useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
-// import { setCarRentalData } from '../redux/CarRentalSlice';
-
-// import styles from './CarRentalSearchForm.module.css';
-
-// const CarRentalForm = () => {
-//   // Set templates data
-//   const locationOptions = [
-//     { value: 'Hà Nội', label: 'Hà Nội' },
-//     { value: 'TP Hồ Chí Minh', label: 'TP Hồ Chí Minh' },
-//     { value: 'Đà Nẵng', label: 'Đà Nẵng' },
-//     { value: 'Huế', label: 'Huế' },
-//   ];
-
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const today = new Date().toISOString().split('T')[0];
-
-//   const [form, setForm] = useState({
-//     location: "",
-//     startDate: today,
-//     startTime: "09:00",
-//     endDate: today,
-//     endTime: "09:00",
-//     mode: "driver"
-//   });
-
-
-//   const handleChange = (e) => {
-
-//     const { name, value } = e.target;
-//     setForm((prev) => ({ ...prev, [name]: value }));
-//   };
-
-//   const handleModeChange = (mode) => {
-//     setForm((prev) => ({ ...prev, mode }));
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     if (!form.location.trim()) {
-//       alert("Vui lòng nhập địa điểm thuê xe.");
-//       return;
-//     }
-//     dispatch(setCarRentalData(form))
-//     fetch("http://localhost:3001/api/car-rentals", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       body: JSON.stringify(form)
-//     })
-//       .then((res) => res.json())
-//       .then((data) => {
-//         if (data.success) {
-//           navigate("/car-rental-results");
-//         } else {
-//           alert("Có lỗi xảy ra: " + data.message);
-//         }
-//       })
-//       .catch((err) => {
-//         console.error("Error:", err);
-//         alert("Lỗi kết nối đến server");
-//       });
-//   };
-
-//   return (
-//     <div>
-//       <div className={styles.heroSection}>
-//         <div className={styles.modeSelector}>
-
-//           <button
-//             className={form.mode === "driver" ? styles.active : ""}
-//             onClick={() => handleModeChange("driver")}
-//           >
-//             Có tài xế
-//           </button>
-//           <button
-//             className={form.mode === "self-driving " ? styles.active : ""}
-//             onClick={() => handleModeChange("self-driving ")}
-//           >
-//             Tự lái
-//           </button>
-//         </div>
-
-//         <form className={styles.bookingForm} onSubmit={handleSubmit}>
-//           <div className={styles.formGroup}>
-//             <label className={styles.label}>Địa điểm thuê xe của bạn</label>
-//             <Select
-//               options={locationOptions}
-//               onChange={(selected) =>
-//                 setForm((prev) => ({ ...prev, location: selected?.value || '' }))
-//               }
-//               placeholder="Chọn hoặc nhập địa điểm"
-//               isClearable
-//             />
-//           </div>
-
-//           <div className={styles.formGroup}>
-//             <label className={styles.label}>Ngày bắt đầu</label>
-//             <input className={styles.inputBox} type="date" name="startDate" defaultValue={form.startDate} onChange={handleChange} />
-//           </div>
-
-//           <div className={styles.formGroup}>
-//             <label className={styles.label}>Giờ bắt đầu</label>
-//             <input className={styles.inputBox} type="time" name="startTime" defaultValue={form.startTime} onChange={handleChange} />
-//           </div>
-
-//           <div className={styles.formGroup}>
-//             <label className={styles.label}>Ngày kết thúc</label>
-//             <input className={styles.inputBox} type="date" name="endDate" defaultValue={today} value={form.endDate} onChange={handleChange} />
-//           </div>
-
-//           <div className={styles.formGroup}>
-//             <label className={styles.label}>Giờ kết thúc</label>
-//             <input className={styles.inputBox} type="time" name="endTime" value={form.endTime} onChange={handleChange} />
-//           </div>
-
-//           <button type="submit" className={styles.searchBtn}>🔍</button>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CarRentalForm;
-
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Select from 'react-select';
-import DatePicker from 'react-datepicker';
-import TimePicker from 'react-time-picker';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setCarRentalData } from '../redux/CarRentalSlice';
-
-import 'react-datepicker/dist/react-datepicker.css';
-import 'react-time-picker/dist/TimePicker.css';
+import { setCarRentalData } from '../../redux/CarRentalSlice';
 import styles from './CarRentalSearchForm.module.css';
 
-const CarRentalForm = () => {
+const CarRentalSearchForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const today = new Date().toISOString().split('T')[0];
 
-  const locationOptions = [
-    { value: 'Hà Nội', label: 'Hà Nội' },
-    { value: 'TP Hồ Chí Minh', label: 'TP Hồ Chí Minh' },
-    { value: 'Đà Nẵng', label: 'Đà Nẵng' },
-    { value: 'Huế', label: 'Huế' },
-  ];
-
-  const today = new Date();
   const [form, setForm] = useState({
-    location: "",
+    location: null,
     startDate: today,
     startTime: "09:00",
     endDate: today,
@@ -161,122 +19,169 @@ const CarRentalForm = () => {
     mode: "driver"
   });
 
-  const handleChange = (e) => {
+  const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
+  const searchTimeoutRef = useRef(null);
+  const selectRef = useRef(null);
 
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+  const fetchLocations = async (searchText) => {
+    setIsLoading(true);
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL || '';
+      const res = await fetch(`${apiUrl}/api/locations?searchQuery=${encodeURIComponent(searchText)}`);
+      const data = await res.json();
+      const formatted = data.locations.map(loc => ({
+        value: loc.value || loc.name,
+        label: loc.label || loc.name,
+        description: loc.province ? `${loc.province}, Việt Nam` : 'Việt Nam',
+      }));
+      setOptions(formatted);
+    } catch (err) {
+      console.error("Lỗi fetch location:", err);
+      setOptions([]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const handleModeChange = (mode) => {
-    setForm((prev) => ({ ...prev, mode }));
+  const handleInputChange = (newValue) => {
+    setInputValue(newValue);
+    if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+    searchTimeoutRef.current = setTimeout(() => {
+      if (newValue.trim() !== '') {
+        fetchLocations(newValue);
+      } else {
+        setOptions([]);
+      }
+    }, 300);
   };
 
-  const handleSubmit = (e) => {
+  const handleSelectChange = (selectedOption) => {
+    setForm(prev => ({ ...prev, location: selectedOption }));
+    setMenuIsOpen(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!form.location.trim()) {
-      alert("Vui lòng nhập địa điểm thuê xe.");
+    if (!form.location) {
+      alert("Vui lòng chọn địa điểm thuê xe.");
       return;
     }
+    const requestData = {
+      ...form,
+      location: form.location.value,
+    };
 
-    dispatch(setCarRentalData(form));
+    dispatch(setCarRentalData(requestData));
 
-    fetch(`${process.env.REACT_APP_API_URL}/api/car-rental-service/car-rentals`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form)
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (data.success) {
-          navigate("/car-rental-results");
-        } else {
-          alert("Có lỗi xảy ra: " + data.message);
-        }
-      })
-      .catch(err => {
-        console.error("Error:", err);
-        alert("Lỗi kết nối đến server");
+    try {
+      const apiUrl = process.env.REACT_APP_API_URL || '';
+      const res = await fetch(`${apiUrl}/api/car-rental-service/search`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestData),
       });
+      const data = await res.json();
+      if (data.success) {
+        navigate("/car-rental-service/search");
+      } else {
+        alert("Lỗi: " + data.message);
+      }
+    } catch (err) {
+      console.error("Lỗi kết nối:", err);
+      alert("Lỗi kết nối đến server.");
+    }
   };
 
   return (
-    <div>
-      <div className={styles.heroSection}>
-        <div className={styles.modeSelector}>
-          <button
-            className={form.mode === "driver" ? styles.active : ""}
-            onClick={() => handleModeChange("driver")}
-          >
-            Có tài xế
-          </button>
-          <button
-            className={form.mode === "self-driving" ? styles.active : ""}
-            onClick={() => handleModeChange("self-driving")}
-          >
-            Tự lái
-          </button>
+    <div className={styles.carRentalForm}>
+      <div className={styles.modeSelector}>
+        <div className={styles.radioGroup}>
+          <label className={`${styles.radioLabel} ${form.mode === "driver" ? styles.active : ""}`}>
+            <input type="radio" name="mode" value="driver"
+              checked={form.mode === "driver"}
+              onChange={() => setForm(prev => ({ ...prev, mode: "driver" }))}
+              className={styles.radioInput} />
+            <span className={styles.radioText}>Có tài xế</span>
+          </label>
+
+          <label className={`${styles.radioLabel} ${form.mode === "self" ? styles.active : ""}`}>
+            <input type="radio" name="mode" value="self"
+              checked={form.mode === "self"}
+              onChange={() => setForm(prev => ({ ...prev, mode: "self" }))}
+              className={styles.radioInput} />
+            <span className={styles.radioText}>Tự lái</span>
+          </label>
+        </div>
+      </div>
+
+      <form onSubmit={handleSubmit} className={styles.searchForm}>
+        <div className={styles.formGroup}>
+          <label>Địa điểm:</label>
+          <Select
+            ref={selectRef}
+            name="location"
+            value={form.location}
+            inputValue={inputValue}
+            onInputChange={handleInputChange}
+            options={options}
+            onChange={handleSelectChange}
+            isLoading={isLoading}
+            placeholder="Điền thành phố, sân bay..."
+            isClearable
+            blurInputOnSelect={false}
+            openMenuOnClick={true}
+            menuIsOpen={menuIsOpen || inputValue.length > 0}
+            onMenuOpen={() => setMenuIsOpen(true)}
+            onMenuClose={() => setMenuIsOpen(false)}
+            noOptionsMessage={() => isLoading ? "Đang tải..." : "Không tìm thấy địa điểm"}
+            styles={{
+              control: (provided) => ({ ...provided, border: '1px solid #ddd', boxShadow: 'none', '&:hover': { border: '1px solid #FF5B00' } }),
+              menu: (provided) => ({ ...provided, zIndex: 9999 })
+            }}
+          />
         </div>
 
-        <form className={styles.bookingForm} onSubmit={handleSubmit}>
+        <div className={styles.dateTimeGroup}>
           <div className={styles.formGroup}>
-            <label className={styles.label}>Địa điểm thuê xe của bạn</label>
-            <Select
-              options={locationOptions}
-              onChange={(selected) =>
-                setForm((prev) => ({ ...prev, location: selected?.value || "" }))
-              }
-              placeholder="Chọn hoặc nhập địa điểm"
-              isClearable
-            />
+            <label>Ngày đón:</label>
+            <input type="date" name="startDate" value={form.startDate}
+              onChange={(e) => setForm(prev => ({ ...prev, startDate: e.target.value }))}
+              min={today} className={styles.input} />
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Ngày bắt đầu</label>
-            <DatePicker
-              className={styles.inputBox}
-              selected={form.startDate}
-              onChange={(date) => setForm((prev) => ({ ...prev, startDate: date }))}
-              dateFormat="yyyy-MM-dd"
-            />
+            <label>Giờ đón:</label>
+            <input type="time" name="startTime" value={form.startTime}
+              onChange={(e) => setForm(prev => ({ ...prev, startTime: e.target.value }))}
+              className={styles.input} />
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Giờ bắt đầu</label>
-            <TimePicker
-              className={styles.inputBox}
-              value={form.startTime}
-              onChange={(time) => setForm((prev) => ({ ...prev, startTime: time }))}
-              format="HH:mm"
-            />
+            <label>Ngày trả:</label>
+            <input type="date" name="endDate" value={form.endDate}
+              onChange={(e) => setForm(prev => ({ ...prev, endDate: e.target.value }))}
+              min={form.startDate} className={styles.input} />
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Ngày kết thúc</label>
-            <DatePicker
-              className={styles.inputBox}
-              selected={form.endDate}
-              onChange={(date) => setForm((prev) => ({ ...prev, endDate: date }))}
-              dateFormat="yyyy-MM-dd"
-            />
+            <label>Giờ trả:</label>
+            <input type="time" name="endTime" value={form.endTime}
+              onChange={(e) => setForm(prev => ({ ...prev, endTime: e.target.value }))}
+              className={styles.input} />
           </div>
 
           <div className={styles.formGroup}>
-            <label className={styles.label}>Giờ kết thúc</label>
-            <TimePicker
-              className={styles.inputBox}
-              value={form.endTime}
-              onChange={(time) => setForm((prev) => ({ ...prev, endTime: time }))}
-              disableClock
-              format="HH:mm"
-            />
+            <button type="submit" className={`${styles.submitButton} ${styles.input}`} disabled={isLoading}>
+              {isLoading ? "Đang tải..." : "Tìm xe"}
+            </button>
           </div>
-
-          <button type="submit" className={styles.searchBtn}>🔍</button>
-        </form>
-      </div>
+        </div>
+      </form>
     </div>
   );
 };
 
-export default CarRentalForm;
+export default CarRentalSearchForm;
