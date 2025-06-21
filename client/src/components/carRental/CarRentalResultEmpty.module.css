@@ -1,0 +1,53 @@
+.emptyState {
+    text-align: center;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.emptyState h2 {
+    color: #333;
+    margin-bottom: 12px;
+}
+
+.emptyState p {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.suggestions {
+    text-align: left;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.suggestions h3 {
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.suggestions ul {
+    list-style: none;
+    padding: 0;
+}
+
+.suggestions li {
+    color: #666;
+    margin-bottom: 8px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.suggestions li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0066cc;
+}

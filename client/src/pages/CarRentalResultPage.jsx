@@ -1,12 +1,12 @@
-import React from "react";  
-import CarRentalFillter from '../components/CarRentalFillter'
-import CarList from '../components/CarList'
+import React from "react";
+import CarRentalFillter from '../components/carRental/CarRentalFillter'
+import CarList from '../components/carRental/CarList'
 
 const CarRentalResultPage = () => {
     return (
         <div>
-            <CarRentalFillter/>
-            <CarList/>
+            <CarRentalFillter />
+            <CarList />
         </div>
     );
 }

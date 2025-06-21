@@ -161,6 +161,12 @@ const CarRentalForm = () => {
     mode: "driver"
   });
 
+  const handleChange = (e) => {
+
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
   const handleModeChange = (mode) => {
     setForm((prev) => ({ ...prev, mode }));
   };
@@ -175,7 +181,7 @@ const CarRentalForm = () => {
 
     dispatch(setCarRentalData(form));
 
-    fetch("http://localhost:3001/api/car-rentals", {
+    fetch(`${process.env.REACT_APP_API_URL}/api/car-rental-service/car-rentals`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)

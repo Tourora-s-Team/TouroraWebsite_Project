@@ -1,8 +1,5 @@
 import React from 'react';
-import CarRentalSearchForm from '../components/CarRentalSearchForm'; 
-import CarRentalDetails from '../components/CarRentalDetails'
-import CarRentalFaq from '../components/CarRentalFaq'
-import CarRentalPopularLocation from '../components/PopularCarRentalLocations'
+import CarRentalForm from '../components/carRental/CarRentalSearchForm'; // Import component form của bạn
 
 const CarRentalPage = () => {
   return (
