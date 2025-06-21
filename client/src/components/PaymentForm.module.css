@@ -1,0 +1,91 @@
+.paymentSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h4 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: #222;
+}
+
+.paymentMethods {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+
+.paymentButton {
+  padding: 10px 16px;
+  border: 2px solid #ccc;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.paymentButton:hover {
+  background-color: #eaeaea;
+}
+
+.paymentButton.active {
+  border-color: #0071f0;
+  background-color: #0071f0;
+  color: #fff;
+}
+
+.paymentForm {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-weight: 500;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus {
+  border-color: #0071f0;
+}
+
+.formRow {
+  display: flex;
+  gap: 12px;
+}
+
+.submitButton {
+  padding: 12px 24px;
+  background-color: #28a745;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submitButton:hover {
+  background-color: #218838;
+}

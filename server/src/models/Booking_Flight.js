@@ -39,6 +39,13 @@ const Booking_Flight = new Schema(
       enum: ["pending", "confirmed", "cancelled"],
       default: "pending",
     },
+    addons: [
+      {
+        addon: { type: Schema.Types.ObjectId, ref: "AddOns" },
+        quantity: { type: Number, default: 1 },
+        price: { type: Number },
+      },
+    ],
   },
   { timestamps: true }
 );

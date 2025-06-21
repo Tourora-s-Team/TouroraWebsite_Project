@@ -6,6 +6,8 @@ import PlaneTicketsPage from "./pages/PlaneTicketPage";
 import FlightDetailsPage from "./pages/FlightDetailsPage";
 import FlightBookingPage from "./pages/FlightBookingPage";
 
+import PaymentPage from "./pages/PaymentForm";
+
 function App() {
   return (
     <Router>
@@ -16,6 +18,7 @@ function App() {
           <Route path="/plane-tickets-service" element={<PlaneTicketsPage />} />
           <Route path="/flight-details/:id" element={<FlightDetailsPage />} />
           <Route path="/flight-booking" element={<FlightBookingPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
         </Routes>
       </Layout>
     </Router>

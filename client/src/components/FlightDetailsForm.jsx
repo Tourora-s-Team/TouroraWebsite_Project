@@ -133,7 +133,7 @@ const FlightDetailsForm = () => {
               className={`${styles.bookBtn} ${styles.selectBtn}`}
               onClick={() => navigate("/flight-booking", { state: { flight } })}
             >
-              <span className={styles.btnIcon}>✈️</span> Chọn
+              <span className={styles.btnIcon}></span> Chọn
             </button>
           </div>
         </div>
@@ -171,7 +171,6 @@ const FlightDetailsForm = () => {
                 })}{" "}
                 - {dep.toLocaleDateString()}
                 <br />
-                Sân bay quốc tế Soekarno Hatta, Nhà ga 2
               </div>
               <div>
                 <b>Đến:</b> {flight.arrival.city} ({flight.arrival.airport})
@@ -182,16 +181,13 @@ const FlightDetailsForm = () => {
                 })}{" "}
                 - {arr.toLocaleDateString()}
                 <br />
-                Sân bay Nội Bài, Nhà ga 2
               </div>
               <div>
                 <b>Hãng:</b> {flight.airline}
                 <br />
                 <b>Mã chuyến bay:</b> {flight.flightNumber}
                 <br />
-                Hành lý 0 kg, xách tay 7 kg
                 <br />
-                Airbus A320-100/200, 3-3 sơ đồ ghế, 28-inches khoảng cách ghế
               </div>
             </div>
           </div>

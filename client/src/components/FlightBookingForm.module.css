@@ -1,224 +1,345 @@
 .container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 24px;
-}
-
-.summaryHeader {
   display: flex;
   justify-content: space-between;
-  background: white;
-  padding: 20px;
+  gap: 32px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #f5f7fa;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Left Column */
+.left {
+  flex: 2;
+}
+
+.right {
+  flex: 1;
+}
+
+/* Section Box */
+.section {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.section h3 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Form Grouping */
+.row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.formGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.formGroup input,
+.phoneInput input,
+.phoneInput select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.phoneInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formGroup small {
+  color: #666;
+  font-size: 0.85rem;
+  margin-top: 4px;
+}
+
+/* Login Line */
+.loginNotice {
+  background: #e9f3ff;
+  padding: 12px 16px;
+  border-left: 4px solid #0d6efd;
   border-radius: 8px;
   margin-bottom: 24px;
-  box-shadow: 0 1px 4px rgba(3, 18, 26, 0.15);
+  color: #003b80;
+  font-weight: 500;
 }
 
-.route h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
+/* Notice Box */
+.noticeBox {
+  background: #fff9e6;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #333;
+  border-left: 4px solid #ffc107;
 }
 
-.details {
+.noticeBox b {
+  font-weight: bold;
+}
+
+.noticeBox a {
+  color: #007bff;
+  text-decoration: underline;
+  display: block;
+  margin-top: 6px;
+}
+
+/* Right Column */
+.flightSummaryBox,
+.totalBox {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.header {
   display: flex;
-  gap: 16px;
-  color: #687176;
-  font-size: 14px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.flightCard {
+  background: #f8f9fb;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.flightTime {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
+.airline {
+  font-size: 0.9rem;
+  color: #d12b2b;
+  margin-bottom: 8px;
 }
 
 .tags {
   display: flex;
   gap: 8px;
-  margin-top: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
-.tag {
+.greenTag {
+  background: #e0f8e9;
+  color: #2f9258;
   padding: 4px 8px;
-  background: #e6f4ff;
-  color: #0194f3;
-  border-radius: 4px;
-  font-size: 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
 }
 
-.priceSummary {
-  text-align: right;
+.grayTag {
+  background: #f0f0f0;
+  color: #555;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
 }
 
-.priceDisplay {
-  margin: 8px 0;
-}
-
-.price {
-  font-size: 24px;
-  font-weight: 600;
-  color: #ff5e1f;
-  margin-left: 8px;
-}
-
-.rewards {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  font-size: 12px;
-  color: #687176;
-}
-
-.addOns {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.addOnItem {
-  background: white;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 1px 4px rgba(3, 18, 26, 0.15);
-}
-
-.addOnHeader {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.addOnHeader img {
-  width: 40px;
-  height: 40px;
-}
-
-.addOnHeader h4 {
-  margin-bottom: 4px;
-}
-
-.addOnHeader p {
-  color: #687176;
-  font-size: 14px;
-}
-
-.baggage {
-  background: #f6f6f6;
-  padding: 12px;
-  border-radius: 4px;
-}
-
-.baggageRoute {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-}
-
-.price {
+.timeRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  margin-top: 10px;
 }
 
-.price button {
-  padding: 8px 24px;
-  background: #0194f3;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.duration {
+  font-size: 0.85rem;
+  color: #666;
 }
 
-.mealOptions {
-  margin-top: 16px;
+/* Total */
+.totalBox h4 {
+  margin-bottom: 12px;
+  font-size: 1.1rem;
 }
 
-.mealList {
+.totalPrice {
   display: flex;
-  gap: 16px;
-  overflow-x: auto;
-  padding-bottom: 16px;
+  justify-content: space-between;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
 }
 
-.mealItem {
-  text-align: center;
+.totalPrice strong {
+  color: #fa5400;
+  font-size: 1.25rem;
 }
 
-.mealItem img {
-  width: 120px;
-  height: 120px;
-  border-radius: 8px;
-  margin-bottom: 8px;
+.points {
+  font-size: 0.9rem;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.passengerForm {
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 12px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 24px;
 }
 
-.bookingForm {
-  background: white;
-  border-radius: 8px;
-  padding: 24px;
-  margin-top: 24px;
-  box-shadow: 0 1px 4px rgba(3, 18, 26, 0.15);
-}
-
-.formSection {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 16px;
+.formRow {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 16px;
 }
 
 .formGroup {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .formGroup label {
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.95rem;
 }
 
-.formGroup input {
-  padding: 12px;
-  border: 1px solid #e7e9ec;
-  border-radius: 4px;
+.formGroup input,
+.formGroup select {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
 }
 
-.formGroup small {
-  color: #687176;
-  font-size: 12px;
-}
-
-.required {
-  color: #ff5e1f;
-}
-
-.phoneInput {
+.dateGroup {
   display: flex;
   gap: 8px;
 }
 
-.phoneInput select {
-  width: 100px;
-  padding: 12px;
-  border: 1px solid #e7e9ec;
-  border-radius: 4px;
+.dateGroup input {
+  width: 70px;
+  text-align: center;
 }
 
-.actions {
-  margin-top: 24px;
-  text-align: right;
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 }
 
-.continueBtn {
-  padding: 12px 32px;
-  background: #ff5e1f;
-  color: white;
+.summaryCol {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-width: 160px;
+}
+
+.cityIcon {
+  font-size: 2rem;
+  margin-top: 2px;
+}
+
+.cityName {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #0071ce;
+}
+
+.airportName {
+  font-size: 0.98rem;
+  color: #888;
+}
+
+.timeText {
+  font-size: 0.97rem;
+  color: #333;
+  margin-top: 2px;
+}
+
+.arrowIcon {
+  font-size: 2rem;
+  color: #0071ce;
+  margin: 0 8px;
+}
+
+.addonList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+.addonItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: #f7fbff;
+  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1px solid #e3eaf5;
+}
+.addonPrice {
+  color: #0071ce;
+  margin-left: 12px;
+  font-weight: 500;
+}
+.addonDesc {
+  color: #666;
+  font-size: 0.97rem;
+  margin-top: 2px;
+}
+.paymentMethods {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.paymentButton {
+  padding: 10px 20px;
+  background: #e0e0e0;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .summaryHeader {
-    flex-direction: column;
-    gap: 16px;
-  }
+.paymentButton.active {
+  background: #0071f0;
+  color: white;
+}
 
-  .formSection {
-    grid-template-columns: 1fr;
-  }
+.paymentForm {
+  margin-top: 1rem;
+}
+
+.formRow {
+  display: flex;
+  gap: 10px;
 }

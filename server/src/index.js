@@ -12,7 +12,9 @@ const carRentalRoutes = require("./routes/carRentalService"); // Import router A
 const userRoutes = require("./routes/userRoutes");
 const flightSuggestionRoutes = require("./routes/flightSuggestionRoutes");
 const flightLocationRoutes = require("./routes/flightLocationRoutes");
-
+const addonsRoutes = require("./routes/addonsRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const passengerRoutes = require("./routes/passengerRoutes");
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -42,6 +44,9 @@ app.use("/api/car-rental-service", carRentalRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/flights", flightSuggestionRoutes);
 app.use("/api/flight-locations", flightLocationRoutes);
+app.use("/api/addons", addonsRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use("/api/passenger", passengerRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, "../../client/build");
