@@ -1,15 +1,20 @@
 const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
-console.log("NODE_ENV:", process.env.NODE_ENV);
+// console.log("NODE_ENV:", process.env.NODE_ENV);
+
 const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")
-const authRoutes = require("./routes/auth");
 
+// Import middleware
+// const authenticateToken = require("./middlewares/authenticate-token")
+
+// Import routers
+const authRoutes = require("./routes/auth");
 const bookingTourRouter = require('./routes/tour-images')
-const carRentalRoutes = require('./routes/car-rental-service'); // Import router API
+const carRentalRoutes = require('./routes/car-rental-service');
 const userRoutes = require("./routes/user-routes");
 
 
@@ -36,10 +41,10 @@ app.use(session({
   }),
 }));
 
-app.use("/create-tour", bookingTourRouter);
 // API Routes
+app.use("/create-tour", bookingTourRouter);
 app.use("/api/auth", authRoutes);
-app.use('/api/car-rental-service', carRentalRoutes);
+app.use("/api/car-rental-service", carRentalRoutes);
 app.use("/api/user", userRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
