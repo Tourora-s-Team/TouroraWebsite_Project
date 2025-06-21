@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './HotelBookingForm.module.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -7,6 +8,7 @@ import NightsStayIcon from '@mui/icons-material/NightsStay';
 import SearchIcon from '@mui/icons-material/Search';
 
 const HotelBookingForm = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         destination: '',
         checkIn: '2025-06-16',
@@ -17,7 +19,15 @@ const HotelBookingForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
+        // Create search params
+        const searchParams = new URLSearchParams({
+            destination: formData.destination,
+            checkIn: formData.checkIn,
+            checkOut: formData.checkOut,
+            guests: formData.guests
+        });
+        // Navigate to search results with query params
+        navigate(`/hotel-search?${searchParams.toString()}`);
     };
 
     return (
@@ -36,7 +46,7 @@ const HotelBookingForm = () => {
                             <input
                                 type="text"
                                 value={formData.destination}
-                                onChange={(e) => setFormData({...formData, destination: e.target.value})}
+                                onChange={(e) => setFormData({ ...formData, destination: e.target.value })}
                                 placeholder="Nhập thành phố, khách sạn..."
                                 className={styles.input}
                             />
@@ -51,7 +61,7 @@ const HotelBookingForm = () => {
                                 <input
                                     type="date"
                                     value={formData.checkIn}
-                                    onChange={(e) => setFormData({...formData, checkIn: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, checkIn: e.target.value })}
                                     className={styles.input}
                                 />
                             </div>
@@ -69,7 +79,7 @@ const HotelBookingForm = () => {
                                 <input
                                     type="date"
                                     value={formData.checkOut}
-                                    onChange={(e) => setFormData({...formData, checkOut: e.target.value})}
+                                    onChange={(e) => setFormData({ ...formData, checkOut: e.target.value })}
                                     className={styles.input}
                                 />
                             </div>

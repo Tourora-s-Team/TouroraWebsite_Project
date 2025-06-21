@@ -10,7 +10,8 @@ const Header = () => {
             </div>
 
             <nav>
-                <ul className={styles.navList}>                    <li><a className={styles.navLink} href="/hotel-booking">Khách sạn</a></li>
+                <ul className={styles.navList}>
+                    <li><a className={styles.navLink} href="/hotel-booking">Khách sạn</a></li>
                     <li><a className={styles.navLink} href="#">Vé máy bay</a></li>
                     <li><a className={styles.navLink} href="#">Vé xe khách</a></li>
                     <li><a className={styles.navLink} href="#">Đưa đón sân bay</a></li>

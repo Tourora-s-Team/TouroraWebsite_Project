@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './HotelSuggestions.module.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import StarIcon from '@mui/icons-material/Star';
@@ -112,6 +113,52 @@ const formatPrice = (price) => {
     }).format(price);
 };
 
+const HotelCard = ({ hotel }) => {
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/hotel/${hotel.id}`);
+    };
+
+    return (
+        <div className={styles.hotelCard} onClick={handleClick}>
+            <div className={styles.imageContainer}>
+                <img src={hotel.image} alt={hotel.name} />
+                {hotel.discount && (
+                    <div className={styles.discount}>
+                        -{hotel.discount}%
+                    </div>
+                )}
+                {hotel.label && (
+                    <div className={styles.label}>
+                        {hotel.label}
+                    </div>
+                )}
+            </div>
+            <div className={styles.hotelInfo}>
+                <h3>{hotel.name}</h3>
+                <div className={styles.location}>
+                    <LocationOnIcon /> {hotel.location}
+                </div>
+                <div className={styles.rating}>
+                    <StarIcon /> {hotel.rating}
+                    <span className={styles.reviews}>({hotel.reviews} đánh giá)</span>
+                </div>
+                <div className={styles.price}>
+                    {hotel.originalPrice !== hotel.discountPrice && (
+                        <span className={styles.originalPrice}>
+                            {hotel.originalPrice.toLocaleString('vi-VN')}đ
+                        </span>
+                    )}
+                    <span className={styles.discountPrice}>
+                        {hotel.discountPrice.toLocaleString('vi-VN')}đ
+                    </span>
+                </div>
+            </div>
+        </div>
+    );
+};
+
 const HotelSuggestions = () => {
     return (
         <div className={styles.suggestionsContainer}>
@@ -129,46 +176,7 @@ const HotelSuggestions = () => {
                 </div>
                 <div className={styles.hotelGrid}>
                     {mockHotels.nearbyHotels.map(hotel => (
-                        <div key={hotel.id} className={styles.hotelCard}>
-                            <div className={styles.imageContainer}>
-                                <img src={hotel.image} alt={hotel.name} />
-                                {hotel.discount && (
-                                    <div className={styles.discount}>
-                                        Tiết kiệm {hotel.discount}%
-                                    </div>
-                                )}
-                                {hotel.label && (
-                                    <div className={styles.label}>
-                                        {hotel.label}
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles.hotelInfo}>
-                                <h3>{hotel.name}</h3>
-                                <div className={styles.location}>
-                                    <LocationOnIcon />
-                                    <span>{hotel.location}</span>
-                                </div>
-                                <div className={styles.rating}>
-                                    <div className={styles.score}>
-                                        <StarIcon />
-                                        <span>{hotel.rating}/10</span>
-                                    </div>
-                                    <span className={styles.reviews}>({hotel.reviews})</span>
-                                </div>
-                                <div className={styles.pricing}>
-                                    {hotel.originalPrice !== hotel.discountPrice && (
-                                        <span className={styles.originalPrice}>
-                                            {formatPrice(hotel.originalPrice)}
-                                        </span>
-                                    )}
-                                    <span className={styles.price}>
-                                        {formatPrice(hotel.discountPrice)}
-                                    </span>
-                                    <span className={styles.perNight}>/ đêm</span>
-                                </div>
-                            </div>
-                        </div>
+                        <HotelCard key={hotel.id} hotel={hotel} />
                     ))}
                 </div>
             </section>
@@ -186,46 +194,7 @@ const HotelSuggestions = () => {
                 </div>
                 <div className={styles.hotelGrid}>
                     {mockHotels.internationalHotels.map(hotel => (
-                        <div key={hotel.id} className={styles.hotelCard}>
-                            <div className={styles.imageContainer}>
-                                <img src={hotel.image} alt={hotel.name} />
-                                {hotel.discount && (
-                                    <div className={styles.discount}>
-                                        Tiết kiệm {hotel.discount}%
-                                    </div>
-                                )}
-                                {hotel.label && (
-                                    <div className={styles.label}>
-                                        {hotel.label}
-                                    </div>
-                                )}
-                            </div>
-                            <div className={styles.hotelInfo}>
-                                <h3>{hotel.name}</h3>
-                                <div className={styles.location}>
-                                    <LocationOnIcon />
-                                    <span>{hotel.location}</span>
-                                </div>
-                                <div className={styles.rating}>
-                                    <div className={styles.score}>
-                                        <StarIcon />
-                                        <span>{hotel.rating}/10</span>
-                                    </div>
-                                    <span className={styles.reviews}>({hotel.reviews})</span>
-                                </div>
-                                <div className={styles.pricing}>
-                                    {hotel.originalPrice !== hotel.discountPrice && (
-                                        <span className={styles.originalPrice}>
-                                            {formatPrice(hotel.originalPrice)}
-                                        </span>
-                                    )}
-                                    <span className={styles.price}>
-                                        {formatPrice(hotel.discountPrice)}
-                                    </span>
-                                    <span className={styles.perNight}>/ đêm</span>
-                                </div>
-                            </div>
-                        </div>
+                        <HotelCard key={hotel.id} hotel={hotel} />
                     ))}
                 </div>
             </section>

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import HotelSearchResults from '../components/HotelSearchResults';
 
 const mockHotels = [
@@ -43,9 +44,30 @@ const mockHotels = [
 ];
 
 const HotelSearchResultsPage = () => {
+    const [searchParams] = useSearchParams();
+    const [searchResults, setSearchResults] = useState(mockHotels);
+
+    useEffect(() => {
+        // Get search parameters
+        const destination = searchParams.get('destination');
+        const checkIn = searchParams.get('checkIn');
+        const checkOut = searchParams.get('checkOut');
+        const guests = searchParams.get('guests');
+
+        // Here you would typically make an API call to get the search results
+        // For now, we'll just filter the mock data based on the destination
+        if (destination) {
+            const filteredHotels = mockHotels.filter(hotel =>
+                hotel.location.toLowerCase().includes(destination.toLowerCase()) ||
+                hotel.name.toLowerCase().includes(destination.toLowerCase())
+            );
+            setSearchResults(filteredHotels);
+        }
+    }, [searchParams]);
+
     return (
         <div style={{ backgroundColor: '#f5f5f5', minHeight: '100vh', paddingTop: '24px' }}>
-            <HotelSearchResults hotels={mockHotels} />
+            <HotelSearchResults hotels={searchResults} />
         </div>
     );
 };
