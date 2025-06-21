@@ -240,3 +240,47 @@
   color: #0194f3;
   text-decoration: none;
 }
+
+.toggleDetailBtn {
+  background: #e6f4ff;
+  color: #0194f3;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.toggleDetailBtn:hover {
+  background: #d0eaff;
+}
+
+.bookBtn {
+  margin-left: auto;
+  background: linear-gradient(90deg, #ff9800 60%, #ff5e1f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 36px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 94, 31, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.bookBtn:hover {
+  background: linear-gradient(90deg, #ffb74d 60%, #ff7043 100%);
+}
+
+.btnIcon {
+  font-size: 1.3em;
+  margin-right: 4px;
+}

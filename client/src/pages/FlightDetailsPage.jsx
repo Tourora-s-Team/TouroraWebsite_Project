@@ -1,16 +1,16 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import FlightResultsForm from "../components/FlightResultsForm";
+import FlightDetailsForm from "../components/FlightDetailsForm";
 
-const FlightResultsPage = () => {
+const FlightDetailsPage = () => {
   const location = useLocation();
   const searchParams = location.state?.search;
 
   return (
     <div>
-      <FlightResultsForm searchParams={searchParams} />
+      <FlightDetailsForm searchParams={searchParams} />
     </div>
   );
 };
 
-export default FlightResultsPage;
+export default FlightDetailsPage;

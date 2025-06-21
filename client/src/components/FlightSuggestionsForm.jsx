@@ -1,190 +1,87 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import styles from "./FlightSuggestionsForm.module.css";
 
 const FlightSuggestionsForm = () => {
+  const [flights, setFlights] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const [activeFilter, setActiveFilter] = useState("oneWay");
 
-  const flights = {
-    oneWay: [
-      {
-        airline: "VietJet Air",
-        logo: "/images/airlines/vietjet.png",
-        from: "TP HCM (SGN)",
-        to: "Bangkok (BKK)",
-        date: "Thứ Năm, 12 thg 6, 2025",
-        price: 1406930,
-      },
-      {
-        airline: "VietJet Air",
-        logo: "/images/airlines/vietjet.png",
-        from: "TP HCM (SGN)",
-        to: "Singapore (SIN)",
-        date: "Thứ Ba, 24 thg 6, 2025",
-        price: 1136290,
-      },
-      {
-        airline: "Thai AirAsia",
-        logo: "/images/airlines/airasia.png",
-        from: "TP HCM (SGN)",
-        to: "Bangkok (DMK)",
-        date: "Thứ Sáu, 11 thg 7, 2025",
-        price: 1360356,
-      },
-      {
-        airline: "VietJet Air",
-        logo: "/images/airlines/vietjet.png",
-        from: "Singapore (SIN)",
-        to: "TP HCM (SGN)",
-        date: "Thứ Năm, 26 thg 6, 2025",
-        price: 1821845,
-      },
-    ],
-    domestic: [
-      {
-        airline: "VietJet Air",
-        logo: "/images/airlines/vietjet.png",
-        from: "TP HCM (SGN)",
-        to: "Hà Nội (HAN)",
-        date: "Thứ Ba, 10 thg 6, 2025",
-        price: 799000,
-      },
-      {
-        airline: "Bamboo Airways",
-        logo: "/images/airlines/bamboo.png",
-        from: "Hà Nội (HAN)",
-        to: "Đà Nẵng (DAD)",
-        date: "Thứ Tư, 11 thg 6, 2025",
-        price: 689000,
-      },
-      {
-        airline: "Vietnam Airlines",
-        logo: "/images/airlines/vietnam-airlines.png",
-        from: "TP HCM (SGN)",
-        to: "Phú Quốc (PQC)",
-        date: "Thứ Năm, 12 thg 6, 2025",
-        price: 1089000,
-      },
-      {
-        airline: "VietJet Air",
-        logo: "/images/airlines/vietjet.png",
-        from: "Hà Nội (HAN)",
-        to: "Nha Trang (CXR)",
-        date: "Thứ Sáu, 13 thg 6, 2025",
-        price: 899000,
-      },
-    ],
-    international: [
-      {
-        airline: "VietJet Air",
-        logo: "/images/airlines/vietjet.png",
-        from: "TP HCM (SGN)",
-        to: "Tokyo (NRT)",
-        date: "Thứ Hai, 16 thg 6, 2025",
-        price: 3889000,
-      },
-      {
-        airline: "Singapore Airlines",
-        logo: "/images/airlines/singapore-airlines.png",
-        from: "Hà Nội (HAN)",
-        to: "Singapore (SIN)",
-        date: "Thứ Ba, 17 thg 6, 2025",
-        price: 2989000,
-      },
-      {
-        airline: "Korean Air",
-        logo: "/images/airlines/korean-air.png",
-        from: "TP HCM (SGN)",
-        to: "Seoul (ICN)",
-        date: "Thứ Tư, 18 thg 6, 2025",
-        price: 4289000,
-      },
-      {
-        airline: "Thai Airways",
-        logo: "/images/airlines/thai-airways.png",
-        from: "Hà Nội (HAN)",
-        to: "Bangkok (BKK)",
-        date: "Thứ Năm, 19 thg 6, 2025",
-        price: 2489000,
-      },
-    ],
-  };
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}/api/flights/suggestions`)
+      .then((res) => res.json())
+      .then((data) => {
+        setFlights(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
 
-  const handleSelectFlight = (flight) => {
-    navigate("/flight-results", {
-      state: {
-        search: {
-          from: flight.from,
-          to: flight.to,
-          departDate: flight.date,
-          passengers: { adults: 1, children: 0, infants: 0 },
-          class: "economy",
-          directFlight: true,
-        },
-      },
-    });
-  };
-  const getFilteredFlights = () => {
-    return flights[activeFilter] || flights.oneWay;
-  };
+  if (loading) return <div>Đang tải...</div>;
 
   return (
     <div className={styles.container}>
-      <h2>Tìm Kiếm Các Ưu Đãi Vé Máy Bay Rẻ Từ Việt Nam</h2>
-
-      <div className={styles.filterTabs}>
-        <button
-          className={`${styles.filterTab} ${
-            activeFilter === "oneWay" ? styles.active : ""
-          }`}
-          onClick={() => setActiveFilter("oneWay")}
-        >
-          Một Chiều
-        </button>
-        <button
-          className={`${styles.filterTab} ${
-            activeFilter === "domestic" ? styles.active : ""
-          }`}
-          onClick={() => setActiveFilter("domestic")}
-        >
-          Nội Địa
-        </button>
-        <button
-          className={`${styles.filterTab} ${
-            activeFilter === "international" ? styles.active : ""
-          }`}
-          onClick={() => setActiveFilter("international")}
-        >
-          Quốc Tế
-        </button>
-      </div>
-
+      <h2 className={styles.title}>✈️ Gợi ý chuyến bay</h2>
       <div className={styles.flightList}>
-        {getFilteredFlights().map((flight, index) => (
-          <div
-            key={index}
-            className={styles.flightCard}
-            onClick={() => handleSelectFlight(flight)}
-          >
-            <div className={styles.flightInfo}>
-              <img src={flight.logo} alt={flight.airline} />
-              <div className={styles.flightDetails}>
-                <p className={styles.airline}>{flight.airline}</p>
-                <p className={styles.route}>
-                  {flight.from} → {flight.to}
-                </p>
-                <p className={styles.date}>{flight.date}</p>
+        {flights.map((flight) => (
+          <div key={flight._id} className={styles.flightCard}>
+            <div className={styles.cardHeader}>
+              <img
+                src="https://inkythuatso.com/uploads/images/2021/09/1571733729-logo-vietjet-air-15-13-34-40.jpg"
+                alt={flight.airline}
+                className={styles.flightImg}
+              />
+              <div>
+                <div className={styles.flightNumber}>{flight.flightNumber}</div>
+                <div className={styles.airline}>{flight.airline}</div>
               </div>
             </div>
-            <div className={styles.priceInfo}>
-              <p className={styles.price}>
-                {flight.price.toLocaleString()} VND
-              </p>
-              <p className={styles.type}>Một Chiều</p>
-              <button className={styles.viewBtn}>→</button>
+            <div className={styles.cardBody}>
+              <div className={styles.route}>
+                <div>
+                  <span className={styles.city}>{flight.departure.city}</span>
+                  <span className={styles.airport}>
+                    ({flight.departure.airport})
+                  </span>
+                  <div className={styles.time}>
+                    {new Date(flight.departure.date).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </div>
+                </div>
+                <span className={styles.arrow}>→</span>
+                <div>
+                  <span className={styles.city}>{flight.arrival.city}</span>
+                  <span className={styles.airport}>
+                    ({flight.arrival.airport})
+                  </span>
+                  <div className={styles.time}>
+                    {new Date(flight.arrival.date).toLocaleTimeString([], {
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </div>
+                </div>
+              </div>
+              <div className={styles.date}>
+                Ngày đi: {new Date(flight.departure.date).toLocaleDateString()}
+              </div>
+              <div className={styles.priceRow}>
+                <span className={styles.priceEco}>
+                  Economy: <b>{flight.price.economy.toLocaleString()} VND</b>
+                </span>
+                <span className={styles.priceBiz}>
+                  Business: <b>{flight.price.business.toLocaleString()} VND</b>
+                </span>
+              </div>
             </div>
+            <button
+              className={styles.viewBtn}
+              onClick={() => navigate(`/flight-details/${flight._id}`)}
+            >
+              Xem chi tiết
+            </button>
           </div>
         ))}
       </div>

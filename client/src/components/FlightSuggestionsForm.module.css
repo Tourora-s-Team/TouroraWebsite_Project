@@ -1,128 +1,143 @@
 .container {
-  max-width: 1140px;
-  margin: 40px auto;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 0;
 }
 
-.container h2 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #03121a;
+.title {
+  text-align: center;
   margin-bottom: 24px;
-}
-
-.filterTabs {
-  display: flex;
-  gap: 8px;
-  background: #f6f6f6;
-  padding: 4px;
-  border-radius: 8px;
-  width: fit-content;
-  margin-bottom: 24px;
-}
-
-.filterTab {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  color: #687176;
-  font-size: 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.filterTab.active {
-  background: #fff;
-  color: #0194f3;
-  box-shadow: 0 1px 4px rgba(3, 18, 26, 0.1);
+  font-size: 2rem;
+  color: #007bff;
+  letter-spacing: 1px;
 }
 
 .flightList {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 24px;
 }
 
 .flightCard {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px;
-  background: white;
-  border-radius: 8px;
-  border: 1px solid #e7e9ec;
-  transition: transform 0.2s ease;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .flightCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 2px 8px rgba(3, 18, 26, 0.1);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 6px 24px rgba(0, 123, 255, 0.15);
 }
 
-.flightInfo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.flightInfo img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-.flightDetails {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.airline {
-  font-size: 14px;
-  color: #687176;
-}
-
-.route {
-  font-size: 16px;
-  font-weight: 600;
-  color: #03121a;
-}
-
-.date {
-  font-size: 14px;
-  color: #687176;
-}
-
-.priceInfo {
-  text-align: right;
+.cardHeader {
   display: flex;
   align-items: center;
   gap: 16px;
+  margin-bottom: 12px;
 }
 
-.price {
-  font-size: 20px;
-  font-weight: 700;
-  color: #0194f3;
+.flightImg {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #eee;
 }
 
-.type {
-  font-size: 12px;
-  color: #687176;
+.flightNumber {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 1.1rem;
+}
+
+.airline {
+  color: #222;
+  font-size: 1rem;
+  margin-top: 2px;
+}
+
+.cardBody {
+  flex: 1;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.city {
+  font-weight: 500;
+  font-size: 1.05rem;
+}
+
+.airport {
+  color: #888;
+  font-size: 0.95rem;
+  margin-left: 4px;
+}
+
+.arrow {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin: 0 12px;
+}
+
+.time {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.date {
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.98rem;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.priceEco {
+  color: #28a745;
+}
+
+.priceBiz {
+  color: #d63384;
 }
 
 .viewBtn {
-  width: 32px;
-  height: 32px;
+  margin-top: 8px;
+  padding: 10px 0;
+  background: #007bff;
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  background: #0194f3;
-  color: white;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: background 0.2s;
+}
+
+.viewBtn:hover {
+  background: #0056b3;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 20px;
+}
+
+.error {
+  color: #dc3545;
 }
 
 @media (max-width: 968px) {

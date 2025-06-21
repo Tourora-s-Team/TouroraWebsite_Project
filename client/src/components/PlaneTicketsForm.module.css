@@ -1,171 +1,161 @@
+/* Container tổng */
 .container {
-  width: 100%;
-  background: #f7f9fa;
-  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  font-family: "Segoe UI", sans-serif;
+  color: #222;
 }
 
+/* Banner */
 .banner {
-  width: 95%;
-  height: 400px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("https://cdn.myportfolio.com/d65c4c748ea87d55d1b82c128fa077ae/155b8377-64fe-4f0d-a415-589f0a941259_rw_1920.jpg?h=6eda280a60d70891d711c34acb83e92d");
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20px;
-  margin: auto;
-  border-radius: 20px;
+  margin-bottom: 24px;
 }
 
 .banner h1 {
-  color: white;
-  font-size: 32px;
+  font-size: 24px;
+  font-weight: 700;
   text-align: center;
-  max-width: 800px;
-  font-weight: 500;
 }
 
-.searchBox {
-  max-width: 1140px;
-  margin: -60px auto 0;
-  background: white;
-  border-radius: 12px;
+/* Form Card chính */
+.formCard {
+  background: #fff;
   padding: 24px;
-  box-shadow: 0 2px 8px rgba(3, 18, 26, 0.15);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-.tripTypeSelector {
+/* Trip type buttons */
+.tripTypeRow {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   margin-bottom: 20px;
+  justify-content: flex-start;
 }
 
 .tripTypeBtn {
-  padding: 8px 16px;
-  border: none;
-  background: transparent;
-  color: #687176;
-  cursor: pointer;
+  padding: 6px 16px;
   font-size: 14px;
-  border-radius: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: 500;
 }
 
 .tripTypeBtn.active {
-  background: #e6f4ff;
-  color: #0194f3;
+  background-color: #2196f3;
+  color: white;
+  border-color: #2196f3;
 }
 
-.flightOptions {
+/* Ô nhập điểm đi/đến + nút đảo ⇄ */
+.routeRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.inputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.inputGroup input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Nút hoán đổi ⇄ */
+.swapBtn {
+  height: 38px;
+  width: 38px;
+  font-size: 18px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+}
+
+/* Chọn ngày */
+.dateRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Bay thẳng + hành khách/hạng ghế */
+.optionsRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 
 .checkboxLabel {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #687176;
-  font-size: 14px;
+  gap: 6px;
 }
 
-.passengerSelector {
-  display: flex;
-  gap: 16px;
-  color: #687176;
-  font-size: 14px;
+.passengerInfo {
+  font-weight: 500;
 }
 
-.searchForm {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.locationInputs,
-.dateInputs {
-  display: flex;
-  gap: 12px;
-  align-items: flex-end;
-}
-
-.inputGroup {
-  flex: 1;
-}
-
-.inputGroup label {
-  display: block;
-  font-size: 12px;
-  color: #687176;
-  margin-bottom: 6px;
-  font-weight: 600;
-}
-
-.inputGroup input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #e7e9ec;
-  border-radius: 8px;
-  font-size: 14px;
-}
-
-.swapBtn {
-  width: 32px;
-  height: 32px;
-  border: 1px solid #e7e9ec;
-  border-radius: 50%;
-  background: white;
-  color: #0194f3;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
-}
-
+/* Nút tìm chuyến bay */
 .searchBtn {
   width: 100%;
   padding: 14px;
-  background: #ff5e1f;
-  color: white;
-  border: none;
-  border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
 }
 
+/* ====== Tính năng & đánh giá ====== */
 .features {
-  max-width: 1140px;
-  margin: 40px auto;
-  padding: 0 20px;
+  margin-top: 48px;
+  padding: 0 16px;
 }
 
 .ratingsSection {
-  text-align: center;
-  margin-bottom: 40px;
+  text-align: left;
+  margin-bottom: 24px;
 }
 
 .ratingsSection h3 {
-  font-size: 24px;
-  color: #03121a;
-  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.5;
 }
 
 .ratings {
   display: flex;
-  gap: 24px;
-  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
 .ratingItem {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #687176;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .ratingItem img {
@@ -173,52 +163,51 @@
   height: 24px;
 }
 
+/* Feature Card Container */
 .featuresList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
+/* Feature Card Style */
 .featureItem {
-  text-align: center;
-  padding: 24px;
-  background: white;
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.featureItem:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .featureItem img {
-  width: 48px;
-  height: 48px;
-  margin-bottom: 16px;
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .featureItem h4 {
+  margin: 0;
   font-size: 16px;
-  color: #03121a;
-  margin-bottom: 8px;
+  font-weight: 700;
+  color: #222;
 }
 
 .featureItem p {
-  color: #687176;
+  margin: 4px 0 0;
   font-size: 14px;
-}
-
-@media (max-width: 768px) {
-  .locationInputs,
-  .dateInputs {
-    flex-direction: column;
-  }
-
-  .swapBtn {
-    margin: 12px auto;
-    transform: rotate(90deg);
-  }
-
-  .banner h1 {
-    font-size: 24px;
-  }
-
-  .searchBox {
-    margin: -40px 20px 0;
-  }
+  color: #555;
+  line-height: 1.4;
 }

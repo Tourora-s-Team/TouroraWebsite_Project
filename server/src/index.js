@@ -5,12 +5,13 @@ console.log("NODE_ENV:", process.env.NODE_ENV);
 const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")
+const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/auth");
 
-const carRentalRoutes = require('./routes/carRentalService'); // Import router API
+const carRentalRoutes = require("./routes/carRentalService"); // Import router API
 const userRoutes = require("./routes/userRoutes");
-
+const flightSuggestionRoutes = require("./routes/flightSuggestionRoutes");
+const flightLocationRoutes = require("./routes/flightLocationRoutes");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -19,32 +20,33 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-
-
 // Connect mongoDB
-const db = require('./config/db')
-db.connect()
+const db = require("./config/db");
+db.connect();
 
-
-// CẤU HÌNH SESSION 
-app.use(session({
-  secret: process.env.SESSION_SECRET || "secret_key",
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI,
-  }),
-}));
+// CẤU HÌNH SESSION
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "secret_key",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+  })
+);
 
 // API Routes
 app.use("/api/auth", authRoutes);
-app.use('/api/car-rental-service', carRentalRoutes);
+app.use("/api/car-rental-service", carRentalRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/flights", flightSuggestionRoutes);
+app.use("/api/flight-locations", flightLocationRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
-const clientBuildPath = path.join(__dirname, '../../client/build');
+const clientBuildPath = path.join(__dirname, "../../client/build");
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   console.log("🌐 Serving React from:", clientBuildPath);
   app.use(express.static(clientBuildPath));
 
@@ -53,8 +55,10 @@ if (process.env.NODE_ENV === 'production') {
   // });
 }
 // Route mặc định (dev)
-app.get('/', (req, res) => {
-  res.send('Server Express đang chạy. Hãy truy cập React tại http://localhost:3000');
+app.get("/", (req, res) => {
+  res.send(
+    "Server Express đang chạy. Hãy truy cập React tại http://localhost:3000"
+  );
 });
 
 // Khởi động server
