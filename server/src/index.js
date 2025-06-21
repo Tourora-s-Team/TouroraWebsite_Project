@@ -8,8 +8,9 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")
 const authRoutes = require("./routes/auth");
 
-const carRentalRoutes = require('./routes/carRentalService'); // Import router API
-const userRoutes = require("./routes/userRoutes");
+const bookingTourRouter = require('./routes/tour-images')
+const carRentalRoutes = require('./routes/car-rental-service'); // Import router API
+const userRoutes = require("./routes/user-routes");
 
 
 const app = express();

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const authenticateToken = require("../middlewares/authenticateToken");
+const authenticateToken = require("../middlewares/authenticate-token");
 const User = require("../models/User");
 
 // Route được bảo vệ bởi JWT
