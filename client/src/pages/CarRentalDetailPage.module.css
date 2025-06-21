@@ -1,0 +1,89 @@
+.detailPage {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    font-size: 18px;
+    color: #666;
+}
+
+.error {
+    text-align: center;
+    padding: 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error h2 {
+    color: #dc3545;
+    margin-bottom: 16px;
+}
+
+.error p {
+    color: #666;
+    margin-bottom: 24px;
+}
+
+.error button {
+    padding: 12px 24px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.error button:hover {
+    background: #0052a3;
+}
+
+.bookingCTA {
+    text-align: center;
+    padding: 24px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.bookNowButton {
+    padding: 16px 32px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.bookNowButton:hover {
+    background: #0052a3;
+}
+
+.bookingFormContainer {
+    margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+    .detailPage {
+        padding: 16px;
+    }
+
+    .content {
+        gap: 16px;
+    }
+}

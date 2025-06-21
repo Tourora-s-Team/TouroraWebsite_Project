@@ -21,7 +21,6 @@ app.use(cors());
 app.use(express.json());
 
 
-
 // Connect mongoDB
 const db = require('./config/db')
 db.connect()

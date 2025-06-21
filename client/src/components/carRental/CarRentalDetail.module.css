@@ -1,0 +1,177 @@
+.carDetail {
+    display: flex;
+    gap: 32px;
+    padding: 24px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imageGallery {
+    flex: 0 0 60%;
+}
+
+.mainImage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+}
+
+.thumbnails img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.thumbnails img:hover {
+    opacity: 0.8;
+}
+
+.carInfo {
+    flex: 1;
+}
+
+.carInfo h1 {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #333;
+}
+
+.rating {
+    margin-bottom: 24px;
+}
+
+.star,
+.starFilled {
+    color: #ddd;
+    font-size: 20px;
+}
+
+.starFilled {
+    color: #ffc107;
+}
+
+.reviewCount {
+    margin-left: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.specs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.specItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.label {
+    color: #666;
+    font-size: 14px;
+}
+
+.features {
+    margin-bottom: 24px;
+}
+
+.features h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.features ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.features li {
+    padding-left: 24px;
+    position: relative;
+    color: #666;
+}
+
+.features li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+}
+
+.pricing {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.priceInfo {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.period {
+    color: #666;
+}
+
+.totalPrice {
+    color: #666;
+    font-size: 14px;
+}
+
+.terms {
+    border-top: 1px solid #eee;
+    padding-top: 24px;
+}
+
+.terms h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.terms ul {
+    list-style: none;
+    padding: 0;
+}
+
+.terms li {
+    margin-bottom: 8px;
+    padding-left: 24px;
+    position: relative;
+    color: #666;
+}
+
+.terms li:before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: #666;
+}
