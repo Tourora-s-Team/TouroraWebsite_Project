@@ -6,13 +6,9 @@ const createPassenger = async (req, res) => {
     const saved = await passenger.save();
     res.status(201).json(saved);
   } catch (error) {
-    console.error("Lỗi khi lưu thông tin hành khách:", error);
-    res
-      .status(500)
-      .json({ message: "Lỗi server khi lưu thông tin hành khách" });
+    console.error("Lỗi khi lưu passenger:", error);
+    res.status(500).json({ message: "Lỗi server khi lưu passenger" });
   }
 };
 
-module.exports = {
-  createPassenger,
-};
+module.exports = { createPassenger };

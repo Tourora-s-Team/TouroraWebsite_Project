@@ -15,6 +15,7 @@ const flightLocationRoutes = require("./routes/flightLocationRoutes");
 const addonsRoutes = require("./routes/addonsRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const passengerRoutes = require("./routes/passengerRoutes");
+const bookingFlightRoutes = require("./routes/booking_flightRoutes");
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -47,6 +48,7 @@ app.use("/api/flight-locations", flightLocationRoutes);
 app.use("/api/addons", addonsRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/passenger", passengerRoutes);
+app.use("/api/booking-flight", bookingFlightRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, "../../client/build");

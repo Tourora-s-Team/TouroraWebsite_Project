@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import FlightDetailsForm from "../components/FlightDetailsForm";
+import FlightDetailsForm from "../components/PlaneTickets/FlightDetailsForm";
 
 const FlightDetailsPage = () => {
   const location = useLocation();

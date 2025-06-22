@@ -1,6 +1,6 @@
 import React from "react";
 
-import FlightBookingForm from "../components/FlightBookingForm";
+import FlightBookingForm from "../components/PlaneTickets/FlightBookingForm";
 
 const FlightBookingPage = () => {
   return (

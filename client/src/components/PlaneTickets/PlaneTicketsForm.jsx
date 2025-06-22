@@ -166,7 +166,6 @@ const PlaneTicketsForm = () => {
           <h3>Hơn 50 triệu lượt tải, hơn 1 triệu lượt đánh giá</h3>
           <div className={styles.ratings}>
             <div className={styles.ratingItem}>
-              <img src="/images/app-store.png" alt="App Store" />
               <span>4.9 ★</span>
             </div>
             <div className={styles.ratingItem}>
