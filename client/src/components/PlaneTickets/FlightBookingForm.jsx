@@ -100,7 +100,7 @@ const FlightBookingForm = () => {
       // 3. Payment
       const paymentPayload = {
         bookingId,
-        flightId: flight?._id,
+        serviceId: flight?._id,
         paymentMethod: paymentInfo.method,
         contactInfo: {
           lastName: form.lastName,

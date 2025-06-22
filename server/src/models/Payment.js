@@ -13,7 +13,7 @@ const PaymentSchema = new mongoose.Schema({
     enum: ["credit", "momo", "zalopay"],
     required: true,
   },
-  flightId: {
+  serviceId: {
     type: String,
     required: true,
   },
