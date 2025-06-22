@@ -17,17 +17,11 @@ const Booking_Flight = new Schema(
       ref: "Flight",
       required: true,
     },
-    passengers: [
+    passengerIds: [
       {
-        fullName: { type: String, required: true },
-        dateOfBirth: { type: Date, required: true },
-        phone: String,
-        email: String,
-        seatType: {
-          type: String,
-          enum: ["economy", "business"],
-          required: true,
-        },
+        type: Schema.Types.ObjectId,
+        ref: "Passenger",
+        required: true,
       },
     ],
     totalPrice: {

@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const PassengerSchema = new Schema(
   {
-    bookingId: { type: Schema.Types.ObjectId, ref: "Booking", required: true },
     fullName: { type: String, required: true },
     gender: { type: String, enum: ["male", "female", "other"], required: true },
     dateOfBirth: { type: Date, required: true },

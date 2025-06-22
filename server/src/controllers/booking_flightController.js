@@ -11,11 +11,4 @@ const createBooking = async (req, res) => {
   }
 };
 
-const getBooking = async (req, res) => {
-  try {
-  } catch (error) {
-    console.error("Lỗi khi lấy dữ liệu Booking");
-    res.status(500).json({ message: "Lỗi Server khi lấy dữ liệu Booking" });
-  }
-};
 module.exports = { createBooking };

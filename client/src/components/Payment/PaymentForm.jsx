@@ -1,89 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./PaymentForm.module.css";
 
-const PaymentForm = ({ contactInfo, flight }) => {
-  const [selectedMethod, setSelectedMethod] = useState("credit");
-
-  const [paymentInfo, setPaymentInfo] = useState({
-    creditCardNumber: "",
-    cardHolder: "",
-    expiryDate: "",
-    cvv: "",
-    momoPhone: "",
-    zaloPhone: "",
-  });
-
-  const handleSubmit = async () => {
-    const data = {
-      contactInfo,
-      paymentMethod: selectedMethod,
-      flightId: flight?._id || "UNKNOWN",
-      paymentInfo:
-        selectedMethod === "credit"
-          ? {
-              creditCardNumber: paymentInfo.creditCardNumber,
-              cardHolder: paymentInfo.cardHolder,
-              expiryDate: paymentInfo.expiryDate,
-              cvv: paymentInfo.cvv,
-            }
-          : selectedMethod === "momo"
-          ? { phone: paymentInfo.momoPhone }
-          : { phone: paymentInfo.zaloPhone },
-    };
-
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/payment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      if (!res.ok) throw new Error("Đã xảy ra lỗi khi gửi thanh toán");
-      const result = await res.json();
-      alert("Thanh toán thành công!");
-      console.log("Kết quả từ server:", result);
-    } catch (err) {
-      console.error(err);
-      alert("Lỗi: " + err.message);
-    }
-  };
-
+const PaymentForm = ({ contactInfo, flight, paymentInfo, setPaymentInfo }) => {
   return (
     <div className={styles.paymentSection}>
       <h4>Thông tin thanh toán</h4>
+
       <div className={styles.paymentMethods}>
         <button
-          className={`${styles.paymentButton} ${
-            selectedMethod === "credit" ? styles.active : ""
-          }`}
-          onClick={() => setSelectedMethod("credit")}
           type="button"
+          className={`${styles.paymentButton} ${
+            paymentInfo.method === "credit" ? styles.active : ""
+          }`}
+          onClick={() => setPaymentInfo({ ...paymentInfo, method: "credit" })}
         >
           Credit Card
         </button>
         <button
-          className={`${styles.paymentButton} ${
-            selectedMethod === "momo" ? styles.active : ""
-          }`}
-          onClick={() => setSelectedMethod("momo")}
           type="button"
+          className={`${styles.paymentButton} ${
+            paymentInfo.method === "momo" ? styles.active : ""
+          }`}
+          onClick={() => setPaymentInfo({ ...paymentInfo, method: "momo" })}
         >
-          Momo
+          MoMo
         </button>
         <button
-          className={`${styles.paymentButton} ${
-            selectedMethod === "zalopay" ? styles.active : ""
-          }`}
-          onClick={() => setSelectedMethod("zalopay")}
           type="button"
+          className={`${styles.paymentButton} ${
+            paymentInfo.method === "zalopay" ? styles.active : ""
+          }`}
+          onClick={() => setPaymentInfo({ ...paymentInfo, method: "zalopay" })}
         >
           ZaloPay
         </button>
       </div>
 
-      {selectedMethod === "credit" && (
+      {/* Credit Card */}
+      {paymentInfo.method === "credit" && (
         <div className={styles.paymentForm}>
           <div className={styles.formGroup}>
             <label>Số thẻ*</label>
@@ -150,7 +104,8 @@ const PaymentForm = ({ contactInfo, flight }) => {
         </div>
       )}
 
-      {selectedMethod === "momo" && (
+      {/* MoMo */}
+      {paymentInfo.method === "momo" && (
         <div className={styles.paymentForm}>
           <div className={styles.formGroup}>
             <label>Số điện thoại MoMo*</label>
@@ -170,7 +125,8 @@ const PaymentForm = ({ contactInfo, flight }) => {
         </div>
       )}
 
-      {selectedMethod === "zalopay" && (
+      {/* ZaloPay */}
+      {paymentInfo.method === "zalopay" && (
         <div className={styles.paymentForm}>
           <div className={styles.formGroup}>
             <label>Số điện thoại ZaloPay*</label>
@@ -189,10 +145,6 @@ const PaymentForm = ({ contactInfo, flight }) => {
           </div>
         </div>
       )}
-
-      <button className={styles.submitButton} onClick={handleSubmit}>
-        Thanh toán
-      </button>
     </div>
   );
 };
