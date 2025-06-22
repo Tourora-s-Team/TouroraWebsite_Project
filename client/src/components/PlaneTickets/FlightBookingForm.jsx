@@ -100,19 +100,27 @@ const FlightBookingForm = () => {
       // 3. Payment
       const paymentPayload = {
         bookingId,
-        method: paymentInfo.method,
-        amount: flight?.price?.economy || 0,
+        flightId: flight?._id,
+        paymentMethod: paymentInfo.method,
+        contactInfo: {
+          lastName: form.lastName,
+          firstName: form.firstName,
+          phone: form.phone,
+          email: form.email,
+          countryCode: form.countryCode,
+        },
+        paymentInfo: {},
       };
 
       if (paymentInfo.method === "credit") {
-        paymentPayload.details = {
+        paymentPayload.paymentInfo = {
           creditCardNumber: paymentInfo.creditCardNumber,
           cardHolder: paymentInfo.cardHolder,
           expiryDate: paymentInfo.expiryDate,
           cvv: paymentInfo.cvv,
         };
       } else {
-        paymentPayload.details = {
+        paymentPayload.paymentInfo = {
           phone:
             paymentInfo.method === "momo"
               ? paymentInfo.momoPhone
