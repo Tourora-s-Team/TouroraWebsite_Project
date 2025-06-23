@@ -16,15 +16,16 @@ const FlightBookingForm = () => {
   });
 
   const [passengerInfo, setPassengerInfo] = useState({
+    title: "Mr",
     type: "adult",
     gender: "male",
-    dob: { day: "", month: "", year: "" },
+    dob: "",
     lastName: "",
     firstName: "",
     nationality: "",
     passportNumber: "",
     passportCountry: "",
-    passportExpiry: { day: "", month: "", year: "" },
+    passportExpiry: "",
   });
 
   const [paymentInfo, setPaymentInfo] = useState({
@@ -40,11 +41,8 @@ const FlightBookingForm = () => {
   const handleConfirmBooking = async () => {
     const bookingCode = `BK${Date.now()}`;
     const fullName = `${passengerInfo.lastName} ${passengerInfo.firstName}`;
-    const dateOfBirth = `${passengerInfo.dob.year}-${passengerInfo.dob.month}-${passengerInfo.dob.day}`;
-    const passportExpiry = `${passengerInfo.passportExpiry.year}-${passengerInfo.passportExpiry.month}-${passengerInfo.passportExpiry.day}`;
 
     try {
-      // 1. Booking
       const bookingRes = await fetch(
         `${process.env.REACT_APP_API_URL}/api/booking-flight`,
         {
@@ -52,12 +50,11 @@ const FlightBookingForm = () => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             bookingCode,
-            // userId: "user_id_here",
             flightId: flight?._id,
             passengers: [
               {
                 fullName,
-                dateOfBirth,
+                dateOfBirth: passengerInfo.dob,
                 phone: form.phone,
                 email: form.email,
                 seatType: "economy",
@@ -73,7 +70,6 @@ const FlightBookingForm = () => {
       const bookingData = await bookingRes.json();
       const bookingId = bookingData._id;
 
-      // 2. Passenger
       const passengerRes = await fetch(
         `${process.env.REACT_APP_API_URL}/api/passenger`,
         {
@@ -83,10 +79,10 @@ const FlightBookingForm = () => {
             bookingId,
             fullName,
             gender: passengerInfo.gender,
-            dateOfBirth,
+            dateOfBirth: passengerInfo.dob,
             nationality: passengerInfo.nationality,
             passportNumber: passengerInfo.passportNumber,
-            passportExpiry,
+            passportExpiry: passengerInfo.passportExpiry,
             type: passengerInfo.type,
             seat: null,
             specialRequest: "",
@@ -97,18 +93,11 @@ const FlightBookingForm = () => {
 
       if (!passengerRes.ok) throw new Error("Tạo passenger thất bại");
 
-      // 3. Payment
       const paymentPayload = {
         bookingId,
         serviceId: flight?._id,
         paymentMethod: paymentInfo.method,
-        contactInfo: {
-          lastName: form.lastName,
-          firstName: form.firstName,
-          phone: form.phone,
-          email: form.email,
-          countryCode: form.countryCode,
-        },
+        contactInfo: form,
         paymentInfo: {},
       };
 
@@ -148,7 +137,6 @@ const FlightBookingForm = () => {
   return (
     <div className={styles.container}>
       <div className={styles.left}>
-        {/* Thông tin liên hệ */}
         <div className={styles.section}>
           <h3>Thông tin liên hệ</h3>
           <div className={styles.row}>
@@ -181,19 +169,18 @@ const FlightBookingForm = () => {
           </div>
         </div>
 
-        {/* Thông tin hành khách */}
         <div className={styles.section}>
           <h3>Thông tin hành khách</h3>
           <div className={styles.row}>
             <select
-              value={passengerInfo.type}
+              value={passengerInfo.title}
               onChange={(e) =>
-                setPassengerInfo({ ...passengerInfo, type: e.target.value })
+                setPassengerInfo({ ...passengerInfo, title: e.target.value })
               }
             >
-              <option value="adult">Người lớn</option>
-              <option value="child">Trẻ em</option>
-              <option value="infant">Em bé</option>
+              <option value="Mr">Ông</option>
+              <option value="Mrs">Bà</option>
+              <option value="Ms">Cô</option>
             </select>
             <select
               value={passengerInfo.gender}
@@ -231,51 +218,28 @@ const FlightBookingForm = () => {
 
           <div className={styles.row}>
             <input
-              type="text"
-              placeholder="DD"
-              value={passengerInfo.dob.day}
+              type="date"
+              value={passengerInfo.dob}
+              onChange={(e) =>
+                setPassengerInfo({ ...passengerInfo, dob: e.target.value })
+              }
+            />
+            <select
+              value={passengerInfo.nationality}
               onChange={(e) =>
                 setPassengerInfo({
                   ...passengerInfo,
-                  dob: { ...passengerInfo.dob, day: e.target.value },
+                  nationality: e.target.value,
                 })
               }
-            />
-            <input
-              type="text"
-              placeholder="MM"
-              value={passengerInfo.dob.month}
-              onChange={(e) =>
-                setPassengerInfo({
-                  ...passengerInfo,
-                  dob: { ...passengerInfo.dob, month: e.target.value },
-                })
-              }
-            />
-            <input
-              type="text"
-              placeholder="YYYY"
-              value={passengerInfo.dob.year}
-              onChange={(e) =>
-                setPassengerInfo({
-                  ...passengerInfo,
-                  dob: { ...passengerInfo.dob, year: e.target.value },
-                })
-              }
-            />
+            >
+              <option value="">-- Quốc tịch --</option>
+              <option value="Vietnam">Việt Nam</option>
+              <option value="Thailand">Thái Lan</option>
+              <option value="USA">Hoa Kỳ</option>
+            </select>
           </div>
 
-          <input
-            type="text"
-            placeholder="Quốc tịch"
-            value={passengerInfo.nationality}
-            onChange={(e) =>
-              setPassengerInfo({
-                ...passengerInfo,
-                nationality: e.target.value,
-              })
-            }
-          />
           <input
             type="text"
             placeholder="Số hộ chiếu"
@@ -287,9 +251,8 @@ const FlightBookingForm = () => {
               })
             }
           />
-          <input
-            type="text"
-            placeholder="Nơi cấp hộ chiếu"
+
+          <select
             value={passengerInfo.passportCountry}
             onChange={(e) =>
               setPassengerInfo({
@@ -297,51 +260,23 @@ const FlightBookingForm = () => {
                 passportCountry: e.target.value,
               })
             }
+          >
+            <option value="">-- Quốc gia cấp hộ chiếu --</option>
+            <option value="Vietnam">Việt Nam</option>
+            <option value="Thailand">Thái Lan</option>
+            <option value="USA">Hoa Kỳ</option>
+          </select>
+
+          <input
+            type="date"
+            value={passengerInfo.passportExpiry}
+            onChange={(e) =>
+              setPassengerInfo({
+                ...passengerInfo,
+                passportExpiry: e.target.value,
+              })
+            }
           />
-          <div className={styles.row}>
-            <input
-              type="text"
-              placeholder="DD"
-              value={passengerInfo.passportExpiry.day}
-              onChange={(e) =>
-                setPassengerInfo({
-                  ...passengerInfo,
-                  passportExpiry: {
-                    ...passengerInfo.passportExpiry,
-                    day: e.target.value,
-                  },
-                })
-              }
-            />
-            <input
-              type="text"
-              placeholder="MM"
-              value={passengerInfo.passportExpiry.month}
-              onChange={(e) =>
-                setPassengerInfo({
-                  ...passengerInfo,
-                  passportExpiry: {
-                    ...passengerInfo.passportExpiry,
-                    month: e.target.value,
-                  },
-                })
-              }
-            />
-            <input
-              type="text"
-              placeholder="YYYY"
-              value={passengerInfo.passportExpiry.year}
-              onChange={(e) =>
-                setPassengerInfo({
-                  ...passengerInfo,
-                  passportExpiry: {
-                    ...passengerInfo.passportExpiry,
-                    year: e.target.value,
-                  },
-                })
-              }
-            />
-          </div>
         </div>
 
         <PaymentForm
@@ -352,36 +287,71 @@ const FlightBookingForm = () => {
         />
       </div>
 
-      {/* Right column */}
-      <div className={styles.right}>
-        <div className={styles.totalBox}>
-          <h4>Tóm tắt đặt vé</h4>
+      <div className={styles.rightColumn}>
+        <div className={styles.flightSummaryBox}>
+          <h4>Tóm tắt chuyến bay</h4>
           <div>
-            <strong>Hành khách:</strong> {passengerInfo.lastName}{" "}
-            {passengerInfo.firstName}
+            <strong>Hành trình:</strong> {flight?.departure?.city} (
+            {flight?.departure?.date
+              ? new Date(flight.departure.date).toLocaleDateString()
+              : "Không xác định"}
+            ) → {flight?.arrival?.city} (
+            {flight?.arrival?.date
+              ? new Date(flight.arrival.date).toLocaleDateString()
+              : "Không xác định"}
+            )
           </div>
+
           <div>
-            <strong>Giới tính:</strong> {passengerInfo.gender}
+            <strong>Thời gian bay:</strong> {flight?.duration || "90"} phút
           </div>
+
           <div>
-            <strong>SĐT:</strong> {form.countryCode} {form.phone}
+            <strong>Hãng:</strong> {flight?.airline || "VietJet Air"}
           </div>
+
           <div>
-            <strong>Email:</strong> {form.email}
+            <strong>Ngày khởi hành:</strong>{" "}
+            {flight?.departure?.date
+              ? new Date(flight.departure.date).toLocaleDateString()
+              : "Không xác định"}
           </div>
-          <div>
-            <strong>Hộ chiếu:</strong> {passengerInfo.passportNumber} -{" "}
-            {passengerInfo.passportCountry}
+        </div>
+
+        <div className={styles.right}>
+          <div className={styles.totalBox}>
+            <h4>Tóm tắt đặt vé</h4>
+            <div>
+              <strong>Hành khách:</strong> {passengerInfo.lastName}{" "}
+              {passengerInfo.firstName}
+            </div>
+            <div>
+              <strong>Giới tính:</strong> {passengerInfo.gender}
+            </div>
+            <div>
+              <strong>SĐT:</strong> {form.countryCode} {form.phone}
+            </div>
+            <div>
+              <strong>Email:</strong> {form.email}
+            </div>
+            <div>
+              <strong>Hộ chiếu:</strong> {passengerInfo.passportNumber} -{" "}
+              {passengerInfo.passportCountry}
+            </div>
+            <div>
+              <strong>Giá:</strong> {flight?.price?.economy.toLocaleString()}{" "}
+              VND
+            </div>
+            <div>
+              <strong>Phương thức thanh toán:</strong> {paymentInfo.method}
+            </div>
+            <button
+              className={styles.confirmButton}
+              onClick={handleConfirmBooking}
+            >
+              Xác nhận đặt vé
+            </button>
           </div>
-          <div>
-            <strong>Giá:</strong> {flight?.price?.economy.toLocaleString()} VND
-          </div>
-          <button
-            className={styles.confirmButton}
-            onClick={handleConfirmBooking}
-          >
-            Xác nhận đặt vé
-          </button>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ const FlightSuggestionsForm = () => {
           <div key={flight._id} className={styles.flightCard}>
             <div className={styles.cardHeader}>
               <img
-                src="https://inkythuatso.com/uploads/images/2021/09/1571733729-logo-vietjet-air-15-13-34-40.jpg"
+                src="../booking_flight.webp"
                 alt={flight.airline}
                 className={styles.flightImg}
               />

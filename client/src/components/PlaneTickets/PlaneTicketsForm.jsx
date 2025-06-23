@@ -47,6 +47,7 @@ const PlaneTicketsForm = () => {
     <div className={styles.container}>
       {/* Banner */}
       <div className={styles.banner}>
+        <img src="https://w.wallhaven.cc/full/p2/wallhaven-p26w8e.jpg" alt="" />
         <h1>
           Tìm và đặt vé máy bay khuyến mãi & vé giá rẻ chỉ với 3 bước đơn giản!
         </h1>
@@ -166,10 +167,11 @@ const PlaneTicketsForm = () => {
           <h3>Hơn 50 triệu lượt tải, hơn 1 triệu lượt đánh giá</h3>
           <div className={styles.ratings}>
             <div className={styles.ratingItem}>
+              <img src="../icon_appstore.svg" alt="Google Play" />
               <span>4.9 ★</span>
             </div>
             <div className={styles.ratingItem}>
-              <img src="/images/google-play.png" alt="Google Play" />
+              <img src="../icon_chplay.svg" alt="Google Play" />
               <span>4.8 ★</span>
             </div>
           </div>
@@ -177,21 +179,21 @@ const PlaneTicketsForm = () => {
 
         <div className={styles.featuresList}>
           <div className={styles.featureItem}>
-            <img src="/images/icons/change.png" alt="Đổi vé" />
+            <img src="../change.svg" alt="Đổi vé" />
             <div>
               <h4>Dễ dàng thay đổi chuyến bay</h4>
               <p>Thoải mái hủy hoặc thay đổi đặt chỗ chuyến bay</p>
             </div>
           </div>
           <div className={styles.featureItem}>
-            <img src="/images/icons/payment.png" alt="Thanh toán" />
+            <img src="../payment.svg" alt="Thanh toán" />
             <div>
               <h4>Thanh toán tiện lợi</h4>
               <p>Giao dịch dễ dàng với đa dạng hình thức thanh toán</p>
             </div>
           </div>
           <div className={styles.featureItem}>
-            <img src="/images/icons/support.png" alt="Hỗ trợ" />
+            <img src="../support.svg" alt="Hỗ trợ" />
             <div>
               <h4>Hỗ trợ 24/7</h4>
               <p>Hãy liên hệ Tourora bất cứ lúc nào, bất cứ ở đâu</p>
