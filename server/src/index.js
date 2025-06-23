@@ -8,8 +8,10 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")
 const authRoutes = require("./routes/auth");
 
-const carRentalRoutes = require('./routes/carRentalService'); // Import router API
-const userRoutes = require("./routes/userRoutes");
+const carRentalRoutes = require('./routes/car-rental-service'); // Import router API
+const userRoutes = require("./routes/user-routes");
+const hotelRoutes = require('./routes/hotel');
+const roomRoutes = require('./routes/room');
 
 
 const app = express();
@@ -40,6 +42,8 @@ app.use(session({
 app.use("/api/auth", authRoutes);
 app.use('/api/car-rental-service', carRentalRoutes);
 app.use("/api/user", userRoutes);
+app.use('/api/hotel', hotelRoutes);
+app.use('/api/room', roomRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, '../../client/build');
