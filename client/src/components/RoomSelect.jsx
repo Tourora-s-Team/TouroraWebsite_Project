@@ -71,28 +71,35 @@ const RoomSelect = ({ hotelId, onSelectRoom }) => {
                 <div key={type} className={styles.roomGroup}>
                     <h2 className={styles.roomType}>{type}</h2>
                     <div className={styles.roomList}>
-                        {list.map(room => (
-                            <div key={room._id} className={styles.roomCard}>
-                                <img src={room.images && room.images[0] ? room.images[0] : '/assets/images/HotelBookingRoom1.jpg'} alt={room.type} className={styles.roomImg} />
-                                <div className={styles.roomInfo}>
-                                    <div style={{ fontWeight: 'bold', fontSize: '1.1em' }}>{room.description}</div>
-                                    <div style={{ display: 'flex', gap: 16, alignItems: 'center', margin: '8px 0' }}>
-                                        <SquareFootIcon fontSize="small" /> <span>{room.area} m²</span>
-                                        <GroupIcon fontSize="small" /> <span>{room.capacity} khách</span>
-                                        <BedIcon fontSize="small" /> <span>{room.bedType}</span>
+                        {list.map(room => {
+                            // Hiển thị hình 1 (ảnh đầu tiên) trong mảng images của room từ MongoDB
+                            let imgSrc = '/assets/images/HotelBookingRoom1.jpg';
+                            if (room.images && Array.isArray(room.images) && room.images.length > 0 && room.images[0]) {
+                                imgSrc = room.images[0];
+                            }
+                            return (
+                                <div key={room._id} className={styles.roomCard}>
+                                    <img src={imgSrc} alt={room.type} className={styles.roomImg + ' ' + styles.roomImg__VGKLE} />
+                                    <div className={styles.roomInfo}>
+                                        <div style={{ fontWeight: 'bold', fontSize: '1.1em' }}>{room.description}</div>
+                                        <div style={{ display: 'flex', gap: 16, alignItems: 'center', margin: '8px 0' }}>
+                                            <SquareFootIcon fontSize="small" /> <span>{room.area} m²</span>
+                                            <GroupIcon fontSize="small" /> <span>{room.capacity} khách</span>
+                                            <BedIcon fontSize="small" /> <span>{room.bedType}</span>
+                                        </div>
+                                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '4px 0' }}>
+                                            {room.amenities && room.amenities.map((a, i) => (
+                                                <span key={i} style={{ background: '#f0f0f0', borderRadius: 4, padding: '2px 8px', fontSize: 13, display: 'flex', alignItems: 'center' }}><CheckIcon style={{ fontSize: 15, color: '#43a047', marginRight: 2 }} />{a}</span>
+                                            ))}
+                                        </div>
+                                        <div className={styles.roomPrice}>{room.pricePerNight ? room.pricePerNight.toLocaleString('vi-VN') + ' VND/đêm' : 'Liên hệ'}</div>
+                                        <Button variant="contained" color="primary" onClick={() => onSelectRoom(room)}>
+                                            Chọn
+                                        </Button>
                                     </div>
-                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, margin: '4px 0' }}>
-                                        {room.amenities && room.amenities.map((a, i) => (
-                                            <span key={i} style={{ background: '#f0f0f0', borderRadius: 4, padding: '2px 8px', fontSize: 13, display: 'flex', alignItems: 'center' }}><CheckIcon style={{ fontSize: 15, color: '#43a047', marginRight: 2 }} />{a}</span>
-                                        ))}
-                                    </div>
-                                    <div className={styles.roomPrice}>{room.pricePerNight ? room.pricePerNight.toLocaleString('vi-VN') + ' VND/đêm' : 'Liên hệ'}</div>
-                                    <Button variant="contained" color="primary" onClick={() => onSelectRoom(room)}>
-                                        Chọn
-                                    </Button>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
                 </div>
             ))}

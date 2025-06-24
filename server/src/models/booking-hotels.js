@@ -11,6 +11,11 @@ const bookingSchema = new mongoose.Schema({
         ref: 'Hotel',
         required: true
     },
+    customerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Customer',
+        required: false
+    },
     checkIn: {
         type: Date,
         required: true
@@ -50,4 +55,4 @@ const bookingSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Booking', bookingSchema);
+module.exports = mongoose.models.BookingHotel || mongoose.model('BookingHotel', bookingSchema);

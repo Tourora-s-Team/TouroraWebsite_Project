@@ -15,7 +15,12 @@ const HotelCard = ({ hotel }) => {
     return (
         <div className={styles.hotelCard} onClick={handleClick}>
             <div className={styles.imageContainer}>
-                <img src={hotel.images && hotel.images[0] ? hotel.images[0] : '/assets/images/HotelBookingRoom1.jpg'} alt={hotel.name} />
+                <img
+                    src={Array.isArray(hotel.images) && hotel.images.length > 0 && hotel.images[0]
+                        ? hotel.images[0]
+                        : '/assets/images/HotelBookingRoom1.jpg'}
+                    alt={hotel.name}
+                />
             </div>
             <div className={styles.hotelInfo}>
                 <h3>{hotel.name}</h3>

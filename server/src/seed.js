@@ -17,7 +17,13 @@ const hotelsData = [
         description: 'Khách sạn phong cách Pháp trên đỉnh Bà Nà.',
         rating: 4.5,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Spa'],
-        images: [],
+        images: [
+            '/assets/images/MercureDanang/1.jpg',
+            '/assets/images/MercureDanang/2.jpg',
+            '/assets/images/MercureDanang/3.jpg',
+            '/assets/images/MercureDanang/4.jpg',
+            '/assets/images/MercureDanang/5.jpg',
+        ],
         contactInfo: {
             phone: '0123456789',
             email: 'info@mercurebanahills.vn',
@@ -36,7 +42,13 @@ const hotelsData = [
         description: 'Khách sạn 5 sao hiện đại tại trung tâm Sài Gòn.',
         rating: 4.7,
         amenities: ['WiFi', 'Gym', 'Nhà hàng', 'Bar'],
-        images: [],
+        images: [
+            '/assets/images/HotelNikko/1.jpg',
+            '/assets/images/HotelNikko/2.jpg',
+            '/assets/images/HotelNikko/3.jpg',
+            '/assets/images/HotelNikko/4.jpg',
+            '/assets/images/HotelNikko/5.jpg',
+        ],
         contactInfo: {
             phone: '0987654321',
             email: 'info@nikkosaigon.com',
@@ -55,7 +67,13 @@ const hotelsData = [
         description: 'Khách sạn sang trọng giữa lòng Hà Nội.',
         rating: 4.6,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Phòng hội nghị'],
-        images: [],
+        images: [
+            '/assets/images/MeliaHanoi/1.jpg',
+            '/assets/images/MeliaHanoi/2.jpg',
+            '/assets/images/MeliaHanoi/3.jpg',
+            '/assets/images/MeliaHanoi/4.jpg',
+            '/assets/images/MeliaHanoi/5.jpg',
+        ],
         contactInfo: {
             phone: '02439343343',
             email: 'info@meliahanoi.com',
@@ -74,7 +92,12 @@ const hotelsData = [
         description: 'Resort nghỉ dưỡng bên bờ biển Đà Nẵng.',
         rating: 4.8,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Bãi biển riêng'],
-        images: [],
+        images: [
+            '/assets/images/PremierVillage/1.jpg',
+            '/assets/images/PremierVillage/2.jpg',
+            '/assets/images/PremierVillage/3.jpg',
+            '/assets/images/PremierVillage/4.jpg',
+        ],
         contactInfo: {
             phone: '02363919999',
             email: 'info@premierdanang.com',
@@ -93,7 +116,12 @@ const hotelsData = [
         description: 'Khu nghỉ dưỡng cao cấp trên đảo Hòn Tre.',
         rating: 4.7,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Công viên nước'],
-        images: [],
+        images: [
+            '/assets/images/VinpearlResort/1.jpg',
+            '/assets/images/VinpearlResort/2.jpg',
+            '/assets/images/VinpearlResort/3.jpg',
+            '/assets/images/VinpearlResort/4.jpg',
+        ],
         contactInfo: {
             phone: '02583555555',
             email: 'info@vinpearl.com',
@@ -112,7 +140,12 @@ const hotelsData = [
         description: 'Khách sạn 5 sao bên hồ Tây.',
         rating: 4.6,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Bar'],
-        images: [],
+        images: [
+            '/assets/images/InterContinental/1.jpg',
+            '/assets/images/InterContinental/2.jpg',
+            '/assets/images/InterContinental/3.jpg',
+            '/assets/images/InterContinental/4.jpg',
+        ],
         contactInfo: {
             phone: '02462708888',
             email: 'info@icwestlake.com',
@@ -131,7 +164,12 @@ const hotelsData = [
         description: 'Resort nghỉ dưỡng với dịch vụ spa trọn gói.',
         rating: 4.9,
         amenities: ['WiFi', 'Bể bơi', 'Spa', 'Nhà hàng'],
-        images: [],
+        images: [
+            '/assets/images/FusionResort/1.jpg',
+            '/assets/images/FusionResort/2.jpg',
+            '/assets/images/FusionResort/3.jpg',
+            '/assets/images/FusionResort/4.jpg',
+        ],
         contactInfo: {
             phone: '02973555555',
             email: 'info@fusionresortphuquoc.com',
@@ -150,7 +188,12 @@ const hotelsData = [
         description: 'Khách sạn sang trọng bậc nhất Sài Gòn.',
         rating: 4.9,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Spa'],
-        images: [],
+        images: [
+            '/assets/images/TheReverie/1.jpg',
+            '/assets/images/TheReverie/2.jpg',
+            '/assets/images/TheReverie/3.jpg',
+            '/assets/images/TheReverie/4.jpg',
+        ],
         contactInfo: {
             phone: '02838238888',
             email: 'info@thereveriesaigon.com',
@@ -169,7 +212,12 @@ const hotelsData = [
         description: 'Khách sạn cao cấp với tầm nhìn toàn cảnh thành phố.',
         rating: 4.8,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Bar'],
-        images: [],
+        images: [
+            '/assets/images/LotteHotel/1.jpg',
+            '/assets/images/LotteHotel/2.jpg',
+            '/assets/images/LotteHotel/3.jpg',
+            '/assets/images/LotteHotel/4.jpg',
+        ],
         contactInfo: {
             phone: '02433333333',
             email: 'info@lottehotel.com',
@@ -245,7 +293,12 @@ const hotelsData = [
         description: 'Resort 5 sao với bãi biển riêng.',
         rating: 4.7,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Bar'],
-        images: [],
+        images: [
+            '/assets/images/SheratonGrand/1.jpg',
+            '/assets/images/SheratonGrand/2.jpg',
+            '/assets/images/SheratonGrand/3.jpg',
+            '/assets/images/SheratonGrand/4.jpg',
+        ],
         contactInfo: {
             phone: '02363988888',
             email: 'info@sheratongranddanang.com',
@@ -321,7 +374,12 @@ const hotelsData = [
         description: 'Khách sạn lịch sử nổi tiếng Hà Nội.',
         rating: 4.9,
         amenities: ['WiFi', 'Bể bơi', 'Nhà hàng', 'Spa'],
-        images: [],
+        images: [
+            '/assets/images/SofitelLegend/1.jpg',
+            '/assets/images/SofitelLegend/2.jpg',
+            '/assets/images/SofitelLegend/3.jpg',
+            '/assets/images/SofitelLegend/4.jpg',
+        ],
         contactInfo: {
             phone: '02438266919',
             email: 'info@sofitel.com',
@@ -349,12 +407,12 @@ const seedDatabase = async () => {
         hotelDocs.forEach((hotel, idx) => {
             rooms.push({
                 hotelId: hotel._id,
-                roomNumber: `10${idx+1}`,
+                roomNumber: `10${idx + 1}`,
                 type: roomTypes[idx % roomTypes.length],
                 capacity: 2 + (idx % 3),
                 pricePerNight: 500000 + idx * 100000,
                 amenities: ['WiFi', 'Điều hòa', 'Tivi'],
-                images: [],
+                images: hotel.images && hotel.images.length > 0 ? [hotel.images[0]] : [],
                 status: 'Available',
                 description: `Phòng ${roomTypes[idx % roomTypes.length]} tại ${hotel.name}`,
                 area: 25 + idx * 2,
@@ -371,7 +429,7 @@ const seedDatabase = async () => {
                 capacity: 2 + (i % 3),
                 pricePerNight: 600000 + i * 100000,
                 amenities: ['WiFi', 'Điều hòa', 'Tivi'],
-                images: [],
+                images: hotel.images && hotel.images.length > 0 ? [hotel.images[0]] : [],
                 status: 'Available',
                 description: `Phòng ${roomTypes[i % roomTypes.length]} tại ${hotel.name}`,
                 area: 28 + i * 2,

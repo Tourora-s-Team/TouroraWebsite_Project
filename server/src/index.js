@@ -12,6 +12,7 @@ const carRentalRoutes = require('./routes/car-rental-service'); // Import router
 const userRoutes = require("./routes/user-routes");
 const hotelRoutes = require('./routes/hotel');
 const roomRoutes = require('./routes/room');
+const apiRoutes = require('./routes/api');
 
 
 const app = express();
@@ -44,6 +45,7 @@ app.use('/api/car-rental-service', carRentalRoutes);
 app.use("/api/user", userRoutes);
 app.use('/api/hotel', hotelRoutes);
 app.use('/api/room', roomRoutes);
+app.use('/api', apiRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, '../../client/build');

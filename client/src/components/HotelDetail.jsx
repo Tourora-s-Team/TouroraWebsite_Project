@@ -189,9 +189,67 @@ const HotelDetail = () => {
                         <GuestForm
                             room={selectedRoom}
                             onBack={() => { setShowGuestForm(false); setCurrentTab(0); }}
-                            onSubmit={form => {
-                                // Xử lý submit ở đây (ví dụ: chuyển sang trang thanh toán)
-                                alert('Đặt phòng thành công!');
+                            onSubmit={async form => {
+                                try {
+                                    // Lấy ngày checkIn/checkOut, số đêm, số khách (giả sử có props hoặc hardcode demo)
+                                    const checkIn = new Date();
+                                    const checkOut = new Date();
+                                    checkOut.setDate(checkIn.getDate() + 1); // 1 đêm
+                                    const adults = 2; // demo, bạn có thể lấy từ props hoặc form
+                                    const children = 0;
+                                    const numberOfNights = 1;
+                                    const subtotal = selectedRoom.pricePerNight * numberOfNights;
+                                    const payload = {
+                                        ...form,
+                                        room: {
+                                            _id: selectedRoom._id,
+                                            hotelId: selectedRoom.hotelId,
+                                            pricePerNight: selectedRoom.pricePerNight
+                                        },
+                                        hotelId: selectedRoom.hotelId,
+                                        checkIn,
+                                        checkOut,
+                                        totalAmount: subtotal,
+                                        guestDetails: {
+                                            adults,
+                                            children,
+                                            specialRequests: form.note
+                                        },
+                                        numberOfNights,
+                                        subtotal,
+                                        amount: subtotal,
+                                        paymentMethod: 'Credit Card'
+                                    };
+                                    // Nếu đặt cho người khác thì truyền customerInfo và đổi thông tin customer cho backend
+                                    if (form.isSelf === false) {
+                                        payload.customerInfo = {
+                                            name: form.name,
+                                            email: form.email,
+                                            phone: form.phone,
+                                            note: form.note,
+                                            requests: form.requests
+                                        };
+                                        // Đổi thông tin người đặt thành thông tin người đặt (có thể là bạn)
+                                        payload.name = 'Khách đặt hộ';
+                                        payload.email = 'booking@tourora.vn';
+                                        payload.phone = '0000000000';
+                                    }
+                                    // Kiểm tra roomId hợp lệ trước khi gửi
+                                    if (typeof selectedRoom._id === 'string' && selectedRoom._id.includes('_fake_')) {
+                                        alert('Phòng này chỉ để demo, không thể đặt. Vui lòng chọn phòng thật.');
+                                        return;
+                                    }
+                                    const res = await fetch('http://localhost:3001/api/bookings', {
+                                        method: 'POST',
+                                        headers: { 'Content-Type': 'application/json' },
+                                        body: JSON.stringify(payload)
+                                    });
+                                    if (!res.ok) throw new Error('Đặt phòng thất bại');
+                                    const data = await res.json();
+                                    alert('Đặt phòng thành công! Mã booking: ' + data.bookingHotel._id);
+                                } catch (err) {
+                                    alert('Lỗi: ' + err.message);
+                                }
                             }}
                         />
                     )}

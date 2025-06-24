@@ -34,4 +34,4 @@ const bookingRoomDetailSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('BookingRoomDetail', bookingRoomDetailSchema);
+module.exports = mongoose.models.BookingRoomDetail || mongoose.model('BookingRoomDetail', bookingRoomDetailSchema);
