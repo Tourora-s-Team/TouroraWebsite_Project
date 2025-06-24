@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import styles from "./BookingTour.module.css";
 
@@ -28,10 +29,10 @@ const BookingTour = () => {
 
   // Lấy danh sách tour từ API
   useEffect(() => {
-    fetch("/api/tours/all-tours")
-      .then((res) => res.json())
-      .then((data) => setTours(Array.isArray(data) ? data : []))
-      .catch(() => setTours([]));
+    axios
+      .get("/api/tours/all-tours")
+      .then((res) => setTours(res.data))
+      .catch((err) => console.error("Lỗi lấy tour:", err));
   }, []);
 
   useEffect(() => {
@@ -63,7 +64,7 @@ const BookingTour = () => {
         images[idx % images.length] ||
         "https://placehold.co/600x400",
     };
-    navigate(`/information-tour/${tour.MaTour}`, {
+    navigate(`/Tourdetails/${tour._id || tour.IdTour}`, {
       state: { tour: tourWithImage },
     });
   };
@@ -214,12 +215,7 @@ const BookingTour = () => {
                   style={{ marginRight: 6 }}
                 >
                   <circle cx="9" cy="9" r="7" stroke="#fff" strokeWidth="2" />
-                  <path
-                    d="M15 15l-3-3"
-                    stroke="#fff"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
+                  <path d="M15 15l-3-3" stroke="#fff" strokeWidth="2" />
                 </svg>
                 <span>Tìm kiếm tour</span>
               </button>
@@ -253,7 +249,7 @@ const BookingTour = () => {
             )}
             {filteredTours.map((tour, idx) => (
               <div
-                key={tour.MaTour || tour.id || idx}
+                key={tour.IdTour || tour._id || idx}
                 className={styles.tourCard}
               >
                 <div style={{ position: "relative" }}>
@@ -349,7 +345,7 @@ const BookingTour = () => {
                       />
                     </svg>
                     <span className="text-sm">
-                      Ngày khởi hành: <b>{tour.date}</b>
+                      Lộ trình: <b>{tour.date}</b>
                     </span>
                   </div>
                   <div className={styles.tourGroupSize}>
@@ -402,7 +398,7 @@ const BookingTour = () => {
                       onClick={() => handleBookNow(tour, idx)}
                       type="button"
                     >
-                      Đặt ngay
+                      Xem chi tiết
                     </button>
                   </div>
                 </div>

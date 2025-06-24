@@ -1,30 +1,63 @@
 const express = require("express");
-const cors = require("cors");
+const dotenv = require("dotenv");
+dotenv.config();
+console.log("NODE_ENV:", process.env.NODE_ENV);
 const path = require("path");
-const apiRouter = require("./routes/api"); // Import router API
-const bookingTourRouter = require("./routes/BookingTour");
-const tourImagesRouter = require("./routes/tourImages");
+const cors = require("cors");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const authRoutes = require("./routes/auth");
+
+const carRentalRoutes = require("./routes/carRentalService");
+const userRoutes = require("./routes/userRoutes");
+const toursRouter = require("./routes/Tours"); // Đã có
+
+// THÊM DÒNG NÀY ĐỂ IMPORT BOOKING ROUTES
+const bookingRoutes = require("./routes/BookingRoutes");
+
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-app.use("/create-tour", bookingTourRouter);
+// Connect mongoDB
+const db = require("./config/db");
+db.connect();
+
+// CẤU HÌNH SESSION
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "secret_key",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+  })
+);
+
 // API Routes
-app.use("/api", apiRouter);
-app.use("/api/tours", bookingTourRouter);
-app.use("/api/tours/tour-images", tourImagesRouter);
-// Serve React (chỉ dùng khi deploy production)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../../client/build")));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../../client/build", "index.html"));
-  });
-}
+app.use("/api/auth", authRoutes);
+app.use("/api/car-rental-service", carRentalRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/tours", toursRouter);
 
+// THÊM DÒNG NÀY ĐỂ SỬ DỤNG BOOKING ROUTES
+app.use("/api/bookings", bookingRoutes);
+
+// Serve React (chỉ dùng khi deploy production)
+const clientBuildPath = path.join(__dirname, "../../client/build");
+
+if (process.env.NODE_ENV === "production") {
+  console.log("🌐 Serving React from:", clientBuildPath);
+  app.use(express.static(clientBuildPath));
+
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.resolve(clientBuildPath, 'index.html'));
+  // });
+}
 // Route mặc định (dev)
 app.get("/", (req, res) => {
   res.send(
