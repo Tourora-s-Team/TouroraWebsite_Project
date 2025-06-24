@@ -1,0 +1,383 @@
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: scale(0.9) translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Modal Header */
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f8fafc;
+  border-radius: 12px 12px 0 0;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* Car Summary */
+.carSummary {
+  display: flex;
+  align-items: center;
+  padding: 24px 32px;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  gap: 16px;
+}
+
+.carSummary .carImage {
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.carInfo h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.carInfo p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Suppliers Container */
+.suppliersContainer {
+  padding: 32px;
+}
+
+.loading, .noSuppliers {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+.suppliersList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Supplier Card */
+.supplierCard {
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.supplierCard:hover {
+  border-color: #ff5b00;
+  box-shadow: 0 4px 12px rgba(255, 91, 0, 0.1);
+}
+
+.supplierCard.selected {
+  border-color: #ff5b00;
+  background: #fff7f0;
+  box-shadow: 0 4px 12px rgba(255, 91, 0, 0.15);
+}
+
+.supplierHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.supplierInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.supplierLogo {
+  width: 80px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid #e5e7eb;
+}
+
+.supplierInfo h4 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stars {
+  color: #fbbf24;
+  font-size: 14px;
+}
+
+.ratingValue {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 14px;
+}
+
+.reviewCount {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+.priceInfo {
+  text-align: right;
+}
+
+.price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff5b00;
+  line-height: 1;
+}
+
+.priceUnit {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* Supplier Details */
+.supplierDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.feature {
+  background: #ecfdf5;
+  color: #065f46;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #a7f3d0;
+}
+
+.locationInfo, .policyInfo {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.policyInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 8px;
+}
+
+.policyItem {
+  color: #374151;
+}
+
+.policyItem strong {
+  color: #1f2937;
+}
+
+.pickupLocations {
+  font-size: 14px;
+}
+
+.pickupLocations strong {
+  color: #1f2937;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.locations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.location {
+  background: #eff6ff;
+  color: #1e40af;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #bfdbfe;
+}
+
+/* Modal Footer */
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 24px 32px;
+  border-top: 1px solid #e5e7eb;
+  background: #f8fafc;
+  border-radius: 0 0 12px 12px;
+}
+
+.cancelBtn, .confirmBtn {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  min-width: 120px;
+}
+
+.cancelBtn {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.cancelBtn:hover {
+  background: #e5e7eb;
+}
+
+.confirmBtn {
+  background: #ff5b00;
+  color: white;
+}
+
+.confirmBtn:hover:not(:disabled) {
+  background: #e04e00;
+  transform: translateY(-1px);
+}
+
+.confirmBtn:disabled {
+  background: #d1d5db;
+  color: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modalOverlay {
+    padding: 10px;
+  }
+  
+  .modalContent {
+    max-height: 95vh;
+  }
+  
+  .modalHeader {
+    padding: 20px;
+  }
+  
+  .modalHeader h2 {
+    font-size: 20px;
+  }
+  
+  .carSummary {
+    padding: 20px;
+  }
+  
+  .suppliersContainer {
+    padding: 20px;
+  }
+  
+  .supplierCard {
+    padding: 20px;
+  }
+  
+  .supplierHeader {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  
+  .priceInfo {
+    text-align: left;
+  }
+  
+  .policyInfo {
+    grid-template-columns: 1fr;
+  }
+  
+  .modalFooter {
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .cancelBtn, .confirmBtn {
+    width: 100%;
+  }
+}

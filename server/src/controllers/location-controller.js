@@ -21,7 +21,6 @@ const getLocations = async (req, res) => {
     
     // Kiểm tra cache trước khi truy vấn database
     if (searchQuery && locationsCache[searchQuery.toLowerCase()]) {
-      console.log('Serving from cache for:', searchQuery);
       return res.status(200).json({
         success: true,
         locations: locationsCache[searchQuery.toLowerCase()]

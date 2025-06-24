@@ -1,0 +1,329 @@
+.confirmationContainer {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.errorContainer h2 {
+  color: #e74c3c;
+  margin-bottom: 20px;
+}
+
+.errorContainer button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto 20px;
+  font-weight: bold;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin: 0 0 10px 0;
+}
+
+.header p {
+  font-size: 16px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.bookingInfo {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.bookingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.bookingHeader h3 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.bookingId {
+  background: #e3f2fd;
+  color: #1976d2;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.bookingDetails {
+  display: grid;
+  gap: 30px;
+}
+
+.carInfo h4,
+.rentalInfo h4,
+.locationInfo h4,
+.customerInfo h4,
+.pricingInfo h4 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin: 0 0 15px 0;
+  font-weight: 600;
+}
+
+.carCard {
+  display: flex;
+  gap: 20px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.carImage {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.carDetails h5 {
+  font-size: 18px;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.carDetails p {
+  color: #6c757d;
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.rentalDetails {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.dateTime,
+.duration {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.dateTime strong,
+.duration strong {
+  color: #2c3e50;
+  margin-right: 8px;
+}
+
+.locations {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.location {
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.location strong {
+  color: #2c3e50;
+  margin-right: 8px;
+}
+
+.customerDetails {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.customerDetails p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.customerDetails strong {
+  color: #2c3e50;
+  margin-right: 8px;
+}
+
+.pricing {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+  border-top: 2px solid #dee2e6;
+  font-size: 18px;
+  color: #2c3e50;
+}
+
+.nextSteps {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.nextSteps h3 {
+  font-size: 22px;
+  color: #2c3e50;
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.steps {
+  display: grid;
+  gap: 20px;
+}
+
+.step {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.stepNumber {
+  width: 35px;
+  height: 35px;
+  background: #007bff;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.stepContent h4 {
+  font-size: 16px;
+  color: #2c3e50;
+  margin: 0 0 5px 0;
+}
+
+.stepContent p {
+  color: #6c757d;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.primaryBtn {
+  background: #007bff;
+  color: white;
+}
+
+.primaryBtn:hover {
+  background: #0056b3;
+  transform: translateY(-1px);
+}
+
+.secondaryBtn {
+  background: #6c757d;
+  color: white;
+}
+
+.secondaryBtn:hover {
+  background: #545b62;
+  transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .confirmationContainer {
+    padding: 15px;
+  }
+  
+  .bookingHeader {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .carCard {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .carImage {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+  
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+  }
+}

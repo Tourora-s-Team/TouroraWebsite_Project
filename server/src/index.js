@@ -17,6 +17,9 @@ const userRoutes = require("./routes/user-routes");
 const bookingTourRouter = require('./routes/tour-images')
 const locationsRouter = require('./routes/locations');
 const carRentalRoutes = require('./routes/car-rental-service');
+const carAdminRoutes = require('./routes/car-admin');
+const carRentalServiceAdminRoutes = require('./routes/car-rental-service-admin');
+const businessPartnerAdminRoutes = require('./routes/business-partner-admin');
 
 
 const app = express();
@@ -30,6 +33,10 @@ app.use(express.json());
 // Connect mongoDB
 const db = require('./config/db')
 db.connect()
+
+// Import car status updater
+const { startStatusUpdater } = require('./utils/carStatusUpdater');
+const { startPeriodicSync } = require('./scripts/syncCarStatus');
 
 
 // CẤU HÌNH SESSION 
@@ -46,6 +53,9 @@ app.use(session({
 app.use("/create-tour", bookingTourRouter);
 app.use("/api/auth", authRoutes);
 app.use("/api/car-rental-service", carRentalRoutes);
+app.use("/api/admin/cars", carAdminRoutes); // Admin routes với authentication
+app.use("/api/admin/car-rental-services", carRentalServiceAdminRoutes); // Admin car rental service routes
+app.use("/api/admin/business-partners", businessPartnerAdminRoutes); // Admin business partner routes
 app.use("/api/locations", locationsRouter); // Thêm route locations
 app.use("/api/user", userRoutes);
 
@@ -70,4 +80,11 @@ app.get("/", (req, res) => {
 // Khởi động server
 app.listen(port, () => {
   console.log(`Server đang chạy tại http://localhost:${port}`);
+  
+  // Khởi động car status updater
+  startStatusUpdater();
+  
+  // Khởi động đồng bộ car status định kỳ (mỗi 30 phút)
+  console.log('🔄 Starting car status synchronization service...');
+  startPeriodicSync(30);
 });

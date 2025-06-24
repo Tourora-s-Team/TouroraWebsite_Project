@@ -1,0 +1,663 @@
+/* Modern Location Selection Styles */
+.locationContainer {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  margin-bottom: 32px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.locationContainer:hover {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  padding: 60px 32px;
+  color: #64748b;
+  font-size: 16px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 20px;
+  margin: 20px;
+  position: relative;
+}
+
+.loading:before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(102, 126, 234, 0.2);
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Header Section */
+.locationHeader {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.locationHeader:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(40px, -40px);
+}
+
+.locationHeader h3 {
+  font-size: 26px;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.locationHeader h3:before {
+  content: "📍";
+  font-size: 30px;
+}
+
+.locationHeader p {
+  font-size: 15px;
+  margin: 0;
+  opacity: 0.95;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Same Location Toggle */
+.sameLocationToggle {
+  padding: 24px 32px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-bottom: 1px solid rgba(14, 165, 233, 0.1);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  padding: 16px 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.checkboxLabel:hover {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.15);
+  transform: translateY(-2px);
+}
+
+.checkboxLabel input[type="checkbox"] {
+  display: none;
+}
+
+.checkmark {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  background: white;
+  position: relative;
+}
+
+.checkboxLabel input[type="checkbox"]:checked + .checkmark {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.checkboxLabel input[type="checkbox"]:checked + .checkmark:after {
+  content: '✓';
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+/* Location Selections */
+.locationSelections {
+  padding: 32px;
+  display: grid;
+  gap: 32px;
+}
+
+.locationSection {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.locationSection:hover {
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Section Title */
+.sectionTitle {
+  font-size: 20px;
+  color: #1e293b;
+  margin: 0 0 24px 0;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #f1f5f9;
+  position: relative;
+}
+
+.sectionTitle:after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+  border-radius: 1px;
+}
+
+/* Location Options */
+.locationOptions {
+  display: grid;
+  gap: 16px;
+}
+
+.locationOption {
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.locationOption:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+  transition: left 0.5s;
+}
+
+.locationOption:hover:before {
+  left: 100%;
+}
+
+.locationOption:hover {
+  border-color: #10b981;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  transform: translateY(-2px);
+}
+
+.locationOption.selected {
+  border-color: #10b981;
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.2);
+}
+
+.locationOption.selected:after {
+  content: '✓';
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+  animation: checkmarkPop 0.3s ease;
+}
+
+@keyframes checkmarkPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}/* Location Info Layout */
+.locationInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.locationMain {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1;
+}
+
+.locationIcon {
+  font-size: 24px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+  flex-shrink: 0;
+}
+
+.locationDetails {
+  flex: 1;
+}
+
+.locationName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.locationAddress {
+  color: #64748b;
+  font-size: 14px;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.instructions {
+  color: #0ea5e9;
+  font-size: 13px;
+  margin: 0;
+  font-weight: 600;
+  background: rgba(14, 165, 233, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+/* Location Meta Information */
+.locationMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.fee {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+  min-width: 60px;
+  text-align: center;
+}
+
+.availability {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.available24h {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+}
+
+.workingHours {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
+}
+
+/* Selected Summary */
+.selectedSummary {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 24px 32px 0;
+  box-shadow: 0 8px 25px rgba(14, 165, 233, 0.1);
+}
+
+.selectedSummary h4 {
+  font-size: 18px;
+  font-weight: 800;
+  color: #1e40af;
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.selectedSummary h4:before {
+  content: "📋";
+  font-size: 20px;
+}
+
+.summaryItems {
+  display: grid;
+  gap: 12px;
+}
+
+.summaryItem {
+  background: white;
+  padding: 16px 20px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(14, 165, 233, 0.1);
+  transition: all 0.2s ease;
+}
+
+.summaryItem:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+}
+
+.summaryLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.summaryValue {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e293b;
+  flex: 1;
+  margin-left: 16px;
+}
+
+.summaryFee {
+  font-size: 12px;
+  font-weight: 700;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .locationSelections {
+    padding: 24px;
+    gap: 24px;
+  }
+  
+  .locationSection {
+    padding: 20px;
+  }
+  
+  .selectedSummary {
+    margin: 20px 24px 0;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .locationContainer {
+    border-radius: 20px;
+    margin-bottom: 24px;
+  }
+  
+  .locationHeader {
+    padding: 24px;
+  }
+  
+  .locationHeader h3 {
+    font-size: 22px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .locationHeader h3:before {
+    font-size: 26px;
+  }
+  
+  .sameLocationToggle {
+    padding: 20px 24px;
+  }
+  
+  .checkboxLabel {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+  
+  .locationSelections {
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .locationSection {
+    padding: 16px;
+  }
+  
+  .sectionTitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .locationInfo {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .locationMain {
+    width: 100%;
+  }
+  
+  .locationMeta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .selectedSummary {
+    margin: 16px 20px 0;
+    padding: 16px;
+  }
+  
+  .summaryItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .summaryValue {
+    margin-left: 0;
+    margin-top: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .locationContainer {
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .locationHeader {
+    padding: 20px;
+  }
+  
+  .locationHeader h3 {
+    font-size: 20px;
+  }
+  
+  .locationHeader h3:before {
+    font-size: 24px;
+  }
+  
+  .locationHeader p {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+  
+  .sameLocationToggle {
+    padding: 16px 20px;
+  }
+  
+  .checkboxLabel {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  
+  .checkmark {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .locationSelections {
+    padding: 16px;
+    gap: 16px;
+  }
+  
+  .locationSection {
+    padding: 14px;
+  }
+  
+  .sectionTitle {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .locationOption {
+    padding: 16px;
+  }
+  
+  .locationIcon {
+    min-width: 40px;
+    height: 40px;
+    font-size: 20px;
+    padding: 8px;
+  }
+  
+  .locationName {
+    font-size: 15px;
+  }
+  
+  .locationAddress {
+    font-size: 13px;
+  }
+  
+  .instructions {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+  
+  .fee {
+    font-size: 11px;
+    padding: 4px 8px;
+    min-width: 50px;
+  }
+  
+  .available24h {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  
+  .workingHours {
+    font-size: 9px;
+    padding: 3px 6px;
+  }
+  
+  .selectedSummary {
+    margin: 12px 16px 0;
+    padding: 14px;
+  }
+  
+  .selectedSummary h4 {
+    font-size: 16px;
+  }
+  
+  .selectedSummary h4:before {
+    font-size: 18px;  }
+  
+  .summaryItem {
+    padding: 12px 16px;
+  }
+  
+  .summaryLabel,
+  .summaryValue {
+    font-size: 13px;
+  }
+    .summaryFee {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+}

@@ -4,13 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserProvider from './contexts/UserContext';
+import CarProvider from './contexts/CarContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <CarProvider>
+        <App />
+      </CarProvider>
     </UserProvider>
   </React.StrictMode>
 );

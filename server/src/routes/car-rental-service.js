@@ -1,30 +1,61 @@
 const express = require("express");
 const router = express.Router();
+const carController = require("../controllers/car-rental-controller");
 
-// Mock database
-let rentals = [];
-
-// API endpoint cho car rental
-router.post('/search', (req, res) => {
+// Thêm route debug để kiểm tra request đến
+router.post('/debug-search', (req, res) => {
   try {
-    const newRental = req.body;
-    rentals.push(newRental); // Trong thực tế, bạn sẽ lưu vào database
-
-    res.status(201).json({
+    console.log('DEBUG - Car Rental Search Request:');
+    console.log('Headers:', req.headers);
+    console.log('Body:', JSON.stringify(req.body, null, 2));
+    console.log('Query:', req.query);
+    
+    // Kiểm tra các yếu tố quan trọng
+    const { filters } = req.body;
+    const validationResults = {
+      hasFilters: !!filters,
+      filtersIsObject: typeof filters === 'object' && filters !== null,
+      hasLocation: filters && typeof filters.location !== 'undefined',
+      locationIsString: filters && typeof filters.location === 'string',
+      locationNonEmpty: filters && typeof filters.location === 'string' && filters.location.trim() !== ''
+    };
+    
+    return res.status(200).json({
       success: true,
-      message: "Đã gửi yêu cầu thành công!",
-      data: newRental,
+      message: 'Debug information',
+      requestBody: req.body,
+      validationResults,
+      recommendedFix: !validationResults.locationNonEmpty 
+        ? "Ensure filters.location is a non-empty string" 
+        : "Request appears valid"
     });
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      message: "Lỗi gửi yêu cầu",
+      message: 'Debug error',
+      error: error.message
     });
   }
 });
 
-// Lấy danh sách rentals (test)
-router.get('/car-rentals', (req, res) => {
-  res.json(rentals);
-});
+router.post('/search', carController.searchCar);
+router.post('/book', carController.bookCar);
+router.get('/suppliers/:carId', carController.getSuppliers);
+
+// Car availability check
+router.get('/check-availability', carController.checkCarAvailability);
+
+// Booking management routes
+router.get('/bookings/stats', carController.getBookingStats);
+router.get('/bookings', carController.getAllBookings);
+router.get('/booking/:bookingId', carController.getBookingById);
+router.put('/booking/:bookingId/status', carController.updateBookingStatus);
+router.post('/booking/:bookingId/cancel', carController.cancelBooking);
+
+// Car management routes
+router.get('/:id', carController.getCarById);
+router.put('/:id', carController.updateCar);
+router.delete('/:id', carController.deleteCar);
+router.get('/', carController.getCars);
+
 module.exports = router;

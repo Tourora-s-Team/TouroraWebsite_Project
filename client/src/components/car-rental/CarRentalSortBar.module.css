@@ -1,0 +1,131 @@
+.sortBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: nowrap;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #FF5B00;
+}
+
+/* Hiệu ứng khi hover vào sortBar */
+.sortBar:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.sortBar {
+    animation: fadeIn 0.4s ease;
+}
+
+
+.sortSection,
+.filterSection {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+    min-width: 200px;
+}
+
+.sortSection {
+    margin-right: 16px;
+    border-right: 1px solid #eee;
+    padding-right: 16px;
+}
+
+.sortSectionTitle {
+    width: 64px;
+}
+
+.sortSection label,
+.filterSection label {
+    color: #555;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.sortSelect,
+.filterSelect {
+    padding: 10px 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #fff;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    /* Tùy chỉnh select arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%23555' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+/* Style cho các tùy chọn bên trong select */
+.sortSelect option,
+.filterSelect option {
+    padding: 10px;
+    background-color: white;
+}
+
+.sortSelect:hover,
+.filterSelect:hover {
+    border-color: #FF5B00;
+}
+
+.sortSelect:focus,
+.filterSelect:focus {
+    border-color: #FF5B00;
+    box-shadow: 0 0 0 3px rgba(255, 91, 0, 0.15);
+}
+
+/* Tăng khoảng cách giữa các mục filter */
+.filterSection+.filterSection {
+    margin-left: 8px;
+}
+
+/* Badge cho số lượng filter đã áp dụng */
+.filterSection.active::after {
+    content: '✓';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background-color: #FF5B00;
+    color: white;
+    border-radius: 50%;
+    font-size: 10px;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+}
+
+.filterSection {
+    position: relative;
+}

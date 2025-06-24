@@ -1,0 +1,59 @@
+.container {
+    width: 100%;
+}
+
+
+.carList {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+@media (max-width: 768px) {
+    .carList {
+        grid-template-columns: 1fr;
+    }
+}
+
+.noCars {
+    text-align: center;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.noCars p:first-child {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.noCars p:last-child {
+    color: #666;
+}
+
+.partnerGroup {
+    margin-bottom: 30px;
+}
+
+.partnerHeader {
+    background-color: #f0f8ff;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #0066cc;
+}
+
+.partnerHeader h3 {
+    margin: 0;
+    color: #0066cc;
+    font-size: 18px;
+}
+
+.partnerHeader p {
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 14px;
+}

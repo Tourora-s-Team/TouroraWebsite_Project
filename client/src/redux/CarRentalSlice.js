@@ -1,4 +1,5 @@
-// Tạo Slice (giống như module chứa state + action): Lưu thông tin đặt xe để sử dụng giữa các trang.
+// Tạo Slice (giống như module chứa state + action)
+// Lưu thông tin đặt xe để sử dụng giữa các trang.
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {

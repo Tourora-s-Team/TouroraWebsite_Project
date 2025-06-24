@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "migrate-users": "node migrations/updateUserSchema.js"
+  }
+}
