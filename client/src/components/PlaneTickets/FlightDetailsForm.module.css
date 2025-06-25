@@ -1,0 +1,286 @@
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.routeInfo h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tripDetails {
+  display: flex;
+  gap: 16px;
+  color: #687176;
+  font-size: 14px;
+}
+
+.notifications {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #0194f3;
+}
+
+.dateSelector {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: white;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(3, 18, 26, 0.15);
+}
+
+.dates {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.dateOption {
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.dateOption.active {
+  background: #e6f4ff;
+  color: #0194f3;
+}
+
+.dateOption span {
+  display: block;
+}
+
+.dateOption .price {
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.dateNav {
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #0194f3;
+}
+
+.calendar {
+  padding: 8px 16px;
+  border: 1px solid #e7e9ec;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.filters {
+  margin-bottom: 24px;
+}
+
+.sortOptions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 14px;
+}
+
+.sortOptions .active {
+  color: #0194f3;
+  font-weight: 600;
+}
+
+.priceSort {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flightCard {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(3, 18, 26, 0.15);
+}
+
+.mainInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e7e9ec;
+}
+
+.airline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.airline img {
+  width: 32px;
+  height: 32px;
+}
+
+.schedule {
+  flex: 1;
+}
+
+.time {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.departTime,
+.arriveTime {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.duration {
+  color: #687176;
+  font-size: 14px;
+}
+
+.route {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: #687176;
+}
+
+.flightType {
+  font-size: 12px;
+  color: #0194f3;
+}
+
+.price {
+  text-align: right;
+}
+
+.amount {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff5e1f;
+}
+
+.perPerson {
+  font-size: 12px;
+  color: #687176;
+}
+
+.tags {
+  display: flex;
+  gap: 12px;
+  margin: 12px 0;
+}
+
+.tag {
+  font-size: 12px;
+  color: #0194f3;
+  background: #e6f4ff;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.actions button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #0194f3;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.selectBtn {
+  margin-left: auto;
+  background: #ff5e1f !important;
+  color: white !important;
+  border-radius: 4px;
+}
+
+.notification {
+  background: #fff8e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 24px;
+}
+
+.notification h4 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.notification p {
+  color: #687176;
+  margin-bottom: 8px;
+}
+
+.notification a {
+  color: #0194f3;
+  text-decoration: none;
+}
+
+.toggleDetailBtn {
+  background: #e6f4ff;
+  color: #0194f3;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 8px;
+}
+
+.toggleDetailBtn:hover {
+  background: #d0eaff;
+}
+
+.bookBtn {
+  margin-left: auto;
+  background: linear-gradient(90deg, #ff9800 60%, #ff5e1f 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 36px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(255, 94, 31, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.bookBtn:hover {
+  background: linear-gradient(90deg, #ffb74d 60%, #ff7043 100%);
+}
+
+.btnIcon {
+  font-size: 1.3em;
+  margin-right: 4px;
+}

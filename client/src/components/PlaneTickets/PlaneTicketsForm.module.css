@@ -1,0 +1,222 @@
+/* Container tổng */
+.container {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  font-family: "Segoe UI", sans-serif;
+  color: #222;
+  background-color: #ffffff;
+}
+
+/* Banner */
+.banner {
+  margin-bottom: 24px;
+  width: 100%;
+}
+.banner img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.banner h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Form Card chính */
+.formCard {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Trip type buttons */
+.tripTypeRow {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  justify-content: flex-start;
+}
+
+.tripTypeBtn {
+  padding: 6px 16px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tripTypeBtn.active {
+  background-color: #2196f3;
+  color: white;
+  border-color: #2196f3;
+}
+
+/* Ô nhập điểm đi/đến + nút đảo ⇄ */
+.routeRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.inputGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputGroup label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.inputGroup input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Nút hoán đổi ⇄ */
+.swapBtn {
+  height: 38px;
+  width: 38px;
+  font-size: 18px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  border: none;
+  cursor: pointer;
+}
+
+/* Chọn ngày */
+.dateRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Bay thẳng + hành khách/hạng ghế */
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.passengerInfo {
+  font-weight: 500;
+}
+
+/* Nút tìm chuyến bay */
+.searchBtn {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* ====== Tính năng & đánh giá ====== */
+.features {
+  margin-top: 48px;
+  padding: 0 16px;
+}
+
+.ratingsSection {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.ratingsSection h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ratingItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ratingItem img {
+  width: 24px;
+  height: 24px;
+}
+
+/* Feature Card Container */
+.featuresList {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Feature Card Style */
+.featureItem {
+  flex: 1;
+  min-width: 250px;
+  max-width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.featureItem:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.featureItem img {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.featureItem h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+}
+
+.featureItem p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.4;
+}

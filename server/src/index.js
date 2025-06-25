@@ -1,17 +1,23 @@
 const express = require("express");
-const path = require("path"); 
+const dotenv = require("dotenv");
+dotenv.config();
+console.log("NODE_ENV:", process.env.NODE_ENV);
+const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/auth");
 
-const carRentalRoutes = require("./routes/carRentalService");
+const carRentalRoutes = require("./routes/carRentalService"); // Import router API
 const userRoutes = require("./routes/userRoutes");
+const flightSuggestionRoutes = require("./routes/flightSuggestionRoutes");
+const flightLocationRoutes = require("./routes/flightLocationRoutes");
+const addonsRoutes = require("./routes/addonsRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
+const passengerRoutes = require("./routes/passengerRoutes");
+const bookingFlightRoutes = require("./routes/booking_flightRoutes");
 const toursRouter = require("./routes/Tours"); // Đã có
-
-// THÊM DÒNG NÀY ĐỂ IMPORT BOOKING ROUTES
 const bookingRoutes = require("./routes/BookingRoutes");
-
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -36,14 +42,22 @@ app.use(
 );
 
 // API Routes
+// API Auth & user
 app.use("/api/auth", authRoutes);
 app.use("/api/car-rental-service", carRentalRoutes);
 app.use("/api/user", userRoutes);
+
+// API flight
+app.use("/api/flights", flightSuggestionRoutes);
+app.use("/api/flight-locations", flightLocationRoutes);
+app.use("/api/addons", addonsRoutes);
+app.use("/api/payment", paymentRoutes);
+app.use("/api/passenger", passengerRoutes);
+app.use("/api/booking-flight", bookingFlightRoutes);
+
+// API tours
 app.use("/api/tours", toursRouter);
-
-// THÊM DÒNG NÀY ĐỂ SỬ DỤNG BOOKING ROUTES
 app.use("/api/bookings", bookingRoutes);
-
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, "../../client/build");
 

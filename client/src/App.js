@@ -13,6 +13,15 @@ import TourDetail from "./components/Tourdetails";
 import Booking from "./components/Booking";
 import { AuthProvider } from "./components/AuthContext"; // Thêm dòng này
 import { BookingProvider } from "./components/BookingContext"; // Thêm dòng này
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import CarRentalPage from "./pages/CarRentalPage";
+import PlaneTicketsPage from "./pages/PlaneTicketPage";
+import FlightDetailsPage from "./pages/FlightDetailsPage";
+import FlightBookingPage from "./pages/FlightBookingPage";
+
+import PaymentPage from "./pages/PaymentForm";
 
 function App() {
   return (
@@ -29,10 +38,13 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/account-info" element={<AccountPage />} />
           <Route path="/book-tour" element={<BookingTourPage />} />
+          <Route path="/plane-tickets-service" element={<PlaneTicketsPage />} />
+          <Route path="/flight-details/:id" element={<FlightDetailsPage />} />
+          <Route path="/flight-booking" element={<FlightBookingPage />} />
+          <Route path="/payment" element={<PaymentPage />} />
         </Routes>
       </Layout>
     </Router>
   );
 }
-
 export default App;

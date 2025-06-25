@@ -5,7 +5,8 @@ const Account = require("../models/Account");
 
 const registerUser = async (req, res) => {
   try {
-    const { username, fullname, dateOfBirth, phone, email, password } = req.body;
+    const { username, fullname, dateOfBirth, phone, email, password } =
+      req.body;
 
     // Kiểm tra username đã tồn tại trong Account chưa
     const existingAccount = await Account.findOne({ username });
@@ -55,15 +56,14 @@ const loginUser = async (req, res) => {
 
     // So sánh mật khẩu
     const isMatch = await bcrypt.compare(password, account.password);
-    if (!isMatch)
-      return res.json({ success: false, message: "Sai mật khẩu" });
+    if (!isMatch) return res.json({ success: false, message: "Sai mật khẩu" });
 
     // Tạo token
     const token = jwt.sign(
       {
         userId: account._id,
         username: account.username,
-        role: account.role
+        role: account.role,
       },
       process.env.JWT_SECRET,
       { expiresIn: "2h" }
@@ -73,7 +73,10 @@ const loginUser = async (req, res) => {
     const user = await User.findOne({ username });
 
     if (!user) {
-      return res.json({ success: false, message: "Không tìm thấy thông tin người dùng" });
+      return res.json({
+        success: false,
+        message: "Không tìm thấy thông tin người dùng",
+      });
     }
 
     // Trả về dữ liệu đầy đủ
@@ -89,14 +92,12 @@ const loginUser = async (req, res) => {
         email: user.email,
         numberPhone: user.phoneNumber,
         dateOfBirth: user.dateOfBirth,
-      }
+      },
     });
-
   } catch (err) {
     console.error("Lỗi login:", err);
     return res.status(500).json({ success: false, message: "Lỗi server" });
   }
 };
-
 
 module.exports = { registerUser, loginUser };
