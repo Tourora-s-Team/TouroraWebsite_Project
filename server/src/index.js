@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 dotenv.config();
-console.log("NODE_ENV:", process.env.NODE_ENV);
+// console.log("NODE_ENV:", process.env.NODE_ENV);
 const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
@@ -18,6 +18,10 @@ const passengerRoutes = require("./routes/passengerRoutes");
 const bookingFlightRoutes = require("./routes/booking_flightRoutes");
 const toursRouter = require("./routes/Tours"); // Đã có
 const bookingRoutes = require("./routes/BookingRoutes");
+
+// Booking room router
+const hotelRoutes = require('./routes/hotel');
+const roomRoutes = require('./routes/room');
 const app = express();
 const port = process.env.PORT || 3001;
 
@@ -58,6 +62,11 @@ app.use("/api/booking-flight", bookingFlightRoutes);
 // API tours
 app.use("/api/tours", toursRouter);
 app.use("/api/bookings", bookingRoutes);
+
+// API Booking room
+app.use('/api/hotel', hotelRoutes);
+app.use('/api/room', roomRoutes);
+
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, "../../client/build");
 

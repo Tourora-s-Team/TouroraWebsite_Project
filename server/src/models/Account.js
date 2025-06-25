@@ -25,8 +25,6 @@ const Account = new Schema({
   createAt: { type: Date, default: Date.now },
 });
 
-
-
-module.exports = mongoose.model('Account', Account)
+module.exports = mongoose.models.Account || mongoose.model('Account', Account);
 
 

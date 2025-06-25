@@ -1,31 +1,18 @@
 const express = require('express');
 const router = express.Router();
+const bookingController = require('../controllers/bookingController');
 
-// Mock database
-let rentals = [];
-
-// API endpoint cho car rental
-router.post('/rentals', (req, res) => {
+// API endpoint cho booking khách sạn
+router.post('/bookings', bookingController.createBooking);
+router.get('/bookings', async (req, res) => {
   try {
-    const newRental = req.body;
-    rentals.push(newRental); // Trong thực tế, bạn sẽ lưu vào database
-    
-    res.status(201).json({
-      success: true,
-      message: 'Đã gửi yêu cầu thành công!',
-      data: newRental
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Lỗi gửi yêu cầu'
-    });
+    const BookingHotel = require('../models/booking-hotels');
+    const Customer = require('../models/customer');
+    const bookings = await BookingHotel.find().populate('userId').populate('customerId');
+    res.json(bookings);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-});
-
-// Lấy danh sách rentals (test)
-router.get('/rentals', (req, res) => {
-  res.json(rentals);
 });
 
 module.exports = router;

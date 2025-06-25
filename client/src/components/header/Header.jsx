@@ -98,7 +98,7 @@ const Header = () => {
                     <nav>
                         <ul className={styles.navList}>
                             <li><a className={styles.navLink} href="/">Tour du lịch</a></li>
-                            <li><a className={styles.navLink} href="#">Khách sạn</a></li>
+                            <li><a className={styles.navLink} href="/hotel-booking">Khách sạn</a></li>
                             <li><a className={styles.navLink} href="/car-rental-service">Cho thuê xe</a></li>
                             <li><a className={styles.navLink} href="/plane-tickets-service">Vé máy bay</a></li>
                             <li><a className={styles.navLink} href="#">Hoạt động & Vui chơi</a></li>
