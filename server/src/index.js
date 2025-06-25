@@ -47,7 +47,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/car-rental-service", carRentalRoutes);
 app.use("/api/user", userRoutes);
 
-// API flight
+// API Flight
 app.use("/api/flights", flightSuggestionRoutes);
 app.use("/api/flight-locations", flightLocationRoutes);
 app.use("/api/addons", addonsRoutes);

@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
 import CarRentalPage from './pages/CarRentalPage';
 import CarRentalDetailsPage from './pages/CarRentalDetailPage';
 import RegisterForm from './components/header/RegisterForm'
@@ -13,10 +12,8 @@ import TourDetail from "./components/Tourdetails";
 import Booking from "./components/Booking";
 import { AuthProvider } from "./components/AuthContext"; // Thêm dòng này
 import { BookingProvider } from "./components/BookingContext"; // Thêm dòng này
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import HomePage from "./pages/HomePage";
-import CarRentalPage from "./pages/CarRentalPage";
+
+
 import PlaneTicketsPage from "./pages/PlaneTicketPage";
 import FlightDetailsPage from "./pages/FlightDetailsPage";
 import FlightBookingPage from "./pages/FlightBookingPage";
