@@ -1,22 +1,15 @@
 const express = require("express");
-const dotenv = require("dotenv");
-dotenv.config();
-// console.log("NODE_ENV:", process.env.NODE_ENV);
-
-const path = require("path");
 const cors = require("cors");
 const session = require("express-session");
-const MongoStore = require("connect-mongo")
-
-// Import middleware
-// const authenticateToken = require("./middlewares/authenticate-token")
-
-// Import routers
+const MongoStore = require("connect-mongo");
 const authRoutes = require("./routes/auth");
-const bookingTourRouter = require('./routes/tour-images')
-const carRentalRoutes = require('./routes/car-rental-service');
-const userRoutes = require("./routes/user-routes");
 
+const carRentalRoutes = require("./routes/carRentalService");
+const userRoutes = require("./routes/userRoutes");
+const toursRouter = require("./routes/Tours"); // Đã có
+
+// THÊM DÒNG NÀY ĐỂ IMPORT BOOKING ROUTES
+const bookingRoutes = require("./routes/BookingRoutes");
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -25,32 +18,35 @@ const port = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-
 // Connect mongoDB
-const db = require('./config/db')
-db.connect()
+const db = require("./config/db");
+db.connect();
 
-
-// CẤU HÌNH SESSION 
-app.use(session({
-  secret: process.env.SESSION_SECRET || "secret_key",
-  resave: false,
-  saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI,
-  }),
-}));
+// CẤU HÌNH SESSION
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "secret_key",
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGODB_URI,
+    }),
+  })
+);
 
 // API Routes
-app.use("/create-tour", bookingTourRouter);
 app.use("/api/auth", authRoutes);
 app.use("/api/car-rental-service", carRentalRoutes);
 app.use("/api/user", userRoutes);
+app.use("/api/tours", toursRouter);
+
+// THÊM DÒNG NÀY ĐỂ SỬ DỤNG BOOKING ROUTES
+app.use("/api/bookings", bookingRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
-const clientBuildPath = path.join(__dirname, '../../client/build');
+const clientBuildPath = path.join(__dirname, "../../client/build");
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   console.log("🌐 Serving React from:", clientBuildPath);
   app.use(express.static(clientBuildPath));
 
