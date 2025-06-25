@@ -16,8 +16,10 @@ const addonsRoutes = require("./routes/addonsRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
 const passengerRoutes = require("./routes/passengerRoutes");
 const bookingFlightRoutes = require("./routes/booking_flightRoutes");
+
 const toursRouter = require("./routes/Tours"); // Đã có
 const bookingRoutes = require("./routes/BookingRoutes");
+const apiBookingRoomRoutes = require("./routes/api"); // Đã có
 
 // Booking room router
 const hotelRoutes = require('./routes/hotel');
@@ -66,6 +68,7 @@ app.use("/api/bookings", bookingRoutes);
 // API Booking room
 app.use('/api/hotel', hotelRoutes);
 app.use('/api/room', roomRoutes);
+app.use('/api', apiBookingRoomRoutes);
 
 // Serve React (chỉ dùng khi deploy production)
 const clientBuildPath = path.join(__dirname, "../../client/build");
