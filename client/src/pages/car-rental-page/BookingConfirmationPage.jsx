@@ -91,9 +91,9 @@ const BookingConfirmationPage = () => {
           <div className={styles.customerInfo}>
             <h4>Thông tin khách hàng</h4>
             <div className={styles.customerDetails}>
-              <p><strong>Họ tên:</strong> {bookingData.customerInfo.fullName}</p>
+              <p><strong>Họ tên:</strong> {bookingData.customerInfo.fullname}</p>
               <p><strong>Email:</strong> {bookingData.customerInfo.email}</p>
-              <p><strong>Điện thoại:</strong> {bookingData.customerInfo.phone}</p>
+              <p><strong>Điện thoại:</strong> {bookingData.customerInfo.numberPhone}</p>
               {bookingData.customerInfo.address && (
                 <p><strong>Địa chỉ:</strong> {bookingData.customerInfo.address}</p>
               )}
